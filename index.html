@@ -17,6 +17,7 @@
       <a class="menu-logo" href="#">brln</a>
       <a href="#panel">Lugares</a>
       <a href="#plan">Próximo plan</a>
+      <a href="#adviento">Adviento</a>
       <span class="menu-progreso" id="menu-progreso">0/12</span>
     </nav>
 
@@ -47,17 +48,17 @@
   </section>
 
   <!-- ============ PANEL: resumen arriba, detalle abajo ============ -->
-  <main class="panel" id="panel">
-    <div class="panel-dentro">
-      <header class="saludo">
-        <p class="fecha" id="fecha"></p>
+  <main class="seccion" id="panel">
+    <div class="seccion-dentro">
+      <header class="cabecera-seccion">
+        <p class="antetitulo" id="fecha"></p>
         <h2>Tu invierno en Berlín</h2>
       </header>
 
       <div class="contadores" id="contadores"></div>
 
       <div class="columnas">
-        <section class="caja caja-lugares" aria-labelledby="titulo-lista">
+        <section class="caja" aria-labelledby="titulo-lista">
           <div class="caja-cabecera">
             <h3 id="titulo-lista">Todos los lugares</h3>
             <span class="insignia" id="cuenta-lista">12</span>
@@ -67,6 +68,7 @@
         </section>
 
         <section class="caja caja-plan" id="plan" aria-labelledby="titulo-plan">
+          <div class="franja-mural" aria-hidden="true"></div>
           <div class="caja-cabecera">
             <h3 id="titulo-plan">Próximo plan</h3>
           </div>
@@ -76,9 +78,48 @@
     </div>
   </main>
 
-  <footer class="pie">Hecho con frío y Claude Code · Berlín</footer>
+  <!-- ============ CALENDARIO DE ADVIENTO ============ -->
+  <section class="seccion seccion-adviento" id="adviento">
+    <div class="seccion-dentro">
+      <header class="cabecera-seccion">
+        <p class="antetitulo">1–24 de diciembre</p>
+        <h2>Calendario de adviento</h2>
+        <p class="entradilla">Cada día de diciembre se abre una puerta con una misión por Berlín. Cúmplela y cuelga un adorno en el árbol. Si llenas las 24 ramas, se enciende la estrella.</p>
+      </header>
+
+      <div class="adviento">
+        <div>
+          <div class="puertas" id="puertas"></div>
+          <label class="modo-prueba">
+            <input type="checkbox" id="modo-prueba">
+            Modo prueba: abrir todas las puertas aunque no sea su día
+          </label>
+        </div>
+
+        <aside class="caja arbol-caja" aria-labelledby="titulo-arbol">
+          <div class="caja-cabecera">
+            <h3 id="titulo-arbol">Tu árbol</h3>
+            <span class="insignia" id="cuenta-adornos">0/24</span>
+          </div>
+          <div id="arbol"></div>
+          <p class="arbol-mensaje" id="arbol-mensaje"></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="dialogo" id="dialogo" aria-labelledby="dialogo-titulo">
+    <div id="dialogo-contenido"></div>
+  </dialog>
+
+  <footer class="pie">
+    <div class="franja-mural" aria-hidden="true"></div>
+    <p>Hecho con frío y Claude Code · Berlín</p>
+  </footer>
 
   <script src="lugares.js"></script>
+  <script src="dibujos.js"></script>
   <script src="app.js"></script>
+  <script src="adviento.js"></script>
 </body>
 </html>

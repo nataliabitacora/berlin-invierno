@@ -29,16 +29,8 @@ function alternarVisitado(lugar) {
   pintarTodo();
 }
 
-// ---------- Iconos en línea (uno por categoría) ----------
-const ICONOS = {
-  "mercado": '<path d="M12 2 L18 10 H15 L20 17 H4 L9 10 H6 Z"/><path d="M12 17 V22"/>',
-  "museo": '<path d="M3 9 L12 3 L21 9 Z"/><path d="M5 9 V18 M10 9 V18 M14 9 V18 M19 9 V18 M3 21 H21"/>',
-  "aire-libre": '<path d="M12 2 V22 M3.3 7 L20.7 17 M3.3 17 L20.7 7"/>',
-  "calor": '<path d="M5 9 H16 V17 A3 3 0 0 1 13 20 H8 A3 3 0 0 1 5 17 Z"/><path d="M16 11 H18 A2 2 0 0 1 18 15 H16"/><path d="M9 6 Q8 4 9 2 M12 6 Q11 4 12 2"/>',
-  "comida": '<path d="M12 20 C4 20 4 8 9 8 C12 8 13 13 12 15 C11 13 12 8 15 8 C20 8 20 20 12 20 Z"/>'
-};
-const icono = (cat) =>
-  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONOS[cat]}</svg>`;
+// ---------- Dibujo de cada categoría (ver dibujos.js) ----------
+const icono = (cat) => dibujo(DIBUJO_CATEGORIA[cat]);
 
 // ---------- Fecha ----------
 document.getElementById("fecha").textContent = new Date().toLocaleDateString("es-ES", {
@@ -93,15 +85,16 @@ function pintarLista() {
         <input type="checkbox" class="casilla" id="visitado-${id}" ${estaVisitado(lugar) ? "checked" : ""}
                aria-label="Marcar ${lugar.nombre} como visitado">
         <button class="fila-boton" aria-expanded="${abierto}" aria-controls="detalle-${id}">
+          ${icono(lugar.categoria)}
           <span class="fila-nombre">${lugar.nombre}</span>
           <span class="etiqueta-barrio">${lugar.barrio}</span>
           <span class="flecha" aria-hidden="true">›</span>
         </button>
       </div>
       <div class="fila-detalle" id="detalle-${id}" ${abierto ? "" : "hidden"}>
-        <span class="chip" data-cat="${lugar.categoria}">${CATEGORIAS[lugar.categoria]}</span>
+        <span class="chip">${CATEGORIAS[lugar.categoria]}</span>
         <p>${lugar.descripcion}</p>
-        <p class="consejo">Consejo: ${lugar.consejo}</p>
+        <p class="consejo"><b>Consejo:</b> ${lugar.consejo}</p>
       </div>
     `;
     fila.querySelector(".casilla").onchange = () => alternarVisitado(lugar);
@@ -137,14 +130,14 @@ function pintarPlan(animar = false) {
   const l = planActual;
   caja.innerHTML = `
     <article class="plan${animar ? " destello" : ""}">
-      <span class="chip" data-cat="${l.categoria}">${CATEGORIAS[l.categoria]}</span>
+      <span class="chip">${CATEGORIAS[l.categoria]}</span>
       <h4>${l.nombre}</h4>
       <p class="barrio">${l.barrio}</p>
       <p>${l.descripcion}</p>
-      <p class="consejo">Consejo: ${l.consejo}</p>
+      <p class="consejo"><b>Consejo:</b> ${l.consejo}</p>
       <div class="plan-acciones">
-        <button class="pastilla pastilla-negra" id="plan-hecho">Marcar como visitado</button>
-        <button class="pastilla pastilla-borde" id="plan-otro">Otro plan</button>
+        <button class="pastilla pastilla-negra pastilla-pequena" id="plan-hecho">Marcar como visitado</button>
+        <button class="pastilla pastilla-borde pastilla-pequena" id="plan-otro">Otro plan</button>
       </div>
     </article>
   `;
