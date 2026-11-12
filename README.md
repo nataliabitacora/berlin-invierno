@@ -4,7 +4,11 @@ Web para descubrir Berlín cuando hace frío: mercados navideños, museos, paseo
 
 ## Cómo abrirla
 
-No necesita instalar nada. Abre `index.html` en el navegador:
+Publicada con GitHub Pages: https://nataliabitacora.github.io/berlin-invierno/
+
+Cada vez que se sube un cambio a la rama `main`, la web se actualiza sola en uno o dos minutos.
+
+En local no necesita instalar nada. Abre `index.html` en el navegador:
 
 ```bash
 open index.html
