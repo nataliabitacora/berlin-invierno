@@ -1,0 +1,70 @@
+:root {
+  --fondo: #eef3f8;
+  --tarjeta: #ffffff;
+  --texto: #1f2a37;
+  --suave: #5b6b7d;
+  --acento: #2b5d8c;
+  --visitado: #e3f1e6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+header {
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: white;
+  padding: 2.5rem 1rem;
+  text-align: center;
+}
+header h1 { margin: 0 0 .5rem; }
+header p { margin: 0; opacity: .9; }
+
+main { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem; }
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+#filtros { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+button {
+  border: 1px solid var(--acento);
+  background: white;
+  color: var(--acento);
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+}
+button.activo, #sorpresa { background: var(--acento); color: white; }
+
+#progreso { color: var(--suave); }
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+  transition: transform .2s;
+}
+.tarjeta.visitado { background: var(--visitado); }
+.tarjeta.destacada { outline: 3px solid #e9c46a; transform: scale(1.03); }
+.tarjeta h3 { margin: .3rem 0; font-size: 1.05rem; }
+.etiqueta { font-size: .8rem; color: var(--suave); }
+.consejo { font-size: .9rem; color: var(--suave); font-style: italic; }
+.tarjeta label { display: flex; gap: .4rem; align-items: center; cursor: pointer; }
