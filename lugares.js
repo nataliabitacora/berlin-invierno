@@ -6,28 +6,28 @@ const LUGARES = [
     categoria: "mercado",
     barrio: "Charlottenburg",
     descripcion: "Puestos iluminados frente a un palacio barroco. Ideal al anochecer con un Glühwein (vino caliente).",
-    consejo: "Ve entre semana para evitar las multitudes."
+    consejo: "Abre del 23 de noviembre al 27 de diciembre (cerrado el 24). Ve entre semana para evitar las multitudes."
   },
   {
     nombre: "Lucia Weihnachtsmarkt (Kulturbrauerei)",
     categoria: "mercado",
     barrio: "Prenzlauer Berg",
     descripcion: "Mercado de inspiración escandinava dentro de una antigua fábrica de cerveza de ladrillo rojo.",
-    consejo: "Prueba el Glögg, la versión nórdica del vino caliente."
+    consejo: "Abre del 23 de noviembre al 22 de diciembre, entre semana desde las 15:00. Prueba el Glögg, la versión nórdica del vino caliente."
   },
   {
     nombre: "Isla de los Museos",
     categoria: "museo",
     barrio: "Mitte",
     descripcion: "Cinco museos en una isla del río Spree. En el Neues Museum está el busto de Nefertiti.",
-    consejo: "Comprueba qué salas están abiertas: algunos edificios están en obras."
+    consejo: "El Pergamonmuseum sigue cerrado por obras hasta 2027; el Neues Museum, el Altes Museum y el Bode-Museum sí abren."
   },
   {
     nombre: "Cúpula del Reichstag",
     categoria: "museo",
     barrio: "Mitte",
     descripcion: "Cúpula de cristal con vistas a la ciudad. Gratis y con audioguía.",
-    consejo: "Hay que reservar online con antelación."
+    consejo: "Es gratis, pero hay que reservar online con antelación en bundestag.de y llevar documento de identidad."
   },
   {
     nombre: "Teufelsberg",
@@ -62,13 +62,13 @@ const LUGARES = [
     categoria: "calor",
     barrio: "Mitte",
     descripcion: "Pista de hielo al aire libre durante la temporada navideña, rodeada de puestos.",
-    consejo: "Se pueden alquilar patines allí mismo."
+    consejo: "Comprueba antes si este año hay pista: en 2026 el mercado de Alexanderplatz anuncia solo pista de curling bávaro (Eisstock)."
   },
   {
     nombre: "Markthalle Neun",
     categoria: "comida",
     barrio: "Kreuzberg",
-    descripcion: "Mercado cubierto de 1891. Los jueves por la tarde hay Street Food Thursday.",
+    descripcion: "Mercado cubierto de 1891. Los jueves de 17:00 a 22:00 hay Street Food Thursday.",
     consejo: "Un sitio caliente para comer algo cuando aprieta el frío."
   },
   {
@@ -82,8 +82,8 @@ const LUGARES = [
     nombre: "Berlinale",
     categoria: "museo",
     barrio: "Potsdamer Platz",
-    descripcion: "Festival internacional de cine que se celebra cada febrero. Hay entradas para el público.",
-    consejo: "Las entradas salen a la venta pocos días antes de cada pase y vuelan."
+    descripcion: "Festival internacional de cine. En 2027 se celebra del 10 al 21 de febrero y hay entradas para el público.",
+    consejo: "Las entradas salen a la venta pocos días antes de cada pase y vuelan. El 20 y 21 de febrero son días del público, con entradas más baratas."
   }
 ];
 
