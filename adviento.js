@@ -61,12 +61,14 @@ let cumplidas = leer("berlin-adviento-cumplidas", []);
 let abiertas = leer("berlin-adviento-abiertas", []);
 let modoPrueba = leer("berlin-adviento-prueba", false);
 
-// Una puerta se puede abrir si estamos en diciembre y ya ha llegado su día
-// (o si el modo prueba está activado).
-function disponible(dia) {
+// Una puerta se puede abrir si estamos en diciembre y ya ha llegado su día.
+// En enero y febrero siguen todas abiertas, para poder completar el árbol tarde.
+// (El modo prueba las abre todas en cualquier momento.)
+function disponible(dia, hoy = new Date()) {
   if (modoPrueba) return true;
-  const hoy = new Date();
-  return hoy.getMonth() === 11 && hoy.getDate() >= dia;
+  const mes = hoy.getMonth();
+  if (mes === 0 || mes === 1) return true;
+  return mes === 11 && hoy.getDate() >= dia;
 }
 
 const mision = (dia) => MISIONES.find((m) => m.dia === dia);

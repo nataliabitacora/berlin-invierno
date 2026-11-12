@@ -156,6 +156,7 @@ document.getElementById("sorpresa").onclick = () => {
 
 // ---------- Progreso y repintado ----------
 function pintarTodo() {
+  document.getElementById("ver-lugares").textContent = `Ver los ${LUGARES.length} lugares`;
   document.getElementById("menu-progreso").textContent = `${visitados.length}/${LUGARES.length}`;
   pintarContadores();
   pintarLista();
