@@ -88,9 +88,9 @@ const LUGARES = [
 ];
 
 const CATEGORIAS = {
-  "mercado": "🎄 Mercados navideños",
-  "museo": "🏛️ Cultura",
-  "aire-libre": "❄️ Al aire libre",
-  "calor": "♨️ Para entrar en calor",
-  "comida": "🥨 Comida"
+  "mercado": "Mercados navideños",
+  "museo": "Cultura",
+  "aire-libre": "Al aire libre",
+  "calor": "Entrar en calor",
+  "comida": "Comida"
 };

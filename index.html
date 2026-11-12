@@ -6,39 +6,77 @@
   <title>Berlín en invierno</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="barra">
-    <span class="logo">BRLN❄</span>
-    <span class="barra-texto">Guía de invierno · 12 planes</span>
-  </nav>
 
-  <header class="hero">
-    <div class="hero-texto">
-      <span class="pegatina">Temporada fría</span>
-      <h1>Berlín<br>en invierno</h1>
-      <p>Mercados navideños, museos, colinas nevadas y sitios para entrar en calor. Marca lo que ya has visto.</p>
-      <button id="sorpresa" class="boton boton-grande">🎲 Sorpréndeme</button>
+  <!-- ============ PORTADA: mural en línea negra + tarjeta central ============ -->
+  <section class="portada">
+    <nav class="menu" aria-label="Principal">
+      <a class="menu-logo" href="#">brln</a>
+      <a href="#panel">Lugares</a>
+      <a href="#plan">Próximo plan</a>
+      <span class="menu-progreso" id="menu-progreso">0/12</span>
+    </nav>
+
+    <div class="tarjeta-portada">
+      <svg class="oso" viewBox="0 0 120 110" aria-hidden="true">
+        <g fill="#fff" stroke="#111" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="36" cy="26" r="13"/><circle cx="84" cy="26" r="13"/>
+          <circle cx="36" cy="26" r="5" fill="#111"/><circle cx="84" cy="26" r="5" fill="#111"/>
+          <circle cx="60" cy="54" r="32"/>
+          <path d="M30 78 Q60 96 90 78 L92 92 Q60 108 28 92 Z" fill="#111"/>
+          <path d="M80 88 l6 18 l10 -4 l-6 -16" fill="#111"/>
+          <ellipse cx="60" cy="65" rx="13" ry="10"/>
+          <ellipse cx="60" cy="60" rx="5" ry="3.5" fill="#111"/>
+          <circle cx="48" cy="48" r="3.5" fill="#111" stroke="none"/>
+          <circle cx="72" cy="48" r="3.5" fill="#111" stroke="none"/>
+        </g>
+      </svg>
+      <h1>Berlín en invierno, sin perderte nada.</h1>
+      <p>Mercados navideños, museos, colinas nevadas y sitios para entrar en calor. Marca lo que vas visitando y deja que la guía te proponga el siguiente plan.</p>
+      <div class="acciones">
+        <a class="pastilla pastilla-borde" href="#panel">Ver los 12 lugares</a>
+        <button class="pastilla pastilla-negra" id="sorpresa">Sorpréndeme</button>
+      </div>
+      <p class="letra-pequena">Tus visitas se guardan solo en este navegador.</p>
     </div>
-    <div class="hero-marcador">
-      <span class="marcador-label">Tu progreso</span>
-      <span id="contador" class="marcador-numero">0/12</span>
-      <div class="barra-progreso"><div id="relleno"></div></div>
+
+    <a class="pastilla pastilla-flotante" href="#panel">Empezar ↓</a>
+  </section>
+
+  <!-- ============ PANEL: resumen arriba, detalle abajo ============ -->
+  <main class="panel" id="panel">
+    <div class="panel-dentro">
+      <header class="saludo">
+        <p class="fecha" id="fecha"></p>
+        <h2>Tu invierno en Berlín</h2>
+      </header>
+
+      <div class="contadores" id="contadores"></div>
+
+      <div class="columnas">
+        <section class="caja caja-lugares" aria-labelledby="titulo-lista">
+          <div class="caja-cabecera">
+            <h3 id="titulo-lista">Todos los lugares</h3>
+            <span class="insignia" id="cuenta-lista">12</span>
+            <button class="enlace" id="ver-todo" hidden>Ver todo</button>
+          </div>
+          <ul class="filas" id="lista"></ul>
+        </section>
+
+        <section class="caja caja-plan" id="plan" aria-labelledby="titulo-plan">
+          <div class="caja-cabecera">
+            <h3 id="titulo-plan">Próximo plan</h3>
+          </div>
+          <div id="plan-contenido"></div>
+        </section>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <section class="controles">
-      <h2>Filtrar</h2>
-      <div id="filtros"></div>
-    </section>
-
-    <div id="lista" class="lista"></div>
   </main>
 
-  <footer>Hecho con frío y Claude Code · Berlín</footer>
+  <footer class="pie">Hecho con frío y Claude Code · Berlín</footer>
 
   <script src="lugares.js"></script>
   <script src="app.js"></script>
