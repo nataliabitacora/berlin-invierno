@@ -50,11 +50,17 @@ function pintarLista(destacado = null) {
       (visitado ? " visitado" : "") +
       (lugar === destacado ? " destacada" : "");
 
+    tarjeta.dataset.categoria = lugar.categoria;
     tarjeta.innerHTML = `
-      <span class="etiqueta">${CATEGORIAS[lugar.categoria]} · ${lugar.barrio}</span>
-      <h3>${lugar.nombre}</h3>
-      <p>${lugar.descripcion}</p>
-      <p class="consejo">💡 ${lugar.consejo}</p>
+      <div class="tarjeta-cabecera">
+        <span>${CATEGORIAS[lugar.categoria]}</span>
+        <span>${lugar.barrio}</span>
+      </div>
+      <div class="tarjeta-cuerpo">
+        <h3>${lugar.nombre}</h3>
+        <p>${lugar.descripcion}</p>
+        <p class="consejo">💡 ${lugar.consejo}</p>
+      </div>
       <label><input type="checkbox" ${visitado ? "checked" : ""}> Visitado</label>
     `;
 
@@ -69,8 +75,10 @@ function pintarLista(destacado = null) {
     if (lugar === destacado) tarjeta.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  document.getElementById("progreso").textContent =
-    `Has visitado ${visitados.length} de ${LUGARES.length} lugares.`;
+  document.getElementById("contador").textContent =
+    `${visitados.length}/${LUGARES.length}`;
+  document.getElementById("relleno").style.width =
+    `${(visitados.length / LUGARES.length) * 100}%`;
 }
 
 // Elige al azar un lugar que aún no se haya visitado.

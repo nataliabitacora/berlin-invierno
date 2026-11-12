@@ -1,70 +1,251 @@
+/* Estética neobrutalista: bordes negros gruesos, sombras duras sin difuminar,
+   colores planos y saturados, tipografía grande y pesada. */
 :root {
-  --fondo: #eef3f8;
-  --tarjeta: #ffffff;
-  --texto: #1f2a37;
-  --suave: #5b6b7d;
-  --acento: #2b5d8c;
-  --visitado: #e3f1e6;
+  --negro: #111111;
+  --papel: #fffaf0;
+  --blanco: #ffffff;
+  --amarillo: #ffd23f;
+  --rosa: #ff8fd8;
+  --azul: #7cc6fe;
+  --verde: #9be564;
+  --naranja: #ff9b54;
+  --lila: #c3a6ff;
+
+  --borde: 3px solid var(--negro);
+  --sombra: 5px 5px 0 var(--negro);
+  --sombra-hover: 8px 8px 0 var(--negro);
+  --radio: 6px;
+
+  --titulos: "Archivo Black", "Arial Black", sans-serif;
+  --texto: "Space Grotesk", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-  background: var(--fondo);
-  color: var(--texto);
+  font-family: var(--texto);
+  background: var(--papel);
+  color: var(--negro);
+  line-height: 1.45;
 }
 
-header {
-  background: linear-gradient(135deg, #1d3557, #457b9d);
-  color: white;
-  padding: 2.5rem 1rem;
-  text-align: center;
-}
-header h1 { margin: 0 0 .5rem; }
-header p { margin: 0; opacity: .9; }
-
-main { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem; }
-
-.controles {
+/* ---------- Barra superior ---------- */
+.barra {
   display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
   justify-content: space-between;
   align-items: center;
+  padding: .8rem 1.25rem;
+  border-bottom: var(--borde);
+  background: var(--blanco);
 }
-#filtros { display: flex; flex-wrap: wrap; gap: .5rem; }
+.logo { font-family: var(--titulos); font-size: 1.4rem; letter-spacing: .02em; }
+.barra-texto { font-weight: 700; font-size: .9rem; }
 
-button {
-  border: 1px solid var(--acento);
-  background: white;
-  color: var(--acento);
-  padding: .45rem .9rem;
-  border-radius: 999px;
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  border-bottom: var(--borde);
+}
+.hero-texto {
+  background: var(--rosa);
+  padding: 3rem 1.25rem 3rem clamp(1.25rem, 5vw, 4rem);
+  border-right: var(--borde);
+}
+.hero h1 {
+  font-family: var(--titulos);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: .92;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+.hero p { font-size: 1.15rem; max-width: 32rem; font-weight: 500; }
+
+.pegatina {
+  display: inline-block;
+  background: var(--amarillo);
+  border: var(--borde);
+  padding: .2rem .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: .85rem;
+  transform: rotate(-3deg);
+  box-shadow: 3px 3px 0 var(--negro);
+}
+
+.hero-marcador {
+  background: var(--azul);
+  padding: 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .6rem;
+}
+.marcador-label { font-weight: 700; text-transform: uppercase; }
+.marcador-numero { font-family: var(--titulos); font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; }
+.barra-progreso {
+  height: 28px;
+  background: var(--blanco);
+  border: var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+#relleno {
+  height: 100%;
+  width: 0;
+  background: var(--verde);
+  border-right: var(--borde);
+  transition: width .3s;
+}
+
+/* ---------- Botones ---------- */
+.boton, #filtros button {
+  font-family: var(--texto);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--negro);
+  background: var(--blanco);
+  border: var(--borde);
+  border-radius: var(--radio);
+  padding: .55rem 1rem;
+  box-shadow: 3px 3px 0 var(--negro);
   cursor: pointer;
-  font: inherit;
+  transition: transform .1s, box-shadow .1s;
 }
-button.activo, #sorpresa { background: var(--acento); color: white; }
+.boton:hover, #filtros button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--negro);
+}
+.boton:active, #filtros button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--negro);
+}
+.boton-grande { background: var(--amarillo); font-size: 1.15rem; padding: .8rem 1.4rem; margin-top: .5rem; }
+#filtros button.activo { background: var(--negro); color: var(--blanco); }
 
-#progreso { color: var(--suave); }
+/* ---------- Contenido ---------- */
+main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.25rem; }
+
+.controles h2 {
+  font-family: var(--titulos);
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin: 0 0 .8rem;
+}
+#filtros { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2.5rem; }
 
 .lista {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
+/* ---------- Tarjetas ---------- */
 .tarjeta {
-  background: var(--tarjeta);
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
-  transition: transform .2s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--blanco);
+  border: var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  transition: transform .15s, box-shadow .15s;
 }
-.tarjeta.visitado { background: var(--visitado); }
-.tarjeta.destacada { outline: 3px solid #e9c46a; transform: scale(1.03); }
-.tarjeta h3 { margin: .3rem 0; font-size: 1.05rem; }
-.etiqueta { font-size: .8rem; color: var(--suave); }
-.consejo { font-size: .9rem; color: var(--suave); font-style: italic; }
-.tarjeta label { display: flex; gap: .4rem; align-items: center; cursor: pointer; }
+.tarjeta:hover { transform: translate(-3px, -3px); box-shadow: var(--sombra-hover); }
+
+.tarjeta-cabecera {
+  padding: .6rem 1rem;
+  border-bottom: var(--borde);
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+}
+.tarjeta[data-categoria="mercado"] .tarjeta-cabecera { background: var(--rosa); }
+.tarjeta[data-categoria="museo"] .tarjeta-cabecera { background: var(--lila); }
+.tarjeta[data-categoria="aire-libre"] .tarjeta-cabecera { background: var(--azul); }
+.tarjeta[data-categoria="calor"] .tarjeta-cabecera { background: var(--naranja); }
+.tarjeta[data-categoria="comida"] .tarjeta-cabecera { background: var(--amarillo); }
+
+.tarjeta-cuerpo { padding: 1rem; flex: 1; }
+.tarjeta h3 { font-family: var(--titulos); font-size: 1.25rem; line-height: 1.15; margin: 0 0 .6rem; }
+.tarjeta p { margin: 0 0 .8rem; }
+.consejo {
+  background: var(--papel);
+  border: 2px dashed var(--negro);
+  border-radius: var(--radio);
+  padding: .5rem .7rem;
+  font-size: .9rem;
+}
+
+.tarjeta label {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .7rem 1rem;
+  border-top: var(--borde);
+  font-weight: 700;
+  cursor: pointer;
+}
+.tarjeta input[type="checkbox"] {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: var(--borde);
+  border-radius: 4px;
+  background: var(--blanco);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+}
+.tarjeta input[type="checkbox"]:checked { background: var(--verde); }
+.tarjeta input[type="checkbox"]:checked::after { content: "✓"; font-weight: 700; font-size: 14px; }
+
+.tarjeta.visitado { background: #eaf8dd; }
+.tarjeta.visitado::after {
+  content: "VISTO";
+  position: absolute;
+  top: 2.6rem;
+  right: -10px;
+  background: var(--verde);
+  border: var(--borde);
+  padding: .15rem .6rem;
+  font-family: var(--titulos);
+  font-size: .85rem;
+  transform: rotate(8deg);
+  box-shadow: 3px 3px 0 var(--negro);
+}
+
+.tarjeta.destacada {
+  outline: 4px solid var(--negro);
+  outline-offset: 4px;
+  animation: sacudida .5s;
+}
+@keyframes sacudida {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+footer {
+  border-top: var(--borde);
+  background: var(--amarillo);
+  padding: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-texto { border-right: none; border-bottom: var(--borde); }
+  .barra-texto { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

@@ -4,23 +4,41 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Berlín en invierno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>❄️ Berlín en invierno</h1>
-    <p>Lugares para descubrir la ciudad cuando hace frío. Marca los que ya has visitado.</p>
+  <nav class="barra">
+    <span class="logo">BRLN❄</span>
+    <span class="barra-texto">Guía de invierno · 12 planes</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-texto">
+      <span class="pegatina">Temporada fría</span>
+      <h1>Berlín<br>en invierno</h1>
+      <p>Mercados navideños, museos, colinas nevadas y sitios para entrar en calor. Marca lo que ya has visto.</p>
+      <button id="sorpresa" class="boton boton-grande">🎲 Sorpréndeme</button>
+    </div>
+    <div class="hero-marcador">
+      <span class="marcador-label">Tu progreso</span>
+      <span id="contador" class="marcador-numero">0/12</span>
+      <div class="barra-progreso"><div id="relleno"></div></div>
+    </div>
   </header>
 
   <main>
     <section class="controles">
+      <h2>Filtrar</h2>
       <div id="filtros"></div>
-      <button id="sorpresa">🎲 Sorpréndeme</button>
     </section>
 
-    <p id="progreso"></p>
     <div id="lista" class="lista"></div>
   </main>
+
+  <footer>Hecho con frío y Claude Code · Berlín</footer>
 
   <script src="lugares.js"></script>
   <script src="app.js"></script>
