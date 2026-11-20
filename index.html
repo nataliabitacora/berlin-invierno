@@ -15,9 +15,9 @@
   <section class="portada">
     <nav class="menu" aria-label="Principal">
       <a class="menu-logo" href="#">brln</a>
-      <a href="#panel">Lugares</a>
-      <a href="#plan">Próximo plan</a>
-      <a href="#adviento">Adviento</a>
+      <a href="#panel" aria-current="page">Planes</a>
+      <a href="adviento.html">Adviento</a>
+      <a href="repositorio.html">Repositorio</a>
       <span class="menu-progreso" id="menu-progreso">0/12</span>
     </nav>
 
@@ -78,40 +78,6 @@
     </div>
   </main>
 
-  <!-- ============ CALENDARIO DE ADVIENTO ============ -->
-  <section class="seccion seccion-adviento" id="adviento">
-    <div class="seccion-dentro">
-      <header class="cabecera-seccion">
-        <p class="antetitulo">1–24 de diciembre</p>
-        <h2>Calendario de adviento</h2>
-        <p class="entradilla">Cada día de diciembre se abre una puerta con una misión por Berlín. Cúmplela y cuelga un adorno en el árbol. Si llenas las 24 ramas, se enciende la estrella.</p>
-      </header>
-
-      <div class="adviento">
-        <div>
-          <div class="puertas" id="puertas"></div>
-          <label class="modo-prueba">
-            <input type="checkbox" id="modo-prueba">
-            Modo prueba: abrir todas las puertas aunque no sea su día
-          </label>
-        </div>
-
-        <aside class="caja arbol-caja" aria-labelledby="titulo-arbol">
-          <div class="caja-cabecera">
-            <h3 id="titulo-arbol">Tu árbol</h3>
-            <span class="insignia" id="cuenta-adornos">0/24</span>
-          </div>
-          <div id="arbol"></div>
-          <p class="arbol-mensaje" id="arbol-mensaje"></p>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <dialog class="dialogo" id="dialogo" aria-labelledby="dialogo-titulo">
-    <div id="dialogo-contenido"></div>
-  </dialog>
-
   <footer class="pie">
     <div class="franja-mural" aria-hidden="true"></div>
     <p>Hecho con frío y Claude Code · Berlín</p>
@@ -120,6 +86,5 @@
   <script src="lugares.js"></script>
   <script src="dibujos.js"></script>
   <script src="app.js"></script>
-  <script src="adviento.js"></script>
 </body>
 </html>

@@ -84,7 +84,17 @@ const DIBUJOS = {
       <circle cx="29" cy="29" r="4"/><circle cx="51" cy="29" r="4"/>
       <circle cx="40" cy="40" r="4"/>
       <circle cx="29" cy="51" r="4"/><circle cx="51" cy="51" r="4"/>
-    </g>`
+    </g>`,
+  grupo: `
+    <path d="M6 66 a12 12 0 0 1 24 0 Z M50 66 a12 12 0 0 1 24 0 Z"/>
+    <circle cx="18" cy="38" r="8"/><circle cx="62" cy="38" r="8"/>
+    <path d="M24 68 a16 16 0 0 1 32 0 Z"/>
+    <circle cx="40" cy="34" r="10"/>`,
+  lista: `
+    <rect x="18" y="14" width="44" height="56" rx="5"/>
+    <rect x="30" y="9" width="20" height="10" rx="3" fill="currentColor"/>
+    <path d="M27 34 l3 3 l5 -6 M27 47 l3 3 l5 -6 M27 60 l3 3 l5 -6" fill="none"/>
+    <path d="M41 35 H54 M41 48 H54 M41 61 H50" fill="none"/>`
 };
 
 function dibujo(nombre, clase = "dibujo") {

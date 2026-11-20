@@ -76,6 +76,20 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .menu a:hover { background: var(--papel); }
 .menu-logo { font-family: var(--serif); font-weight: 700 !important; }
+.menu a[aria-current="page"] { background: var(--tinta); color: var(--blanco); }
+
+/* Cabecera de las páginas interiores: franja del mural con el menú encima */
+.cabecera-pagina {
+  position: relative;
+  height: 140px; /* dos filas exactas del mural */
+  background: var(--papel) url("patron.svg") repeat;
+  background-size: 210px;
+  background-position: top center;
+  border-bottom: var(--trazo);
+}
+.cabecera-pagina + .seccion { border-top: 0; flex: 1; }
+/* En las páginas interiores el pie queda siempre abajo, aunque haya poco contenido */
+body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: column; }
 .menu-progreso {
   background: var(--tinta);
   color: var(--blanco);
@@ -414,6 +428,55 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .dialogo-cuerpo p { margin: 0 0 10px; }
 .dialogo-acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
 
+/* ================= Repositorio ================= */
+.filtros { display: flex; flex-wrap: wrap; gap: 10px; }
+.filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 10px;
+  background: var(--blanco);
+  border: var(--trazo);
+  border-radius: 999px;
+  font-weight: 500;
+}
+.filtro .dibujo { width: 26px; height: 26px; }
+.filtro-cuenta { font-family: var(--mono); font-size: .8rem; opacity: .6; }
+.filtro[aria-pressed="true"] { background: var(--tinta); color: var(--blanco); --relleno: var(--tinta); }
+.tarjetas-repo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 14px;
+}
+.tarjeta-repo {
+  background: var(--blanco);
+  border: var(--trazo);
+  border-radius: var(--radio-grande);
+  padding: 18px 20px 20px;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+}
+.tarjeta-repo-arriba { display: flex; justify-content: space-between; align-items: flex-start; }
+.tarjeta-repo .dibujo { width: 46px; height: 46px; margin: -4px 0 0 -6px; }
+.tarjeta-repo h3 { font-family: var(--serif); font-size: 1.35rem; line-height: 1.2; margin: 6px 0 0; }
+.tarjeta-repo p { margin: 0; }
+.tarjeta-repo .barrio { color: var(--gris); font-size: .9rem; margin-bottom: 6px; }
+.tarjeta-repo .pastilla { justify-self: start; margin-top: 12px; }
+.repo-vacio {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  border: 2.5px dashed var(--gris-claro);
+  border-radius: var(--radio-grande);
+  color: var(--gris);
+}
+.repo-vacio .dibujo { width: 72px; height: 72px; color: var(--tinta); }
+.repo-vacio p { margin: 4px 0 0; }
+
 /* ================= Pie ================= */
 .pie { border-top: var(--trazo); background: var(--blanco); text-align: center; }
 .pie .franja-mural { border-bottom: var(--trazo); }
@@ -431,7 +494,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .contadores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contador-sorpresa { grid-column: auto; }
   .puertas { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-  .menu a:not(.menu-logo) { display: none; }
+  .menu { gap: 0; padding: 4px; }
+  .menu a { padding: 7px 9px; font-size: .9rem; }
+  .menu-progreso { display: none; }
+  .cabecera-pagina { height: 100px; background-size: 150px; }
   .etiqueta-barrio { display: none; }
   .fila-detalle { padding-left: 16px; }
   .portada { min-height: 600px; }
