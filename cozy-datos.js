@@ -10,6 +10,8 @@ const TIENDA = [
   { id: "lampara",    nombre: "Lámpara de luz cálida",  precio: 20, puntos: 12, desc: "Adiós a la bombilla blanca del techo." },
   { id: "cortinas",   nombre: "Cortinas",               precio: 10, puntos: 6,  desc: "Para mirar la nieve con otros ojos." },
   { id: "alfombra",   nombre: "Alfombra",               precio: 15, puntos: 8,  desc: "Para no pisar el suelo helado.", colores: "alfombra" },
+  { id: "ropa",       nombre: "Ropa de estar por casa", precio: 15, puntos: 10, desc: "Fuera el abrigo: jersey gordo, pijama y calcetines." },
+  { id: "suelo",      nombre: "Suelo de madera",        precio: 20, puntos: 8,  desc: "Tarima cálida en lugar de baldosa fría.", colores: "suelo" },
   { id: "pintura",    nombre: "Pintura para las paredes", precio: 25, puntos: 10, desc: "Elige el color de tu cuarto.", colores: "pared" },
   { id: "cama",       nombre: "Cama con edredón",       precio: 35, puntos: 14, desc: "El mejor sitio para las tardes de enero.", colores: "edredon" },
   { id: "velas",      nombre: "Velas",                  precio: 8,  puntos: 5,  desc: "En la ventana, como en las casas berlinesas." },
@@ -56,7 +58,9 @@ const LOGROS = [
 
 // Colores que se pueden elegir.
 const PALETAS = {
-  pared:    [["Crema", "#f1dfbd"], ["Melocotón", "#e9b99c"], ["Salvia", "#b8c7a3"], ["Lavanda", "#c6b6d6"], ["Blanco", "#eeeeea"]],
+  pared:    [["Crema", "#f1dfbd"], ["Melocotón", "#e9b99c"], ["Salvia", "#b8c7a3"], ["Lavanda", "#c6b6d6"],
+             ["Terracota", "#d9785a"], ["Turquesa", "#6fb7b0"], ["Amarillo", "#f2cf6b"], ["Rosa", "#f0a8b8"], ["Azul noche", "#3f5578"]],
+  suelo:    [["Roble", "#b9875a"], ["Nogal", "#7a5236"], ["Pino", "#d9b98c"], ["Ceniza", "#a39a8f"]],
   alfombra: [["Rojo", "#b8433a"], ["Mostaza", "#d4a237"], ["Verde", "#5d8a5a"], ["Azul", "#4a6a9a"]],
   edredon:  [["Mostaza", "#d4a237"], ["Rosa", "#d98a9a"], ["Verde", "#5d8a5a"], ["Azul", "#4a6a9a"]],
   sillon:   [["Teja", "#a8573e"], ["Verde", "#4f7a5a"], ["Azul", "#3f5f8a"], ["Mostaza", "#c7962e"]]
@@ -77,7 +81,7 @@ const AVATAR = {
 
 // Lo que dice el avatar según lo acogedor que esté el cuarto.
 const FRASES = [
-  ["Brrr… aquí hace un frío que pela.", "Paredes blancas, luz blanca, nieve fuera. Necesito planes.", "¿Salimos a ganar monedas?"],
+  ["Brrr… aquí hace un frío que pela.", "Todavía llevo el abrigo puesto. ¿Dónde están mis calcetines gordos?", "Paredes blancas, luz blanca, nieve fuera. Necesito planes.", "¿Salimos a ganar monedas?"],
   ["Esto empieza a parecer un hogar.", "Un poco más y no echo de menos el verano.", "¿Qué compramos ahora?"],
   ["No pienso salir de aquí hasta marzo.", "Esto es Gemütlichkeit pura.", "Que nieve todo lo que quiera."]
 ];

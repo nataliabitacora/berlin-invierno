@@ -35,7 +35,13 @@
       <div class="cozy">
         <div class="escena-columna">
           <div class="escena">
-            <canvas id="cuarto" width="160" height="112" aria-label="Tu cuarto en pixel art. Pulsa el libro del suelo para abrir el álbum y pulsa a tu avatar para que te hable."></canvas>
+            <canvas id="cuarto" aria-label="Tu cuarto en pixel art isométrico. Pulsa el libro del suelo para abrir el álbum y pulsa a tu avatar para que te hable."></canvas>
+            <div class="zoom" role="group" aria-label="Zoom del cuarto">
+              <button class="zoom-boton" id="zoom-mas" aria-label="Acercar">+</button>
+              <button class="zoom-boton" id="zoom-menos" aria-label="Alejar">−</button>
+              <button class="zoom-boton zoom-texto" id="zoom-todo">Ver todo</button>
+              <button class="zoom-boton zoom-texto" id="zoom-seguir" aria-pressed="false">Seguir</button>
+            </div>
             <p class="bocadillo" id="bocadillo" hidden></p>
             <div class="hud">
               <span class="hud-nombre" id="hud-nombre">Tu cuarto</span>
@@ -52,6 +58,7 @@
             <a class="pastilla pastilla-borde pastilla-pequena" href="index.html#panel">Ganar monedas →</a>
           </div>
           <div class="como-se-juega">
+            <p class="zoom-pista">Acerca la vista con + y −, pellizcando o con Ctrl + rueda, y arrastra para moverte por el cuarto.</p>
             <p><b>Cómo se juega.</b> Marca lugares como visitados en Planes (+10 monedas cada uno) y cumple misiones del adviento (+5). Al volver aquí se cobran solas. Completar categorías desbloquea objetos especiales.</p>
             <button class="enlace" id="modo-prueba-cozy">Modo prueba: +50 monedas</button>
           </div>
@@ -102,7 +109,7 @@
   <!-- Editor del avatar -->
   <dialog class="dialogo dialogo-editor" id="editor" aria-labelledby="editor-titulo">
     <div class="editor">
-      <canvas class="pixel" id="editor-vista" width="14" height="22" aria-hidden="true"></canvas>
+      <canvas class="pixel" id="editor-vista" width="14" height="27" aria-hidden="true"></canvas>
       <div>
         <h3 id="editor-titulo">Tu avatar</h3>
         <label class="editor-fila editor-nombre">

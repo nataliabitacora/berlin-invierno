@@ -498,10 +498,29 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 160 / 112;
+  aspect-ratio: 240 / 184;
   image-rendering: pixelated;
   cursor: pointer;
+  touch-action: none;
 }
+.escena canvas.con-zoom { cursor: grab; }
+.escena canvas.con-zoom:active { cursor: grabbing; }
+.zoom { position: absolute; top: 12px; right: 12px; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.zoom-boton {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  background: var(--blanco);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.zoom-texto { font-size: .85rem; font-weight: 500; }
+.zoom-boton:disabled { opacity: .4; cursor: default; }
+.zoom-boton[aria-pressed="true"] { background: var(--tinta); color: var(--blanco); }
+.zoom-pista { font-size: .85rem; }
 .bocadillo {
   position: absolute;
   transform: translate(-50%, calc(-100% - 6px));
@@ -655,7 +674,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .dialogo-editor { padding: 24px; width: min(520px, calc(100% - 32px)); }
 .editor { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 24px; align-items: start; }
 .editor h3 { font-family: var(--serif); font-size: 1.7rem; margin: 0 0 12px; }
-#editor-vista { width: 120px; height: auto; aspect-ratio: 14 / 22; background: var(--papel); border: var(--trazo); border-radius: var(--radio); image-rendering: pixelated; }
+#editor-vista { width: 120px; height: auto; aspect-ratio: 14 / 27; background: var(--papel); border: var(--trazo); border-radius: var(--radio); image-rendering: pixelated; }
 .editor-fila { margin-bottom: 14px; }
 .editor-fila .antetitulo { font-size: .75rem; }
 .editor .filtro { padding: 6px 14px; }
