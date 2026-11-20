@@ -59,8 +59,7 @@ function pintarContadores() {
     boton.setAttribute("aria-pressed", filtroActivo === cat);
     boton.title = `${nombre}: ${hechos} ${hechos === 1 ? "place visited" : "places visited"}`;
     boton.innerHTML = `
-      <span class="contador-arriba">${icono(cat)}<span class="contador-numero">${hechos}</span></span>
-      <span class="contador-etiqueta">${nombre}</span>
+      ${icono(cat)}<span class="contador-etiqueta">${nombre}</span><span class="contador-numero">${hechos}</span>
     `;
     boton.onclick = () => {
       filtroActivo = filtroActivo === cat ? null : cat;
@@ -68,7 +67,28 @@ function pintarContadores() {
     };
     contenedor.appendChild(boton);
   }
+  actualizarFlechas();
 }
+
+// ---------- Carrusel de categorías: flechas para desplazar la fila ----------
+const filaCategorias = document.getElementById("contadores");
+const flechaIzq = document.getElementById("categorias-izq");
+const flechaDer = document.getElementById("categorias-der");
+
+function actualizarFlechas() {
+  const max = filaCategorias.scrollWidth - filaCategorias.clientWidth;
+  flechaIzq.hidden = filaCategorias.scrollLeft <= 4;
+  flechaDer.hidden = filaCategorias.scrollLeft >= max - 4;
+  filaCategorias.parentElement.classList.toggle("hay-mas", !flechaDer.hidden);
+  filaCategorias.parentElement.classList.toggle("hay-antes", !flechaIzq.hidden);
+}
+function desplazarCategorias(sentido) {
+  filaCategorias.scrollBy({ left: sentido * filaCategorias.clientWidth * 0.7, behavior: "smooth" });
+}
+flechaDer.onclick = () => desplazarCategorias(1);
+flechaIzq.onclick = () => desplazarCategorias(-1);
+filaCategorias.addEventListener("scroll", actualizarFlechas, { passive: true });
+new ResizeObserver(actualizarFlechas).observe(filaCategorias);
 
 // ---------- Lista de lugares ----------
 function pintarLista() {
