@@ -231,6 +231,7 @@ function pintarPlan(animar = false) {
       </div>
       <h4>${l.nombre}</h4>
       <p class="barrio">${l.barrio}</p>
+      ${l.fechas ? `<p class="plan-fecha"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><b>When:</b> ${l.fechas}</span></p>` : ""}
       <p>${l.descripcion}</p>
       <p class="consejo"><b>Tip:</b> ${l.consejo}</p>
       <div class="plan-acciones">

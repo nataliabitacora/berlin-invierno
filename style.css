@@ -240,6 +240,17 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 }
 .caja-plan { position: sticky; top: 20px; padding-top: 0; }
 .caja-plan .franja-mural { margin: 0 -20px 18px; }
+.plan-fecha {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  margin: 0 0 14px !important;
+  background: var(--papel);
+  border: 2px solid var(--tinta);
+  border-radius: var(--radio);
+}
+.plan-fecha svg { width: 20px; height: 20px; flex: none; margin-top: 2px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .plan-etiquetas { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip.chip-hecho { background: var(--tinta); color: var(--blanco); }
 .filtro-insignia[hidden] { display: none; }

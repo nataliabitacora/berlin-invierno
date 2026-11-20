@@ -1,4 +1,5 @@
 // Places data (shown in English). To add one, copy a { ... } block and edit it.
+// fechas (optional): for plans that only happen on specific dates; shown in the side panel.
 // categoria: "history" | "arts-culture" | "wander" | "parties" | "cozy-coffee" | "christmas-markets" | "berliner-101"
 const LUGARES = [
   {
@@ -6,14 +7,16 @@ const LUGARES = [
     categoria: "christmas-markets",
     barrio: "Charlottenburg",
     descripcion: "Twinkling stalls in front of a baroque palace. Best at dusk with a Glühwein (mulled wine).",
-    consejo: "Open 23 November to 27 December (closed on the 24th). Go on a weekday to avoid the crowds."
+    consejo: "Go on a weekday to avoid the crowds.",
+    fechas: "23 November – 27 December 2026 (closed on 24 December)"
   },
   {
     nombre: "Lucia Christmas Market (Kulturbrauerei)",
     categoria: "christmas-markets",
     barrio: "Prenzlauer Berg",
     descripcion: "A Scandinavian-inspired market inside a former red-brick brewery.",
-    consejo: "Open 23 November to 22 December, from 3 pm on weekdays. Try Glögg, the Nordic take on mulled wine."
+    consejo: "On weekdays it opens at 3 pm. Try Glögg, the Nordic take on mulled wine.",
+    fechas: "23 November – 22 December 2026"
   },
   {
     nombre: "Museum Island",
@@ -82,8 +85,9 @@ const LUGARES = [
     nombre: "Berlinale",
     categoria: "arts-culture",
     barrio: "Potsdamer Platz",
-    descripcion: "International film festival. In 2027 it runs from 10 to 21 February, with tickets for the general public.",
-    consejo: "Tickets go on sale a few days before each screening and sell out fast. 20 and 21 February are audience days, with cheaper tickets."
+    descripcion: "Berlin's international film festival, with tickets for the general public.",
+    consejo: "Tickets go on sale a few days before each screening and sell out fast. 20 and 21 February are audience days, with cheaper tickets.",
+    fechas: "10 – 21 February 2027"
   }
 ];
 
