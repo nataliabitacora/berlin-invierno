@@ -155,7 +155,7 @@ function pintarArbol(nuevo = null) {
   const adornos = POSICIONES_ADORNOS.map(([x, y], i) => {
     const dia = i + 1;
     if (!cumplidas.includes(dia)) {
-      return `<circle cx="${x}" cy="${y}" r="7" fill="#fff" stroke="#b9b5ab" stroke-width="2" stroke-dasharray="3 3"/>`;
+      return `<circle cx="${x}" cy="${y}" r="7" fill="#fffaee" stroke="#c9b98f" stroke-width="2" stroke-dasharray="3 3"/>`;
     }
     const animar = dia === nuevo
       ? `<animateTransform attributeName="transform" type="scale" values="0;1.3;1" dur=".5s" additive="sum"/>`
@@ -164,9 +164,9 @@ function pintarArbol(nuevo = null) {
       <g class="adorno" transform="translate(${x} ${y})">
         <title>Day ${dia}: ${mision(dia).titulo}</title>
         <g>${animar}
-          <line x1="0" y1="-14" x2="0" y2="-10" stroke="#111" stroke-width="2"/>
-          <circle r="11" fill="#111" stroke="#fff" stroke-width="2"/>
-          <text y="4" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#fff">${dia}</text>
+          <line x1="0" y1="-14" x2="0" y2="-10" stroke="#1b1726" stroke-width="2"/>
+          <circle r="11" fill="#1b1726" stroke="#fffaee" stroke-width="2"/>
+          <text y="4" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="#fffaee">${dia}</text>
         </g>
       </g>`;
   }).join("");
@@ -174,17 +174,17 @@ function pintarArbol(nuevo = null) {
   document.getElementById("arbol").innerHTML = `
     <svg class="arbol-svg" viewBox="0 0 300 340" role="img"
          aria-label="Christmas tree with ${cumplidas.length} of 24 ornaments">
-      <g stroke="#111" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-        <rect x="132" y="275" width="36" height="34" fill="#111"/>
-        <path d="M110 309 H190 L182 330 H118 Z" fill="#fff"/>
-        <path d="M150 34 L205 105 H180 L240 185 H205 L270 275 H30 L95 185 H60 L120 105 H95 Z" fill="#fff"/>
+      <g stroke="#1b1726" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="132" y="275" width="36" height="34" fill="#1b1726"/>
+        <path d="M110 309 H190 L182 330 H118 Z" fill="#fffaee"/>
+        <path d="M150 34 L205 105 H180 L240 185 H205 L270 275 H30 L95 185 H60 L120 105 H95 Z" fill="#fffaee"/>
         <g fill="none" stroke-dasharray="2 7" stroke-width="3">
           <path d="M112 98 Q150 116 188 98"/>
           <path d="M84 178 Q150 200 216 178"/>
           <path d="M50 262 Q150 290 250 262"/>
         </g>
         <polygon points="150,6 157,22 174,22 160,32 165,48 150,38 135,48 140,32 126,22 143,22"
-                 fill="${completo ? "#111" : "#fff"}"/>
+                 fill="${completo ? "#1b1726" : "#fffaee"}"/>
       </g>
       ${adornos}
     </svg>`;

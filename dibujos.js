@@ -99,7 +99,7 @@ const DIBUJOS = {
 
 function dibujo(nombre, clase = "dibujo") {
   return `<svg class="${clase}" viewBox="0 0 80 80" aria-hidden="true"
-    style="fill: var(--relleno, #fff); stroke: currentColor"
+    style="fill: var(--relleno, #fffaee); stroke: currentColor"
     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${DIBUJOS[nombre]}</svg>`;
 }
 

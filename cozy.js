@@ -224,9 +224,9 @@ fondo.width = LW;
 fondo.height = LH;
 {
   const g = fondo.getContext("2d");
-  g.fillStyle = "#f6f3ec";
+  g.fillStyle = "#fff4d6";
   g.fillRect(0, 0, LW, LH);
-  g.fillStyle = "#ebe5d8";
+  g.fillStyle = "#f5e6bd";
   for (let k = -2 * LH; k < LW + 2 * LH; k += 16) {
     for (let x = 0; x < LW; x++) {
       g.fillRect(x, Math.floor((x - k) / 2), 1, 1);
@@ -281,7 +281,7 @@ const OBJETOS = {
     dibujar(t) {
       caja(74, 1.5, 22, 3, 3, 5, "#9aa0a8"); caja(74.5, 2, 27, 2, 2, 2, "#b5bac2"); caja(75, 2.5, 29, 1, 1, 1, "#2b2b2b");
       const f = Math.floor(t / 400) % 2;
-      punto(75 + f, 3, 32, "#ffffff"); punto(76 - f, 3, 34, "#ffffff");
+      punto(75 + f, 3, 32, "#fffaee"); punto(76 - f, 3, 34, "#fffaee");
     }
   },
   ampelmann: {
@@ -353,7 +353,7 @@ const OBJETOS = {
   postal: {
     capa: "pared",
     dibujar() {
-      enY(0.2, 15, 25, 30, 37, "#c9c9c9"); enY(0.3, 16, 24, 31, 36, "#ffffff");
+      enY(0.2, 15, 25, 30, 37, "#c9c9c9"); enY(0.3, 16, 24, 31, 36, "#fffaee");
       enY(0.4, 21, 23, 33, 35, "#c23b30"); enY(0.4, 17, 20, 33, 34, "#7a8aa8"); enY(0.4, 17, 19, 32, 32.6, "#7a8aa8");
     }
   },
@@ -386,7 +386,7 @@ const OBJETOS = {
       for (let i = 0; i < 6; i++) for (let k = 0; k < 6; k++) if ((i + k) % 2) punto(53 + i, 59, 51 + k, "#e6e9ef");
       if (enIcono) return;
       const s = Math.floor(t / 300);
-      const destellos = ["#ffffff", "#fff6b0", "#ff9ad8", "#8ad1ff", "#b8ff8a"];
+      const destellos = ["#fffaee", "#fff6b0", "#ff9ad8", "#8ad1ff", "#b8ff8a"];
       for (let k = 0; k < 7; k++) punto(10 + ((s * 7 + k * 23) % 80), 10 + ((s * 11 + k * 31) % 80), 0, destellos[k % 5]);
     }
   },
@@ -438,7 +438,7 @@ const OBJETOS = {
       }
       r(cx - 1, cy - 47, 3, 3, "#ffd36b"); r(cx, cy - 48, 1, 5, "#ffd36b"); r(cx - 2, cy - 46, 5, 1, "#ffd36b");
       const luces = [[-2, -37], [3, -33], [-5, -26], [5, -23], [0, -29], [-8, -14], [2, -16], [8, -10], [-3, -8], [-10, -6], [6, -19]];
-      const colores = ["#ffd36b", "#ff6b6b", "#8ad1ff", "#ffffff"];
+      const colores = ["#ffd36b", "#ff6b6b", "#8ad1ff", "#fffaee"];
       luces.forEach(([dx, dy], i) => { if ((i + Math.floor(t / 500)) % 3) r(cx + dx, cy + dy, 1, 1, colores[i % 4]); });
     }
   },
@@ -448,9 +448,9 @@ const OBJETOS = {
       const m = "#8a6440";
       for (const [X, Y] of [[15, 5], [24, 5], [15, 14], [24, 14]]) caja(X, Y, 0, 1, 1, 10, oscurecer(m, 0.2));
       caja(14, 4, 10, 12, 12, 2, m);
-      caja(18, 8, 12, 3, 3, 4, "#ffffff"); plano(18, 21, 8, 11, 16.01, "#b5733a"); caja(21, 9, 13, 1, 1, 2, "#ffffff");
+      caja(18, 8, 12, 3, 3, 4, "#fffaee"); plano(18, 21, 8, 11, 16.01, "#b5733a"); caja(21, 9, 13, 1, 1, 2, "#fffaee");
       const f = Math.floor(t / 400) % 2;
-      punto(19 + f, 9, 19, "#ffffff"); punto(20 - f, 9, 21, "#ffffff");
+      punto(19 + f, 9, 19, "#fffaee"); punto(20 - f, 9, 21, "#fffaee");
     }
   },
   sillon: {
@@ -471,7 +471,7 @@ const OBJETOS = {
       caja(1, 37, 7, 34, 22, 4, "#f4f1ea");
       caja(12, 36.5, 9, 24, 23, 3, c);
       for (let i = 0; i < 4; i++) plano(15 + i * 5, 17 + i * 5, 40 + (i % 2) * 8, 44 + (i % 2) * 8, 12.01, aclarar(c, 0.35));
-      caja(2, 39, 11, 8, 8, 3, "#ffffff"); caja(2, 49, 11, 8, 8, 3, "#ffffff");
+      caja(2, 39, 11, 8, 8, 3, "#fffaee"); caja(2, 49, 11, 8, 8, 3, "#fffaee");
       caja(0, 36, 0, 2, 24, 22, m); caja(0, 36, 22, 2, 24, 1, aclarar(m, 0.2));
     }
   },
@@ -681,7 +681,7 @@ function paletaAvatar(a = estado.avatar) {
   const ropa = AVATAR.jersey[a.jersey];
   const abrigo = apagar(ropa, 0.45);
   return {
-    s: AVATAR.piel[a.piel], h: AVATAR.pelo[a.pelo], e: "#2a2320", W: "#ffffff", r: "#f09a8a", m: "#8a3a34",
+    s: AVATAR.piel[a.piel], h: AVATAR.pelo[a.pelo], e: "#2a2320", W: "#fffaee", r: "#f09a8a", m: "#8a3a34",
     c: abrigo, d: oscurecer(abrigo, 0.18), t: "#f2efe8", j: "#4a6a9a", w: "#f4f4f4",
     k: ropa, K: aclarar(ropa, 0.4), p: aclarar(ropa, 0.6), P: aclarar(ropa, 0.25), o: "#f3e6cc"
   };
@@ -828,7 +828,7 @@ function dibujarCuarto(t) {
 
   // Ventana: cielo, edificios, la Torre de Televisión y nieve.
   const { X0, X1, Z0, Z1 } = VENTANA;
-  enY(0.1, X0 - 1, X1 + 1, Z0 - 1, Z1 + 1, "#ffffff");
+  enY(0.1, X0 - 1, X1 + 1, Z0 - 1, Z1 + 1, "#fffaee");
   enY(0.2, X0 + 1, X1 - 1, Z0 + 1, Z1 - 1, "#4a5f8f");
   enY(0.3, X0 + 1, X0 + 7, Z0 + 4, Z0 + 12, "#3a4b75"); enY(0.3, X0 + 8, X0 + 15, Z0 + 4, Z0 + 15, "#3a4b75");
   enY(0.3, X1 - 10, X1 - 1, Z0 + 4, Z0 + 10, "#3a4b75");
@@ -837,15 +837,15 @@ function dibujarCuarto(t) {
   for (const c of copos) {
     c.Z -= c.v;
     if (c.Z < Z0 + 5) { c.Z = Z1 - 2; c.X = X0 + 1.5 + Math.random() * 25; }
-    punto(c.X + Math.sin(t / 900 + c.Z) * 0.6, 0.4, c.Z, "#ffffff");
+    punto(c.X + Math.sin(t / 900 + c.Z) * 0.6, 0.4, c.Z, "#fffaee");
   }
-  enY(0.5, X0 + 13.5, X0 + 14.5, Z0 + 1, Z1 - 1, "#ffffff");
-  enY(0.5, X0 + 1, X1 - 1, Z0 + 12.5, Z0 + 13.5, "#ffffff");
-  caja(X0 - 2, 0, Z0 - 2, X1 - X0 + 4, 5, 2, "#ffffff");
+  enY(0.5, X0 + 13.5, X0 + 14.5, Z0 + 1, Z1 - 1, "#fffaee");
+  enY(0.5, X0 + 1, X1 - 1, Z0 + 12.5, Z0 + 13.5, "#fffaee");
+  caja(X0 - 2, 0, Z0 - 2, X1 - X0 + 4, 5, 2, "#fffaee");
 
   // Bombilla desnuda en la pared.
   enX(0.2, 70, 72, 50, 52, "#c9c9c9");
-  caja(0.5, 70.5, 46, 2, 2, 3, "#ffffff");
+  caja(0.5, 70.5, 46, 2, 2, 3, "#fffaee");
 
   // Capa de pared; luego suelo y colgantes ordenados por profundidad, con el avatar entre medias.
   for (const [id, o] of Object.entries(OBJETOS)) if (o.capa === "pared" && tiene(id)) o.dibujar(t, false);
@@ -933,7 +933,7 @@ function presentar() {
     encuadrar();
   }
   pg.imageSmoothingEnabled = false;
-  pg.fillStyle = "#f6f3ec";
+  pg.fillStyle = "#fff4d6";
   pg.fillRect(0, 0, lienzo.width, lienzo.height);
   const [dx, dy, s] = origen();
   pg.drawImage(logico, dx, dy, LW * s, LH * s);
@@ -1148,7 +1148,7 @@ function pintarLogros() {
     marco.appendChild(icono(l.objeto, !hecho));
     li.appendChild(marco);
     const texto = document.createElement("div");
-    texto.innerHTML = `<b>${l.nombre}</b><span>${hecho ? `Desbloqueado: ${l.objNombre}` : l.pista}</span>`;
+    texto.innerHTML = `<b>${l.nombre}</b><span>${hecho ? `Unlocked: ${l.objNombre}` : l.pista}</span>`;
     li.appendChild(texto);
     lista.appendChild(li);
   }
