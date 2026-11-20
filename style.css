@@ -203,7 +203,6 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  scroll-snap-type: x proximity;
   scrollbar-width: none;
   padding: 4px 2px 8px;
   margin: -4px -2px 0;
@@ -211,7 +210,6 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .contadores::-webkit-scrollbar { display: none; }
 .contador {
   flex: none;
-  scroll-snap-align: start;
   display: inline-flex;
   align-items: center;
   gap: 10px;
