@@ -1,0 +1,57 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Berlin in Winter</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@600;700;800&display=swap">
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--surface); color:var(--text); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; height:288px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:288px; }
+  .sun { fill:var(--sun); stroke:var(--line); stroke-width:var(--stroke); }
+  .lilac { fill:var(--lilac); stroke:var(--line); stroke-width:var(--stroke); }
+  .snow { fill:var(--surface-raised); stroke:var(--line); stroke-width:var(--stroke); }
+  .pill { rx:var(--radius-pill); }
+  .deep { fill:var(--text); }
+  .blk { rx:var(--radius-lg); }
+  .flake { fill:var(--surface); }
+  .flake-ink { fill:var(--text); }
+  .words { position:absolute; left:var(--space-6); bottom:var(--space-6); max-width:440px; }
+  .name { margin:0; font-family:var(--font-display); font-size:60px; line-height:.95; font-weight:800; letter-spacing:-.02em; color:var(--text); }
+  .tag { margin:var(--space-2) 0 0 4px; font-size:14px; line-height:20px; color:var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      lilac 176×232 sangrando por arriba (el color de la interacción, el más grande) · snow 128×176 (las tarjetas) · text (tinta) 168×240 sangrando por la derecha · sun 48×48 una sola vez, como un botón: el amarillo es un detalle — ≈30% de 960×288; todos con stroke en line
+  arrangement una losa alta lila con satélites, bases a space-4 del borde, separaciones space-4
+  pattern     discos de nieve (radius-pill, diámetro space-2) a paso space-6 sobre la tinta y el lila, aclarándose hacia abajo: el motivo literal del invierno
+  scales      lados en múltiplos de space-2; separaciones space-4; paso space-6; esquinas radius-lg y radius-pill; discos r = mitad de space-2
+-->
+<rect class="lilac blk" x="16" y="-24" width="176" height="232" rx="26"/>
+<rect class="snow blk" x="208" y="96" width="112" height="176" rx="26"/>
+<rect class="sun pill" x="240" y="40" width="48" height="48" rx="24"/>
+<rect class="deep blk" x="336" y="32" width="168" height="240" rx="26"/>
+<circle class="flake" cx="360" cy="56" r="4"/><circle class="flake" cx="408" cy="56" r="4"/><circle class="flake" cx="456" cy="56" r="4"/>
+<circle class="flake" cx="384" cy="80" r="4"/><circle class="flake" cx="432" cy="80" r="4"/>
+<circle class="flake" cx="360" cy="104" r="4"/><circle class="flake" cx="456" cy="104" r="4"/>
+<circle class="flake" cx="408" cy="128" r="4"/><circle class="flake" cx="384" cy="152" r="4"/>
+<circle class="flake" cx="456" cy="176" r="4"/><circle class="flake" cx="360" cy="200" r="4"/>
+<circle class="flake" cx="432" cy="224" r="4"/>
+<circle class="flake" cx="48" cy="40" r="4"/><circle class="flake" cx="96" cy="64" r="4"/><circle class="flake" cx="144" cy="40" r="4"/>
+<circle class="flake" cx="72" cy="112" r="4"/><circle class="flake" cx="168" cy="136" r="4"/><circle class="flake" cx="48" cy="184" r="4"/>
+</svg>
+</div>
+<div class="words">
+  <p class="name">Berlin in Winter</p>
+  <p class="tag">Nieve para respirar, lila para elegir y una farola amarilla para actuar.</p>
+</div>
+</div>
+</body>
+</html>
