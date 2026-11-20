@@ -1,4 +1,4 @@
-// Dibujos en línea negra, los mismos del mural de la portada (patron.svg).
+// Dibujos en línea negra de las categorías y del adviento.
 // Cada dibujo ocupa una caja de 80x80. Las partes rellenas usan "currentColor"
 // y el resto el color de --relleno, así se pueden invertir (blanco sobre negro).
 const DIBUJOS = {

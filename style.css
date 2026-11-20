@@ -41,8 +41,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .franja-mural {
   height: 70px;
-  background: var(--papel) url("patron.svg") repeat-x;
-  background-size: 210px; /* una fila del mural = 70px de alto */
+  background: var(--papel) url("fondo.svg") repeat;
+  background-size: 300px; /* fondo de pegatinas: tesela de 480px reducida */
   background-position: top center;
   border-bottom: var(--trazo);
 }
@@ -55,8 +55,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   grid-template-columns: minmax(0, 1fr);
   place-items: center;
   padding: 110px max(16px, env(safe-area-inset-right, 0px)) 110px max(16px, env(safe-area-inset-left, 0px));
-  background: var(--papel) url("patron.svg") repeat;
-  background-size: 260px;
+  background: var(--papel) url("fondo.svg") repeat;
+  background-size: 360px;
   border-bottom: var(--trazo);
 }
 
@@ -89,8 +89,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .cabecera-pagina {
   position: relative;
   height: 140px; /* dos filas exactas del mural */
-  background: var(--papel) url("patron.svg") repeat;
-  background-size: 210px;
+  background: var(--papel) url("fondo.svg") repeat;
+  background-size: 300px;
   background-position: top center;
   border-bottom: var(--trazo);
 }
@@ -546,7 +546,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   box-shadow: var(--sombra);
 }
 .dialogo::backdrop { background: rgba(255, 244, 214, .75); backdrop-filter: blur(2px); }
-.dialogo .franja-mural { height: 60px; background-size: 180px; }
+.dialogo .franja-mural { height: 60px; background-size: 260px; }
 .dialogo-cuerpo { padding: 20px 24px 24px; text-align: center; }
 .dialogo-cuerpo .dibujo { width: 96px; height: 96px; margin-top: -60px; background: var(--blanco); border: var(--trazo); border-radius: 50%; padding: 8px; }
 .dialogo-cuerpo h3 { font-family: var(--display); font-size: 1.35rem; line-height: 1.2; margin: 6px 0 8px; text-wrap: balance; }
@@ -823,7 +823,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   .editor { grid-template-columns: minmax(0, 1fr); }
   #editor-vista { width: 90px; }
   .menu-progreso { display: none; }
-  .cabecera-pagina { height: 100px; background-size: 150px; }
+  .cabecera-pagina { height: 100px; background-size: 240px; }
   .etiqueta-barrio { display: none; }
   .fila-detalle { padding-left: 16px; }
   .portada { min-height: 600px; }

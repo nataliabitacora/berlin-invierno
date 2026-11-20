@@ -18,7 +18,7 @@ open index.html
 
 - `index.html`: estructura de la página
 - `style.css`: estilos (blanco y negro con ilustraciones en línea)
-- `patron.svg`: mural de dibujos de Berlín de la portada
+- `fondo.svg`: fondo de pegatinas (formas abstractas) de la portada, las cabeceras y las franjas
 - `dibujos.js`: los mismos dibujos, reutilizables en toda la web
 - `lugares.js`: datos de cada lugar (edítalo para añadir más)
 - `app.js`: contadores por categoría, lista de lugares y "Próximo plan"
