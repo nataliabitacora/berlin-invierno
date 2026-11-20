@@ -109,7 +109,7 @@ const SUBTITULOS = {
   "parties": "New scenes, new people, new energy. A chance to get inspired, meet in unfamiliar places and express ourselves.",
   "cozy-coffee": "A pause in the middle of the city: a coffee or a hot chocolate, a good book or the laptop.",
   "christmas-markets": "Every market has a personality of its own. Somewhere among them is our favourite.",
-  "berliner-101": "The things that make Berlin, Berlin. We try them all to get to know the city and what it stands for."
+  "berliner-101": "The things that make Berlin, Berlin. Let's try them all to get to know the city and what it stands for."
 };
 
 // Old Spanish names → current names. Visited places and earned coins are saved in
