@@ -362,7 +362,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   font-weight: 500;
   white-space: nowrap;
 }
-.pestana[aria-selected="true"] { background: var(--lila); color: var(--tinta); font-weight: 700; box-shadow: inset 0 0 0 1.5px var(--tinta); }
+.pestana[aria-selected="true"] { background: var(--ocre); color: var(--tinta); font-weight: 700; box-shadow: inset 0 0 0 1.5px var(--tinta); }
 .pestana-cuenta {
   font-family: var(--display);
   font-weight: 600;
@@ -432,7 +432,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .filas { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .fila { border: 1.5px solid var(--tinta); border-radius: var(--radio); background: var(--blanco); }
 .fila.visitada { background: var(--lila-suave); }
-.fila.seleccionada { background: var(--lila); box-shadow: var(--sombra-dura); }
+.fila.seleccionada { background: var(--ocre); box-shadow: var(--sombra-dura); }
 .fila.seleccionada .fila-nombre { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .fila-principal { display: flex; align-items: center; gap: 12px; padding: 10px 14px; }
 
@@ -745,7 +745,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .como-se-juega { color: var(--gris); font-size: .92rem; }
 .como-se-juega p { margin: 0 0 6px; }
 
-.caja-tienda { position: sticky; top: 20px; display: flex; flex-direction: column; min-height: 0; }
+.caja-tienda { display: flex; flex-direction: column; min-height: 0; }
 .caja-tienda .objetos { flex: 1; min-height: 0; overflow-y: auto; padding: 2px 6px 2px 2px; margin-right: -6px; scrollbar-width: thin; scrollbar-color: var(--tinta) transparent; }
 .caja-nota { margin: -6px 0 14px; color: var(--gris); }
 .objetos, .logros { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
@@ -866,7 +866,6 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 /* ================= Responsive ================= */
 @media (max-width: 980px) {
   .columnas, .adviento, .cozy { grid-template-columns: minmax(0, 1fr); }
-  .caja-tienda { position: static; }
   .caja-plan { position: static; order: -1; }
   .arbol-caja { position: static; }
 }
