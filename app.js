@@ -2,8 +2,7 @@
 let filtroActivo = null;          // null = todas las categorías
 let pestana = "sugeridos";        // "sugeridos" (por hacer) o "hechos"
 let barrios = new Set();          // filtro por lugar; vacío = todos
-let abiertos = new Set();         // filas desplegadas
-let planActual = null;            // lugar propuesto en "Próximo plan"
+let seleccionado = null;          // lugar que se muestra en el panel derecho
 let visitados = cargarVisitados();
 
 function cargarVisitados() {
@@ -99,33 +98,37 @@ function pintarLista() {
     : "Todavía no hay lugares en esta categoría.";
   else if (pestana === "hechos") vacio = "Todavía no has hecho ningún plan aquí. Cuando hagas uno, márcalo en Planes sugeridos y aparecerá en esta pestaña.";
   else vacio = "No quedan planes sugeridos aquí. Prueba otra categoría o pulsa Surprise me.";
+  // Si el plan seleccionado ya no está en la lista (cambio de pestaña, filtro o
+  // porque se acaba de marcar), se selecciona el primero que se ve.
+  if (!filtrados.includes(seleccionado)) seleccionado = filtrados[0] || null;
+
   lista.innerHTML = filtrados.length ? "" : `<li class="fila-vacia">${vacio}</li>`;
   filtrados.forEach((lugar) => {
     const id = LUGARES.indexOf(lugar);
-    const abierto = abiertos.has(id);
+    const elegido = lugar === seleccionado;
     const fila = document.createElement("li");
-    fila.className = "fila" + (estaVisitado(lugar) ? " visitada" : "") + (abierto ? " abierta" : "");
+    fila.className = "fila" + (estaVisitado(lugar) ? " visitada" : "") + (elegido ? " seleccionada" : "");
     fila.innerHTML = `
       <div class="fila-principal">
         <input type="checkbox" class="casilla" id="visitado-${id}" ${estaVisitado(lugar) ? "checked" : ""}
-               aria-label="Marcar ${lugar.nombre} como visitado">
-        <button class="fila-boton" aria-expanded="${abierto}" aria-controls="detalle-${id}">
+               aria-label="Marcar ${lugar.nombre} como hecho">
+        <button class="fila-boton" aria-pressed="${elegido}" aria-controls="plan">
           ${icono(lugar.categoria)}
           <span class="fila-nombre">${lugar.nombre}</span>
           <span class="etiqueta-barrio">${lugar.barrio}</span>
           <span class="flecha" aria-hidden="true">›</span>
         </button>
       </div>
-      <div class="fila-detalle" id="detalle-${id}" ${abierto ? "" : "hidden"}>
-        <span class="chip">${CATEGORIAS[lugar.categoria]}</span>
-        <p>${lugar.descripcion}</p>
-        <p class="consejo"><b>Consejo:</b> ${lugar.consejo}</p>
-      </div>
     `;
     fila.querySelector(".casilla").onchange = () => alternarVisitado(lugar);
     fila.querySelector(".fila-boton").onclick = () => {
-      abierto ? abiertos.delete(id) : abiertos.add(id);
+      seleccionado = lugar;
       pintarLista();
+      pintarPlan(true);
+      // En pantallas estrechas el panel queda arriba: lo traemos a la vista.
+      if (matchMedia("(max-width: 980px)").matches) {
+        document.getElementById("plan").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     };
     lista.appendChild(fila);
   });
@@ -176,9 +179,10 @@ function pintarFiltros() {
     chip.className = "chip chip-filtro";
     chip.innerHTML = `${barrio} <span aria-hidden="true">×</span>`;
     chip.setAttribute("aria-label", `Quitar filtro: ${barrio}`);
-    chip.onclick = () => { barrios.delete(barrio); pintarLista(); };
+    chip.onclick = () => { barrios.delete(barrio); pintarLista(); pintarPlan(); };
     chips.appendChild(chip);
   }
+  document.getElementById("zona-filtros").hidden = !barrios.size;
   const cuenta = document.getElementById("cuenta-filtros");
   cuenta.hidden = !barrios.size;
   cuenta.textContent = barrios.size;
@@ -194,6 +198,7 @@ document.getElementById("borrar-filtros").onclick = () => {
 document.getElementById("form-filtros").onsubmit = () => {
   barrios = marcados();
   pintarLista();
+  pintarPlan();
 };
 dialogoFiltros.addEventListener("click", (e) => { if (e.target === dialogoFiltros) dialogoFiltros.close(); });
 
@@ -201,6 +206,7 @@ for (const nombre of ["sugeridos", "hechos"]) {
   document.getElementById("pestana-" + nombre).onclick = () => {
     pestana = nombre;
     pintarLista();
+    pintarPlan();
   };
 }
 
@@ -209,45 +215,50 @@ document.getElementById("ver-todo").onclick = () => {
   pintarTodo();
 };
 
-// ---------- Próximo plan ----------
-function elegirPlan() {
-  const pendientes = LUGARES.filter((l) => !estaVisitado(l) && l !== planActual);
-  const opciones = pendientes.length ? pendientes : LUGARES.filter((l) => !estaVisitado(l));
-  planActual = opciones.length ? opciones[Math.floor(Math.random() * opciones.length)] : null;
-}
-
+// ---------- Panel derecho: el plan seleccionado ----------
 function pintarPlan(animar = false) {
   const caja = document.getElementById("plan-contenido");
-
-  if (!planActual || estaVisitado(planActual)) elegirPlan();
-  if (!planActual) {
-    caja.innerHTML = `<p class="plan-vacio">Has visitado los ${LUGARES.length} lugares. Berlín en invierno, completado.</p>`;
+  const l = seleccionado;
+  if (!l) {
+    caja.innerHTML = `<p class="plan-vacio">Elige un plan de la lista para ver aquí todos los detalles.</p>`;
     return;
   }
-
-  const l = planActual;
+  const hecho = estaVisitado(l);
   caja.innerHTML = `
     <article class="plan${animar ? " destello" : ""}">
-      <span class="chip">${CATEGORIAS[l.categoria]}</span>
+      <div class="plan-etiquetas">
+        <span class="chip">${CATEGORIAS[l.categoria]}</span>
+        ${hecho ? `<span class="chip chip-hecho">✓ Hecho</span>` : ""}
+      </div>
       <h4>${l.nombre}</h4>
       <p class="barrio">${l.barrio}</p>
       <p>${l.descripcion}</p>
       <p class="consejo"><b>Consejo:</b> ${l.consejo}</p>
       <div class="plan-acciones">
-        <button class="pastilla pastilla-negra pastilla-pequena" id="plan-hecho">Marcar como visitado</button>
-        <button class="pastilla pastilla-borde pastilla-pequena" id="plan-otro">Otro plan</button>
+        <button class="pastilla ${hecho ? "pastilla-borde" : "pastilla-negra"} pastilla-pequena" id="plan-hecho">
+          ${hecho ? "Desmarcar como hecho" : "Marcar como hecho"}
+        </button>
       </div>
     </article>
   `;
   document.getElementById("plan-hecho").onclick = () => alternarVisitado(l);
-  document.getElementById("plan-otro").onclick = () => {
-    elegirPlan();
-    pintarPlan(true);
-  };
 }
 
+// Surprise me: elige al azar un plan sugerido de los que se ven (o de todos si no queda ninguno).
 function sorprender() {
-  elegirPlan();
+  const visibles = LUGARES.filter((l) => !estaVisitado(l) &&
+    (!filtroActivo || l.categoria === filtroActivo) && (!barrios.size || barrios.has(l.barrio)));
+  let opciones = visibles.filter((l) => l !== seleccionado);
+  if (!opciones.length) {
+    filtroActivo = null;
+    barrios = new Set();
+    opciones = LUGARES.filter((l) => !estaVisitado(l) && l !== seleccionado);
+  }
+  if (!opciones.length) return;
+  pestana = "sugeridos";
+  seleccionado = opciones[Math.floor(Math.random() * opciones.length)];
+  pintarContadores();
+  pintarLista();
   pintarPlan(true);
   document.getElementById("plan").scrollIntoView({ behavior: "smooth", block: "center" });
 }

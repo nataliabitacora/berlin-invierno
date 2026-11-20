@@ -62,6 +62,10 @@
           <div class="caja-cabecera">
             <h3 id="titulo-lista">Todos los lugares</h3>
             <button class="enlace" id="ver-todo" hidden>Ver todo</button>
+            <button class="boton-filtro" id="abrir-filtros" aria-haspopup="dialog" aria-label="Filtrar por lugar" title="Filtrar por lugar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg>
+              <span class="filtro-insignia" id="cuenta-filtros" hidden></span>
+            </button>
           </div>
           <div class="pestanas" role="tablist" aria-label="Planes">
             <button class="pestana" role="tab" id="pestana-sugeridos" aria-controls="lista" aria-selected="true">
@@ -71,22 +75,14 @@
               Planes hechos <span class="pestana-cuenta" id="cuenta-hechos">0</span>
             </button>
           </div>
-          <div class="zona-filtros">
-            <button class="boton-filtro" id="abrir-filtros" aria-haspopup="dialog">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg>
-              Filtrar por lugar
-              <span class="pestana-cuenta" id="cuenta-filtros" hidden></span>
-            </button>
+          <div class="zona-filtros" id="zona-filtros" hidden>
             <div class="chips-filtro" id="chips-filtro"></div>
           </div>
           <ul class="filas" id="lista" role="tabpanel"></ul>
         </section>
 
-        <section class="caja caja-plan" id="plan" aria-labelledby="titulo-plan">
+        <section class="caja caja-plan" id="plan" aria-label="Plan seleccionado" aria-live="polite">
           <div class="franja-mural" aria-hidden="true"></div>
-          <div class="caja-cabecera">
-            <h3 id="titulo-plan">Próximo plan</h3>
-          </div>
           <div id="plan-contenido"></div>
         </section>
       </div>
