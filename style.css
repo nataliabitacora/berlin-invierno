@@ -170,7 +170,9 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.seccion-adviento { border-top: var(--trazo-seccion); background: var(--blanco); }
+/* Prueba: la sección de planes en lila suave y los retos en el crema del fondo. */
+#panel { background: var(--lila-suave); }
+.seccion-adviento { border-top: var(--trazo-seccion); background: var(--papel); }
 .seccion-dentro {
   max-width: 1180px;
   margin: 0 auto;
