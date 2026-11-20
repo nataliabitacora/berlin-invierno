@@ -866,7 +866,8 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 /* ================= Pie ================= */
 .pie { border-top: var(--trazo-seccion); background: var(--blanco); text-align: center; }
 .pie .franja-mural { border-bottom: var(--trazo-seccion); }
-.pie p { margin: 0; padding: 18px 16px 28px; font-weight: 500; }
+.pie p { margin: 0; padding: 18px 16px 28px; font-weight: 500; display: flex; justify-content: center; align-items: center; gap: 8px; }
+.pie-icono { width: 20px; height: 20px; flex: none; }
 
 /* ================= Responsive ================= */
 @media (max-width: 980px) {
