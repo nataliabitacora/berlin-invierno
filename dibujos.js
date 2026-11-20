@@ -100,5 +100,6 @@ const DIBUJO_CATEGORIA = {
   "wander": "tranvia",
   "parties": "bola",
   "cozy-coffee": "taza",
-  "christmas-markets": "arbol"
+  "christmas-markets": "arbol",
+  "berliner-101": "oso"
 };

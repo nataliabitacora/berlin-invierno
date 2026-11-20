@@ -1,5 +1,5 @@
 // Datos de los lugares. Para añadir uno nuevo, copia un bloque { ... } y edítalo.
-// categoria: "history" | "arts-culture" | "wander" | "parties" | "cozy-coffee" | "christmas-markets"
+// categoria: "history" | "arts-culture" | "wander" | "parties" | "cozy-coffee" | "christmas-markets" | "berliner-101"
 const LUGARES = [
   {
     nombre: "Mercado navideño del Palacio de Charlottenburg",
@@ -73,7 +73,7 @@ const LUGARES = [
   },
   {
     nombre: "Currywurst en un Imbiss",
-    categoria: "wander",
+    categoria: "berliner-101",
     barrio: "Toda la ciudad",
     descripcion: "Salchicha con salsa de curry y kétchup: el clásico callejero de Berlín.",
     consejo: "Pídela 'mit Pommes' (con patatas fritas)."
@@ -93,5 +93,6 @@ const CATEGORIAS = {
   "wander": "Wander",
   "parties": "Parties",
   "cozy-coffee": "Cozy Coffee",
-  "christmas-markets": "Christmas Markets"
+  "christmas-markets": "Christmas Markets",
+  "berliner-101": "Berliner 101"
 };
