@@ -27,6 +27,9 @@ function alternarVisitado(lugar) {
   if (estaVisitado(lugar)) visitados = visitados.filter((n) => n !== lugar.nombre);
   else visitados.push(lugar.nombre);
   guardarVisitados();
+  // El panel se queda en este plan y la lista salta a la pestaña donde ha ido a parar.
+  seleccionado = lugar;
+  pestana = estaVisitado(lugar) ? "hechos" : "sugeridos";
   pintarTodo();
 }
 
