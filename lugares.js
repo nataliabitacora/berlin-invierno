@@ -102,6 +102,19 @@ const CATEGORIAS = {
 };
 
 // Subtitle shown under the list title when a category is selected.
+// Color del chip de cada barrio: los mismos colores apagados de las pegatinas del fondo (fondo.svg).
+const COLOR_BARRIO = {
+  "Mitte": "#84a0d2",            // azul
+  "Kreuzberg": "#eb9164",        // óxido
+  "Friedrichshain": "#ff8fb3",   // rosa
+  "Prenzlauer Berg": "#87c48d",  // verde
+  "Charlottenburg": "#e5acb1",   // rosa viejo
+  "Tiergarten": "#c0cb8e",       // oliva
+  "Grunewald": "#a8d3c7",        // aguamarina
+  "Potsdamer Platz": "#ffe85c",  // amarillo
+  "All over the city": "#dacbe4" // lila
+};
+
 const SUBTITULOS = {
   "history": "So much happened right here. What better way to understand history than standing where it actually took place?",
   "arts-culture": "A new chapter where we let art and culture all the way in. Maybe this is what life is really about.",

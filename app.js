@@ -133,7 +133,7 @@ function pintarLista() {
         <button class="fila-boton" aria-pressed="${elegido}" aria-controls="plan">
           ${icono(lugar.categoria)}
           <span class="fila-nombre">${lugar.nombre}</span>
-          <span class="etiqueta-barrio">${lugar.barrio}</span>
+          <span class="etiqueta-barrio" style="--color-barrio: ${COLOR_BARRIO[lugar.barrio] || "var(--blanco)"}">${lugar.barrio}</span>
           <span class="flecha" aria-hidden="true">›</span>
         </button>
       </div>
