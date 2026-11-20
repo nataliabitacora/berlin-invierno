@@ -71,6 +71,14 @@
               Planes hechos <span class="pestana-cuenta" id="cuenta-hechos">0</span>
             </button>
           </div>
+          <div class="zona-filtros">
+            <button class="boton-filtro" id="abrir-filtros" aria-haspopup="dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg>
+              Filtrar por lugar
+              <span class="pestana-cuenta" id="cuenta-filtros" hidden></span>
+            </button>
+            <div class="chips-filtro" id="chips-filtro"></div>
+          </div>
           <ul class="filas" id="lista" role="tabpanel"></ul>
         </section>
 
@@ -114,6 +122,23 @@
       </div>
     </div>
   </section>
+
+  <!-- Filtro por lugar (barrio) -->
+  <dialog class="dialogo dialogo-filtros" id="dialogo-filtros" aria-labelledby="filtros-titulo">
+    <form id="form-filtros" method="dialog">
+      <div class="filtros-cabecera">
+        <h3 id="filtros-titulo">Filtrar por lugar</h3>
+        <button type="button" class="cerrar-x" id="cerrar-filtros" aria-label="Cerrar">×</button>
+      </div>
+      <fieldset class="lista-barrios" id="lista-barrios">
+        <legend class="antetitulo">Barrios</legend>
+      </fieldset>
+      <div class="dialogo-acciones">
+        <button type="button" class="pastilla pastilla-borde pastilla-pequena" id="borrar-filtros">Borrar filtros</button>
+        <button type="submit" class="pastilla pastilla-negra pastilla-pequena" id="aplicar-filtros">Ver planes</button>
+      </div>
+    </form>
+  </dialog>
 
   <dialog class="dialogo" id="dialogo" aria-labelledby="dialogo-titulo">
     <div id="dialogo-contenido"></div>

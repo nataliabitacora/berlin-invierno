@@ -1,6 +1,7 @@
 // ---------- Estado ----------
 let filtroActivo = null;          // null = todas las categorías
 let pestana = "sugeridos";        // "sugeridos" (por hacer) o "hechos"
+let barrios = new Set();          // filtro por lugar; vacío = todos
 let abiertos = new Set();         // filas desplegadas
 let planActual = null;            // lugar propuesto en "Próximo plan"
 let visitados = cargarVisitados();
@@ -77,7 +78,8 @@ function pintarContadores() {
 // ---------- Lista de lugares ----------
 function pintarLista() {
   const lista = document.getElementById("lista");
-  const deLaCategoria = LUGARES.filter((l) => !filtroActivo || l.categoria === filtroActivo);
+  const deLaCategoria = LUGARES.filter((l) =>
+    (!filtroActivo || l.categoria === filtroActivo) && (!barrios.size || barrios.has(l.barrio)));
   const sugeridos = deLaCategoria.filter((l) => !estaVisitado(l));
   const hechos = deLaCategoria.filter(estaVisitado);
   const filtrados = pestana === "hechos" ? hechos : sugeridos;
@@ -85,13 +87,16 @@ function pintarLista() {
   document.getElementById("titulo-lista").textContent =
     filtroActivo ? CATEGORIAS[filtroActivo] : "Todos los lugares";
   document.getElementById("ver-todo").hidden = !filtroActivo;
+  pintarFiltros();
   document.getElementById("cuenta-sugeridos").textContent = sugeridos.length;
   document.getElementById("cuenta-hechos").textContent = hechos.length;
   document.getElementById("pestana-sugeridos").setAttribute("aria-selected", pestana === "sugeridos");
   document.getElementById("pestana-hechos").setAttribute("aria-selected", pestana === "hechos");
 
   let vacio = "";
-  if (!deLaCategoria.length) vacio = "Todavía no hay lugares en esta categoría.";
+  if (!deLaCategoria.length) vacio = barrios.size
+    ? "Ningún plan coincide con este filtro de lugar."
+    : "Todavía no hay lugares en esta categoría.";
   else if (pestana === "hechos") vacio = "Todavía no has hecho ningún plan aquí. Cuando hagas uno, márcalo en Planes sugeridos y aparecerá en esta pestaña.";
   else vacio = "No quedan planes sugeridos aquí. Prueba otra categoría o pulsa Surprise me.";
   lista.innerHTML = filtrados.length ? "" : `<li class="fila-vacia">${vacio}</li>`;
@@ -125,6 +130,72 @@ function pintarLista() {
     lista.appendChild(fila);
   });
 }
+
+// ---------- Filtro por lugar ----------
+const dialogoFiltros = document.getElementById("dialogo-filtros");
+const todosLosBarrios = [...new Set(LUGARES.map((l) => l.barrio))]
+  .sort((x, y) => (x === "Toda la ciudad") - (y === "Toda la ciudad") || x.localeCompare(y, "es"));
+
+function marcados() {
+  return new Set([...dialogoFiltros.querySelectorAll("input:checked")].map((c) => c.value));
+}
+
+function contarConFiltro(seleccion) {
+  return LUGARES.filter((l) =>
+    (!filtroActivo || l.categoria === filtroActivo) &&
+    (!seleccion.size || seleccion.has(l.barrio)) &&
+    (pestana === "hechos" ? estaVisitado(l) : !estaVisitado(l))).length;
+}
+
+function actualizarBotonAplicar() {
+  const n = contarConFiltro(marcados());
+  document.getElementById("aplicar-filtros").textContent = `Ver ${n} ${n === 1 ? "plan" : "planes"}`;
+}
+
+function abrirFiltros() {
+  const caja = document.getElementById("lista-barrios");
+  caja.querySelectorAll("label").forEach((l) => l.remove());
+  for (const barrio of todosLosBarrios) {
+    const cuantos = LUGARES.filter((l) => l.barrio === barrio && (!filtroActivo || l.categoria === filtroActivo)).length;
+    const etiqueta = document.createElement("label");
+    etiqueta.className = "opcion-barrio";
+    etiqueta.innerHTML = `<input type="checkbox" value="${barrio}" ${barrios.has(barrio) ? "checked" : ""}>
+      <span>${barrio}</span><span class="opcion-cuenta">${cuantos}</span>`;
+    etiqueta.querySelector("input").onchange = actualizarBotonAplicar;
+    caja.appendChild(etiqueta);
+  }
+  actualizarBotonAplicar();
+  dialogoFiltros.showModal();
+}
+
+function pintarFiltros() {
+  const chips = document.getElementById("chips-filtro");
+  chips.innerHTML = "";
+  for (const barrio of barrios) {
+    const chip = document.createElement("button");
+    chip.className = "chip chip-filtro";
+    chip.innerHTML = `${barrio} <span aria-hidden="true">×</span>`;
+    chip.setAttribute("aria-label", `Quitar filtro: ${barrio}`);
+    chip.onclick = () => { barrios.delete(barrio); pintarLista(); };
+    chips.appendChild(chip);
+  }
+  const cuenta = document.getElementById("cuenta-filtros");
+  cuenta.hidden = !barrios.size;
+  cuenta.textContent = barrios.size;
+  document.getElementById("abrir-filtros").classList.toggle("activo", barrios.size > 0);
+}
+
+document.getElementById("abrir-filtros").onclick = abrirFiltros;
+document.getElementById("cerrar-filtros").onclick = () => dialogoFiltros.close();
+document.getElementById("borrar-filtros").onclick = () => {
+  dialogoFiltros.querySelectorAll("input").forEach((c) => (c.checked = false));
+  actualizarBotonAplicar();
+};
+document.getElementById("form-filtros").onsubmit = () => {
+  barrios = marcados();
+  pintarLista();
+};
+dialogoFiltros.addEventListener("click", (e) => { if (e.target === dialogoFiltros) dialogoFiltros.close(); });
 
 for (const nombre of ["sugeridos", "hechos"]) {
   document.getElementById("pestana-" + nombre).onclick = () => {

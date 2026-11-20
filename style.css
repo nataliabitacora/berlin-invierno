@@ -290,6 +290,42 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   border: 1.5px solid currentColor;
   border-radius: 999px;
 }
+.zona-filtros { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: -4px 0 14px; }
+.boton-filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 10px;
+  background: var(--blanco);
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+  font-weight: 500;
+}
+.boton-filtro svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linejoin: round; }
+.boton-filtro.activo { background: var(--tinta); color: var(--blanco); }
+.boton-filtro.activo svg { fill: currentColor; }
+.chips-filtro { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip-filtro { cursor: pointer; background: var(--papel); }
+.chip-filtro span { margin-left: 4px; font-size: 1rem; line-height: 0; }
+.dialogo.dialogo-filtros { padding: 22px 24px 24px; max-height: calc(100% - 32px); }
+.filtros-cabecera { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.filtros-cabecera h3 { font-family: var(--serif); font-size: 1.6rem; margin: 0; }
+.cerrar-x { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--tinta); background: var(--blanco); font-size: 1.3rem; line-height: 1; }
+.lista-barrios { border: 0; margin: 0; padding: 0; display: grid; gap: 6px; }
+.lista-barrios legend { padding: 0; margin-bottom: 8px; }
+.opcion-barrio {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 2px solid var(--tinta);
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+.opcion-barrio:has(input:checked) { background: var(--tinta); color: var(--blanco); }
+.opcion-barrio input { width: 18px; height: 18px; accent-color: var(--tinta); margin: 0; }
+.opcion-cuenta { font-family: var(--mono); font-size: .8rem; opacity: .7; }
 .filas { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .fila { border: 2px solid var(--tinta); border-radius: var(--radio); background: var(--blanco); }
 .fila.abierta { background: var(--papel); }
