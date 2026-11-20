@@ -271,7 +271,6 @@ document.getElementById("sorpresa").onclick = sorprender;
 // ---------- Progreso y repintado ----------
 function pintarTodo() {
   document.getElementById("ver-lugares").textContent = `Ver los ${LUGARES.length} lugares`;
-  document.getElementById("menu-progreso").textContent = `${visitados.length} ${visitados.length === 1 ? "visitado" : "visitados"}`;
   pintarContadores();
   pintarLista();
   pintarPlan();
