@@ -64,7 +64,27 @@ const DIBUJOS = {
     <circle cx="36" cy="27" r="1.8" fill="currentColor" stroke="none"/>
     <circle cx="44" cy="27" r="1.8" fill="currentColor" stroke="none"/>
     <circle cx="40" cy="50" r="2" fill="currentColor" stroke="none"/>
-    <circle cx="40" cy="59" r="2" fill="currentColor" stroke="none"/>`
+    <circle cx="40" cy="59" r="2" fill="currentColor" stroke="none"/>`,
+  marco: `
+    <rect x="12" y="16" width="56" height="48" rx="3"/>
+    <rect x="20" y="24" width="40" height="32"/>
+    <path d="M20 56 L33 40 L42 50 L48 43 L60 56 Z" fill="currentColor"/>
+    <circle cx="49" cy="32" r="3.5" fill="currentColor"/>`,
+  bola: `
+    <line x1="40" y1="6" x2="40" y2="18"/>
+    <circle cx="40" cy="44" r="24"/>
+    <path d="M16 44 H64 M19 32 H61 M19 56 H61" fill="none"/>
+    <path d="M40 20 C30 30 30 58 40 68 M40 20 C50 30 50 58 40 68 M40 20 V68" fill="none"/>
+    <rect x="44" y="34" width="6" height="6" fill="currentColor"/>
+    <rect x="30" y="46" width="6" height="6" fill="currentColor"/>
+    <path d="M68 14 v8 M64 18 h8 M12 64 v6 M9 67 h6" fill="none"/>`,
+  dado: `
+    <rect x="16" y="16" width="48" height="48" rx="9"/>
+    <g fill="currentColor" stroke="none">
+      <circle cx="29" cy="29" r="4"/><circle cx="51" cy="29" r="4"/>
+      <circle cx="40" cy="40" r="4"/>
+      <circle cx="29" cy="51" r="4"/><circle cx="51" cy="51" r="4"/>
+    </g>`
 };
 
 function dibujo(nombre, clase = "dibujo") {
@@ -75,9 +95,10 @@ function dibujo(nombre, clase = "dibujo") {
 
 // Qué dibujo representa cada categoría de lugares.
 const DIBUJO_CATEGORIA = {
-  "mercado": "arbol",
-  "museo": "puerta",
-  "aire-libre": "copo",
-  "calor": "taza",
-  "comida": "pretzel"
+  "history": "puerta",
+  "arts-culture": "marco",
+  "wander": "tranvia",
+  "parties": "bola",
+  "cozy-coffee": "taza",
+  "christmas-markets": "arbol"
 };

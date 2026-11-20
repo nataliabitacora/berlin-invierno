@@ -51,10 +51,12 @@ function pintarContadores() {
     boton.className = "contador";
     boton.dataset.cat = cat;
     boton.setAttribute("aria-pressed", filtroActivo === cat);
+    const pie = delGrupo.length === 0 ? "Próximamente"
+      : pendientes === 0 ? "¡Completado!" : `${pendientes} por descubrir`;
     boton.innerHTML = `
       <span class="contador-arriba">${icono(cat)}<span class="contador-etiqueta">${nombre}</span></span>
       <span class="contador-numero">${hechos}<small>/${delGrupo.length}</small></span>
-      <span class="contador-pie">${pendientes === 0 ? "¡Completado!" : `${pendientes} por descubrir`}</span>
+      <span class="contador-pie">${pie}</span>
     `;
     boton.onclick = () => {
       filtroActivo = filtroActivo === cat ? null : cat;
@@ -62,6 +64,17 @@ function pintarContadores() {
     };
     contenedor.appendChild(boton);
   }
+
+  // Categoría extra: no filtra, propone un plan al azar.
+  const sorpresa = document.createElement("button");
+  sorpresa.className = "contador contador-sorpresa";
+  sorpresa.innerHTML = `
+    <span class="contador-arriba">${dibujo("dado")}<span class="contador-etiqueta">Surprise me</span></span>
+    <span class="contador-numero">?</span>
+    <span class="contador-pie">Un plan al azar de cualquier categoría</span>
+  `;
+  sorpresa.onclick = sorprender;
+  contenedor.appendChild(sorpresa);
 }
 
 // ---------- Lista de lugares ----------
@@ -74,7 +87,8 @@ function pintarLista() {
   document.getElementById("cuenta-lista").textContent = filtrados.length;
   document.getElementById("ver-todo").hidden = !filtroActivo;
 
-  lista.innerHTML = "";
+  lista.innerHTML = filtrados.length ? ""
+    : `<li class="fila-vacia">Todavía no hay lugares en esta categoría.</li>`;
   filtrados.forEach((lugar) => {
     const id = LUGARES.indexOf(lugar);
     const abierto = abiertos.has(id);
@@ -148,11 +162,13 @@ function pintarPlan(animar = false) {
   };
 }
 
-document.getElementById("sorpresa").onclick = () => {
+function sorprender() {
   elegirPlan();
   pintarPlan(true);
   document.getElementById("plan").scrollIntoView({ behavior: "smooth", block: "center" });
-};
+}
+
+document.getElementById("sorpresa").onclick = sorprender;
 
 // ---------- Progreso y repintado ----------
 function pintarTodo() {
