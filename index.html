@@ -20,18 +20,22 @@
     </nav>
 
     <div class="tarjeta-portada">
-      <svg class="oso" viewBox="0 0 120 110" aria-hidden="true">
-        <g fill="#fffaee" stroke="#1b1726" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="36" cy="26" r="13"/><circle cx="84" cy="26" r="13"/>
-          <circle cx="36" cy="26" r="5" fill="#1b1726"/><circle cx="84" cy="26" r="5" fill="#1b1726"/>
-          <circle cx="60" cy="54" r="32"/>
-          <path d="M30 78 Q60 96 90 78 L92 92 Q60 108 28 92 Z" fill="#1b1726"/>
-          <path d="M80 88 l6 18 l10 -4 l-6 -16" fill="#1b1726"/>
-          <ellipse cx="60" cy="65" rx="13" ry="10"/>
-          <ellipse cx="60" cy="60" rx="5" ry="3.5" fill="#1b1726"/>
-          <circle cx="48" cy="48" r="3.5" fill="#1b1726" stroke="none"/>
-          <circle cx="72" cy="48" r="3.5" fill="#1b1726" stroke="none"/>
-        </g>
+      <svg class="emblema" viewBox="0 -18 160 134" role="img" aria-label="Brandenburg Gate with a snowflake on top">
+        <defs>
+          <!-- Desgaste de sello: motas que agujerean la tinta -->
+          <filter id="desgaste" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="8"/>
+            <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -18 0 0 0 13.4"/>
+          </filter>
+          <mask id="gastado" maskUnits="userSpaceOnUse" x="0" y="-18" width="160" height="134">
+            <rect x="0" y="-18" width="160" height="134" fill="#fff" filter="url(#desgaste)"/>
+          </mask>
+          <g id="puerta"><rect x="72" y="16" width="16" height="6"/><rect x="46" y="22" width="68" height="13"/><rect x="40" y="29" width="80" height="6"/><rect x="10" y="35" width="140" height="13"/><rect x="14" y="48" width="14" height="4"/><rect x="16" y="52" width="10" height="52"/><rect x="14" y="102" width="14" height="3"/><rect x="36" y="48" width="14" height="4"/><rect x="38" y="52" width="10" height="52"/><rect x="36" y="102" width="14" height="3"/><rect x="58" y="48" width="14" height="4"/><rect x="60" y="52" width="10" height="52"/><rect x="58" y="102" width="14" height="3"/><rect x="88" y="48" width="14" height="4"/><rect x="90" y="52" width="10" height="52"/><rect x="88" y="102" width="14" height="3"/><rect x="110" y="48" width="14" height="4"/><rect x="112" y="52" width="10" height="52"/><rect x="110" y="102" width="14" height="3"/><rect x="132" y="48" width="14" height="4"/><rect x="134" y="52" width="10" height="52"/><rect x="132" y="102" width="14" height="3"/><rect x="6" y="105" width="148" height="9"/></g>
+        </defs>
+        <!-- Copia lila desplazada, como una risografía mal registrada -->
+        <g transform="translate(4 3)" fill="#c8b7eb" stroke="#c8b7eb"><use href="#puerta"/><path d="M 80 1 L 80.0 -15.0 M 80.0 -8.9 L 84.6 -12.8 M 80.0 -8.9 L 75.4 -12.8 M 80 1 L 66.1 -7.0 M 71.4 -4.0 L 70.4 -9.9 M 71.4 -4.0 L 65.8 -1.9 M 80 1 L 66.1 9.0 M 71.4 6.0 L 65.8 3.9 M 71.4 6.0 L 70.4 11.9 M 80 1 L 80.0 17.0 M 80.0 10.9 L 75.4 14.8 M 80.0 10.9 L 84.6 14.8 M 80 1 L 93.9 9.0 M 88.6 6.0 L 89.6 11.9 M 88.6 6.0 L 94.2 3.9 M 80 1 L 93.9 -7.0 M 88.6 -4.0 L 94.2 -1.9 M 88.6 -4.0 L 89.6 -9.9 " fill="none" stroke-width="3.2" stroke-linecap="square"/></g>
+        <!-- Silueta en tinta, gastada -->
+        <g mask="url(#gastado)" fill="#1b1726" stroke="#1b1726"><use href="#puerta"/><path d="M 80 1 L 80.0 -15.0 M 80.0 -8.9 L 84.6 -12.8 M 80.0 -8.9 L 75.4 -12.8 M 80 1 L 66.1 -7.0 M 71.4 -4.0 L 70.4 -9.9 M 71.4 -4.0 L 65.8 -1.9 M 80 1 L 66.1 9.0 M 71.4 6.0 L 65.8 3.9 M 71.4 6.0 L 70.4 11.9 M 80 1 L 80.0 17.0 M 80.0 10.9 L 75.4 14.8 M 80.0 10.9 L 84.6 14.8 M 80 1 L 93.9 9.0 M 88.6 6.0 L 89.6 11.9 M 88.6 6.0 L 94.2 3.9 M 80 1 L 93.9 -7.0 M 88.6 -4.0 L 94.2 -1.9 M 88.6 -4.0 L 89.6 -9.9 " fill="none" stroke-width="3.2" stroke-linecap="square"/></g>
       </svg>
       <h1>Because winter does not have to be boring.</h1>
       <p>Join a space to help you discover Berlin, surround yourself with art, meet people, be underground, broaden your perspective on the world and make the most out of winter.</p>

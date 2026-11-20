@@ -114,7 +114,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   padding: 36px clamp(20px, 5vw, 56px) 30px;
   text-align: center;
 }
-.oso { width: 96px; height: auto; margin-bottom: 8px; }
+.emblema { width: 150px; height: auto; margin-bottom: 14px; overflow: visible; }
 .tarjeta-portada h1 {
   font-family: var(--display);
   font-weight: 800;
