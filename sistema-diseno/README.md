@@ -12,15 +12,15 @@ Una ciudad en invierno: nieve y papel cálido (los neutros), el cielo lila del a
 | --- | --- | --- |
 | `cream` | #fff4d6 | Neutro principal. Fondo de página. |
 | `snow` | #fffaee | Neutro claro, diseñado para esta paleta. Tarjetas, paneles, filas, menú. |
-| `lilac` | #c8b7eb | Secundario y color de interacción: todo lo seleccionado, lo hecho, el juego. |
+| `lilac` | #c4bad6 | Secundario y color de interacción: todo lo seleccionado, lo hecho, el juego. |
 | `sun` | #ffe223 | Principal, de uso escaso: unos pocos botones de acción. |
 | `ink` | #1b1726 | Tinta con un punto violeta. Trazos y texto. |
 
 ### Lo que se ve en pantalla
 
 - **Todo son neutros.** Fondo `cream`, tarjetas y paneles `snow`, huecos `surface-sunken`. **El blanco #ffffff no se usa en ningún sitio**: ni en tarjetas, ni en botones, ni en campos de texto.
-- **El lila es el color de la interacción.** Categoría activa, pestaña activa, fila seleccionada, página actual del menú, etiquetas de estado y todo el juego. Con `lilac-soft` para lo hecho y los avisos.
-- **El amarillo es un detalle.** Solo rellena unos pocos botones de acción, como mucho uno por pantalla y en muchas ninguno: "Surprise me" en la portada, "Mark as done" en el panel del plan y "Buy" en la tienda cuando alcanzan las monedas. Nada de fondos, selecciones, etiquetas, iconos ni texto amarillos.
+- **El lila (apagado) es el color de la interacción.** Es el lila de marca con menos de la mitad de saturación (#c4bad6, 25 % frente al 57 % del #c8b7eb original), para que la interfaz siga siendo neutra; se probó un ocre y se descartó. Categoría activa, pestaña activa, fila seleccionada, página actual del menú, etiquetas de estado y todo el juego. Con `lilac-soft` para lo hecho y los avisos.
+- **El amarillo es un detalle.** Solo rellena unos pocos botones de acción, como mucho uno por pantalla y en muchas ninguno: "Surprise me" en la portada (junto a "Explore the city"), "Mark as done" en el panel del plan y "Buy" en la tienda cuando alcanzan las monedas. Nada de fondos, selecciones, etiquetas, iconos ni texto amarillos.
 
 ### Proporción
 
@@ -30,7 +30,7 @@ Una ciudad en invierno: nieve y papel cálido (los neutros), el cielo lila del a
 
 ### Reglas de color
 
-- **Texto siempre en `text`** (tinta), también sobre lila (9,6:1) y amarillo (13,5:1). Lila como texto o enlace: `lilac-text`.
+- **Texto siempre en `text`** (tinta), también sobre lila (9,5:1) y amarillo (13,5:1). Lila como texto o enlace: `lilac-text`.
 - **Todo relleno de color va con trazo de tinta.** Sobre los neutros, el lila solo da 1,7:1 y el amarillo 1,2:1: sin trazo desaparecen.
 - **Amarillo y lila nunca en el mismo elemento.**
 - **El pixel art del juego** tiene su propia paleta (los colores de los objetos); el marco que lo rodea sigue este sistema.
@@ -43,7 +43,7 @@ Una ciudad en invierno: nieve y papel cálido (los neutros), el cielo lila del a
 
 ### Tema oscuro
 
-La noche (#17141f) como fondo y #221e2d para las tarjetas; el crema pasa a ser el texto y el trazo. El lila sigue siendo la interacción (9,9:1 sobre la noche) y la sombra dura de lo seleccionado pasa a lila.
+La noche (#17141f) como fondo y #221e2d para las tarjetas; el crema pasa a ser el texto y el trazo. El lila sigue siendo la interacción (9,8:1 sobre la noche) y la sombra dura de lo seleccionado pasa a lila.
 
 ## Tipografía
 
@@ -57,7 +57,7 @@ Dirección: underground y brutalista, como Berlín. Letra muy ancha y pesada par
 | Estilo | Familia | Tamaño / interlínea | Peso | Dónde |
 | --- | --- | --- | --- | --- |
 | `display-xl` | Unbounded | 52 / 1 | 800 | Titular de la portada, en mayúsculas. Uno por página. |
-| `display-l` | Unbounded | 36 / 1,05 | 800 | Títulos de sección, en mayúsculas ("YOUR BERLIN WINTER"). |
+| `display-l` | Unbounded | 36 / 1,05 | 800 | Títulos de sección, en mayúsculas ("A WHOLE CITY TO EXPLORE"). |
 | `title` | Unbounded | 20 / 1,2 | 700 | Título del plan seleccionado y de los paneles. |
 | `number-xl` | Unbounded | 32 / 1 | 700 | Contadores de categoría, monedas, días del adviento. |
 | `number` | Unbounded | 14 / 1 | 600 | Números en insignias y pestañas. |
@@ -86,7 +86,7 @@ Dirección: underground y brutalista, como Berlín. Letra muy ancha y pesada par
 ## Forma
 
 - **Trazo**: tres grosores. 2,5 px (`stroke-section`) solo para las líneas que dividen las secciones de la página; 1,5 px (`stroke`) en tarjetas, paneles, botones, menú, filas y pestañas; 1 px (`stroke-thin`) en etiquetas y contadores. El trazo es la firma: sin él, el amarillo y el lila desaparecen sobre los neutros.
-- **Esquinas**: cápsula para todo lo que se pulsa (`radius-pill`); 16 px para filas y tarjetas pequeñas; 26 px para paneles.
+- **Esquinas**: cápsula para casi todo lo que se pulsa (`radius-pill`), salvo los botones grandes de acción ("Explore the city" y los dos "Surprise me"), que llevan la esquina de 16 px de las tarjetas de plan; 16 px para filas y tarjetas pequeñas; 26 px para paneles.
 - **Sombras**: `shadow-pop` (sombra dura desplazada 3 px) para lo seleccionado, junto al lila, una por vista; `shadow-soft` para lo que flota.
 - **Espaciado**: base de 4 px; los saltos que se usan son 8, 12, 16, 24, 32, 48 y 64.
 
@@ -117,7 +117,7 @@ Iconos macizos del set **Phosphor Icons**, estilo *Fill* (licencia MIT): formas 
 
 - **Tamaño**: pequeños y al servicio del texto: 18–22 px en tarjetas, filas, filtros y botones; 28 px en tarjetas del repositorio; 44 px solo en avisos vacíos y dentro del círculo del diálogo del adviento.
 - **Regla**: el texto manda. En las tarjetas de categoría el nombre va en negrita y más grande que el icono.
-- **Categorías**: History → *bank*, Arts & Culture → *palette*, Wander → *footprints*, Parties → *disco-ball*, Cozy Coffee → *coffee*, Christmas Markets → *tree-evergreen*, Berliner 101 → *paw-print*.
+- **Categorías**: History → *bank*, Arts & Culture → *palette*, Wander → *footprints*, Parties → *disco-ball*, Cozy Coffee → *coffee*, Christmas Markets → *tree-evergreen*, Berliner 101 → *heart*.
 - **Otros**: *dice-five* (Surprise me), *funnel* (filtro), *calendar-blank* (fechas), *users-three*, *buildings*, *map-pin*, *list-checks* (repositorio) y, en el adviento, *snowflake*, *binoculars*, *bread*, *tram*, *person-simple-ski*.
 - Nunca se mezclan con iconos de línea ni con otros sets.
 

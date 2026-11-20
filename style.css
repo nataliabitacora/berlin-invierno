@@ -150,6 +150,8 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .pastilla-sol { background: var(--sol); color: var(--tinta); }
 .pastilla-borde { background: var(--blanco); color: var(--tinta); }
 .pastilla-pequena { padding: 9px 18px; }
+/* Botones de acción de la portada y del panel: esquina de tarjeta de plan, no cápsula. */
+#ver-lugares, #sorpresa, #sorpresa-panel { border-radius: var(--radio); }
 .pastilla-flotante {
   position: absolute;
   bottom: 24px;

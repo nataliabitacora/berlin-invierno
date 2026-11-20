@@ -285,7 +285,6 @@ botonSorpresa.onclick = sorprender;
 
 // ---------- Progreso y repintado ----------
 function pintarTodo() {
-  document.getElementById("ver-lugares").textContent = `See all ${LUGARES.length} places`;
   pintarContadores();
   pintarLista();
   pintarPlan();
