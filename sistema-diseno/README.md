@@ -98,7 +98,7 @@ La Puerta de Brandeburgo en silueta maciza de tinta, con un copo de nieve sobre 
 - **Copo**: seis brazos con una pareja de ramas cada uno, trazo grueso y puntas cuadradas.
 - **Tinta**: silueta maciza, completamente negra (`ink`), sin desgaste ni texturas. Lleva detrás una copia en `lilac` desplazada unos píxeles hacia abajo y a la derecha, como una risografía mal registrada.
 - **Uso**: encabeza la tarjeta de la portada, a 150 px de ancho. Siempre sobre `snow` o `cream`; nunca sobre el fondo de pegatinas ni en color.
-- **El oso** deja de ser el emblema: solo queda como icono de la categoría Berliner 101 y en el aviso del repositorio vacío.
+- **El oso** deja de ser el emblema y ya no aparece en la web.
 
 ## Fondo
 
@@ -118,7 +118,7 @@ Iconos macizos del set **Phosphor Icons**, estilo *Fill* (licencia MIT): formas 
 - **Tamaño**: pequeños y al servicio del texto: 18–22 px en tarjetas, filas, filtros y botones; 28 px en tarjetas del repositorio; 44 px solo en avisos vacíos y dentro del círculo del diálogo del adviento.
 - **Regla**: el texto manda. En las tarjetas de categoría el nombre va en negrita y más grande que el icono.
 - **Categorías**: History → *bank*, Arts & Culture → *palette*, Wander → *footprints*, Parties → *disco-ball*, Cozy Coffee → *coffee*, Christmas Markets → *tree-evergreen*, Berliner 101 → *heart*.
-- **Otros**: *dice-five* (Surprise me), *funnel* (filtro), *calendar-blank* (fechas), *users-three*, *buildings*, *map-pin*, *list-checks* (repositorio) y, en el adviento, *snowflake*, *binoculars*, *bread*, *tram*, *person-simple-ski*.
+- **Otros**: *dice-five* (Surprise me), *funnel* (filtro), *calendar-blank* (fechas), *users-three*, *buildings*, *map-pin*, *list-checks* (repositorio), *file-plus* (todos los estados vacíos) y, en el adviento, *snowflake*, *binoculars*, *bread*, *tram*, *person-simple-ski*.
 - Nunca se mezclan con iconos de línea ni con otros sets.
 
 ## Voz

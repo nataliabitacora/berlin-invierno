@@ -29,7 +29,7 @@ function pintarLista() {
   if (!filtrados.length) {
     lista.innerHTML = `
       <li class="repo-vacio">
-        ${dibujo(tipoActivo ? DIBUJO_TIPO[tipoActivo] : "oso")}
+        ${dibujo("vacio")}
         <p><b>Nothing saved${tipoActivo ? " in this section" : ""} yet.</b></p>
         <p>Send a link or a note to Claude Code and it will be added here.</p>
       </li>`;

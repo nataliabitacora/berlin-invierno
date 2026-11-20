@@ -38,6 +38,13 @@ async function reducir(archivo) {
   return c.toDataURL("image/jpeg", 0.82);
 }
 
+// Primera foto del álbum, fija: no se guarda en el navegador ni se puede borrar.
+const FOTO_FIJA = `
+    <figure class="polaroid polaroid-fija">
+      <img src="fotos/album-primera.jpg" alt="People sitting on the steps by the Spree, watching a street musician">
+      <figcaption><b>By the Spree</b><span>The first photo</span></figcaption>
+    </figure>`;
+
 const escapar = (texto) => texto.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 // ---------- Interfaz ----------
@@ -65,16 +72,13 @@ async function pintarAlbum() {
   try {
     fotos = await listarFotos();
   } catch {
-    caja.innerHTML = `<p class="album-vacio">This browser won't let us save photos (this can happen in a private window).</p>`;
+    caja.innerHTML = FOTO_FIJA + `<p class="album-vacio">This browser won't let us save photos (this can happen in a private window).</p>`;
     return;
   }
-  document.getElementById("album-cuenta").textContent = fotos.length;
+  document.getElementById("album-cuenta").textContent = fotos.length + 1;
 
-  if (!fotos.length) {
-    caja.innerHTML = `<p class="album-vacio">The album is empty. Add your first photo of something you've seen around Berlin.</p>`;
-    return;
-  }
-  caja.innerHTML = fotos.reverse().map((f) => `
+  // La foto fija va siempre la primera; detrás, las del usuario, de la más nueva a la más antigua.
+  caja.innerHTML = FOTO_FIJA + fotos.reverse().map((f) => `
     <figure class="polaroid">
       <img src="${f.imagen}" alt="${escapar(f.pie || "Album photo")}">
       <figcaption>
