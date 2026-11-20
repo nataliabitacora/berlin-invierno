@@ -1,5 +1,6 @@
 // ---------- Estado ----------
 let filtroActivo = null;          // null = todas las categorías
+let pestana = "sugeridos";        // "sugeridos" (por hacer) o "hechos"
 let abiertos = new Set();         // filas desplegadas
 let planActual = null;            // lugar propuesto en "Próximo plan"
 let visitados = cargarVisitados();
@@ -76,15 +77,24 @@ function pintarContadores() {
 // ---------- Lista de lugares ----------
 function pintarLista() {
   const lista = document.getElementById("lista");
-  const filtrados = LUGARES.filter((l) => !filtroActivo || l.categoria === filtroActivo);
+  const deLaCategoria = LUGARES.filter((l) => !filtroActivo || l.categoria === filtroActivo);
+  const sugeridos = deLaCategoria.filter((l) => !estaVisitado(l));
+  const hechos = deLaCategoria.filter(estaVisitado);
+  const filtrados = pestana === "hechos" ? hechos : sugeridos;
 
   document.getElementById("titulo-lista").textContent =
     filtroActivo ? CATEGORIAS[filtroActivo] : "Todos los lugares";
-  document.getElementById("cuenta-lista").textContent = filtrados.length;
   document.getElementById("ver-todo").hidden = !filtroActivo;
+  document.getElementById("cuenta-sugeridos").textContent = sugeridos.length;
+  document.getElementById("cuenta-hechos").textContent = hechos.length;
+  document.getElementById("pestana-sugeridos").setAttribute("aria-selected", pestana === "sugeridos");
+  document.getElementById("pestana-hechos").setAttribute("aria-selected", pestana === "hechos");
 
-  lista.innerHTML = filtrados.length ? ""
-    : `<li class="fila-vacia">Todavía no hay lugares en esta categoría.</li>`;
+  let vacio = "";
+  if (!deLaCategoria.length) vacio = "Todavía no hay lugares en esta categoría.";
+  else if (pestana === "hechos") vacio = "Todavía no has hecho ningún plan aquí. Cuando hagas uno, márcalo en Planes sugeridos y aparecerá en esta pestaña.";
+  else vacio = "No quedan planes sugeridos aquí. Prueba otra categoría o pulsa Surprise me.";
+  lista.innerHTML = filtrados.length ? "" : `<li class="fila-vacia">${vacio}</li>`;
   filtrados.forEach((lugar) => {
     const id = LUGARES.indexOf(lugar);
     const abierto = abiertos.has(id);
@@ -114,6 +124,13 @@ function pintarLista() {
     };
     lista.appendChild(fila);
   });
+}
+
+for (const nombre of ["sugeridos", "hechos"]) {
+  document.getElementById("pestana-" + nombre).onclick = () => {
+    pestana = nombre;
+    pintarLista();
+  };
 }
 
 document.getElementById("ver-todo").onclick = () => {

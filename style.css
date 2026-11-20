@@ -259,6 +259,37 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 }
 
 /* --- Filas de lugares --- */
+.pestanas {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 14px;
+  background: var(--papel);
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+}
+.pestana {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.pestana[aria-selected="true"] { background: var(--tinta); color: var(--blanco); font-weight: 700; }
+.pestana-cuenta {
+  font-family: var(--mono);
+  font-size: .75rem;
+  min-width: 22px;
+  padding: 1px 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+}
 .filas { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .fila { border: 2px solid var(--tinta); border-radius: var(--radio); background: var(--blanco); }
 .fila.abierta { background: var(--papel); }
@@ -293,7 +324,6 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 }
 .fila-boton .dibujo { width: 34px; height: 34px; flex: none; }
 .fila-nombre { font-weight: 700; flex: 1; min-width: 0; }
-.fila.visitada .fila-nombre { text-decoration: line-through; text-decoration-thickness: 2px; color: var(--gris); }
 .etiqueta-barrio {
   flex: none;
   font-size: .78rem;

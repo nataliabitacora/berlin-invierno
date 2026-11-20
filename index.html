@@ -61,10 +61,17 @@
         <section class="caja" aria-labelledby="titulo-lista">
           <div class="caja-cabecera">
             <h3 id="titulo-lista">Todos los lugares</h3>
-            <span class="insignia" id="cuenta-lista">12</span>
             <button class="enlace" id="ver-todo" hidden>Ver todo</button>
           </div>
-          <ul class="filas" id="lista"></ul>
+          <div class="pestanas" role="tablist" aria-label="Planes">
+            <button class="pestana" role="tab" id="pestana-sugeridos" aria-controls="lista" aria-selected="true">
+              Planes sugeridos <span class="pestana-cuenta" id="cuenta-sugeridos">0</span>
+            </button>
+            <button class="pestana" role="tab" id="pestana-hechos" aria-controls="lista" aria-selected="false">
+              Planes hechos <span class="pestana-cuenta" id="cuenta-hechos">0</span>
+            </button>
+          </div>
+          <ul class="filas" id="lista" role="tabpanel"></ul>
         </section>
 
         <section class="caja caja-plan" id="plan" aria-labelledby="titulo-plan">
