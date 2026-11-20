@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Getting Cozy · Berlín en invierno</title>
+  <title>Getting Cozy · Berlin in Winter</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
@@ -13,10 +13,10 @@
 
   <!-- Cabecera de las páginas interiores: franja del mural con el menú -->
   <header class="cabecera-pagina">
-    <nav class="menu" aria-label="Principal">
-      <a href="index.html#panel">Planes</a>
+    <nav class="menu" aria-label="Main">
+      <a href="index.html#panel">Plans</a>
       <a href="cozy.html" aria-current="page">Game</a>
-      <a href="repositorio.html">Repositorio</a>
+      <a href="repositorio.html">Repository</a>
     </nav>
   </header>
 
@@ -24,7 +24,7 @@
   <main class="seccion seccion-cozy" id="cozy">
     <div class="seccion-dentro">
       <header class="cabecera-seccion">
-        <p class="antetitulo">Minijuego · Quedarse en casa</p>
+        <p class="antetitulo">Mini game · Staying in</p>
         <h2>Getting Cozy</h2>
         <p class="lema">Because winter is also how you live it at home.</p>
         <p class="entradilla">Your little companion moved to Berlin at the same time as you. Make plans around the city to earn coins, then spend them turning their empty room into a warm, cozy space that truly feels like theirs.</p>
@@ -33,37 +33,37 @@
       <div class="cozy">
         <div class="escena-columna">
           <div class="escena">
-            <canvas id="cuarto" aria-label="Tu cuarto en pixel art isométrico. Pulsa el libro del suelo para abrir el álbum y pulsa a tu avatar para que te hable."></canvas>
-            <div class="zoom" role="group" aria-label="Zoom del cuarto">
-              <button class="zoom-boton" id="zoom-mas" aria-label="Acercar">+</button>
-              <button class="zoom-boton" id="zoom-menos" aria-label="Alejar">−</button>
-              <button class="zoom-boton zoom-texto" id="zoom-todo">Ver todo</button>
-              <button class="zoom-boton zoom-texto" id="zoom-seguir" aria-pressed="false">Seguir</button>
+            <canvas id="cuarto" aria-label="Your companion's room in isometric pixel art. Tap the book on the floor to open the album, and tap your companion to hear what they have to say."></canvas>
+            <div class="zoom" role="group" aria-label="Room zoom">
+              <button class="zoom-boton" id="zoom-mas" aria-label="Zoom in">+</button>
+              <button class="zoom-boton" id="zoom-menos" aria-label="Zoom out">−</button>
+              <button class="zoom-boton zoom-texto" id="zoom-todo">Show all</button>
+              <button class="zoom-boton zoom-texto" id="zoom-seguir" aria-pressed="false">Follow</button>
             </div>
             <p class="bocadillo" id="bocadillo" hidden></p>
             <div class="hud">
-              <span class="hud-nombre" id="hud-nombre">Tu cuarto</span>
-              <span class="monedas"><span class="moneda" aria-hidden="true"></span><b id="monedas">0</b> monedas</span>
+              <span class="hud-nombre" id="hud-nombre">Your companion's room</span>
+              <span class="monedas"><span class="moneda" aria-hidden="true"></span><b id="monedas">0</b> coins</span>
               <div class="medidor">
-                <div class="medidor-texto"><span>Nivel de cozy</span><span id="nivel-nombre"></span></div>
+                <div class="medidor-texto"><span>Cozy level</span><span id="nivel-nombre"></span></div>
                 <div class="medidor-barra"><div class="medidor-relleno" id="nivel-relleno"></div></div>
               </div>
             </div>
           </div>
           <div class="escena-acciones">
-            <button class="pastilla pastilla-negra pastilla-pequena" id="abrir-album">Álbum de fotos</button>
-            <button class="pastilla pastilla-borde pastilla-pequena" id="abrir-editor">Personaliza tu avatar</button>
-            <a class="pastilla pastilla-borde pastilla-pequena" href="index.html#panel">Ganar monedas →</a>
+            <button class="pastilla pastilla-negra pastilla-pequena" id="abrir-album">Photo album</button>
+            <button class="pastilla pastilla-borde pastilla-pequena" id="abrir-editor">Customise your companion</button>
+            <a class="pastilla pastilla-borde pastilla-pequena" href="index.html#panel">Earn coins →</a>
           </div>
           <div class="como-se-juega">
-            <p class="zoom-pista">Acerca la vista con + y −, pellizcando o con Ctrl + rueda, y arrastra para moverte por el cuarto.</p>
-            <p><b>Cómo se juega.</b> Marca lugares como visitados en Planes (+10 monedas cada uno) y cumple misiones del adviento (+5). Al volver aquí se cobran solas. Completar categorías desbloquea objetos especiales.</p>
+            <p class="zoom-pista">Zoom with + and −, by pinching or with Ctrl + scroll, and drag to move around the room.</p>
+            <p><b>How to play.</b> Mark places as done in Plans (+10 coins each) and complete Advent missions (+5). Coins are added automatically when you come back here. Finishing a category unlocks special items.</p>
           </div>
         </div>
 
         <section class="caja caja-tienda" aria-labelledby="titulo-tienda">
           <div class="caja-cabecera">
-            <h3 id="titulo-tienda">Tienda</h3>
+            <h3 id="titulo-tienda">Shop</h3>
           </div>
           <ul class="objetos" id="tienda"></ul>
         </section>
@@ -71,50 +71,50 @@
 
       <section class="caja" aria-labelledby="titulo-logros">
         <div class="caja-cabecera">
-          <h3 id="titulo-logros">Logros</h3>
+          <h3 id="titulo-logros">Achievements</h3>
           <span class="insignia" id="cuenta-logros">0/0</span>
         </div>
-        <p class="caja-nota">Cada logro regala un objeto especial para tu cuarto.</p>
+        <p class="caja-nota">Each achievement gives a special item for the room.</p>
         <ul class="logros" id="logros"></ul>
       </section>
     </div>
   </main>
 
-  <!-- Álbum de fotos -->
+  <!-- Photo album -->
   <dialog class="dialogo dialogo-album" id="album" aria-labelledby="album-titulo">
     <div class="album-cabecera">
-      <h3 id="album-titulo">Álbum de fotos <span class="insignia" id="album-cuenta">0</span></h3>
-      <button class="pastilla pastilla-borde pastilla-pequena" id="cerrar-album">Cerrar</button>
+      <h3 id="album-titulo">Photo album <span class="insignia" id="album-cuenta">0</span></h3>
+      <button class="pastilla pastilla-borde pastilla-pequena" id="cerrar-album">Close</button>
     </div>
     <form class="album-form" id="album-form">
       <label class="pastilla pastilla-negra pastilla-pequena album-elegir">
-        Elegir foto
+        Choose photo
         <input type="file" id="album-archivo" accept="image/*" hidden>
       </label>
-      <span class="album-archivo-nombre" id="album-archivo-nombre">Ninguna foto elegida</span>
-      <input type="text" id="album-pie" placeholder="¿Qué es? (opcional)" maxlength="80">
-      <select id="album-lugar" aria-label="Lugar de la guía (opcional)">
-        <option value="">Sin lugar de la guía</option>
+      <span class="album-archivo-nombre" id="album-archivo-nombre">No photo chosen</span>
+      <input type="text" id="album-pie" placeholder="What is it? (optional)" maxlength="80">
+      <select id="album-lugar" aria-label="Place from the guide (optional)">
+        <option value="">No place from the guide</option>
       </select>
-      <button class="pastilla pastilla-borde pastilla-pequena" type="submit">Guardar en el álbum</button>
+      <button class="pastilla pastilla-borde pastilla-pequena" type="submit">Save to album</button>
       <p class="album-aviso" id="album-aviso" role="status"></p>
     </form>
-    <p class="letra-pequena album-nota">Las fotos se guardan solo en este navegador.</p>
+    <p class="letra-pequena album-nota">Photos are saved in this browser only.</p>
     <div class="album-fotos" id="album-fotos"></div>
   </dialog>
 
-  <!-- Editor del avatar -->
+  <!-- Companion editor -->
   <dialog class="dialogo dialogo-editor" id="editor" aria-labelledby="editor-titulo">
     <div class="editor">
       <canvas class="pixel" id="editor-vista" width="14" height="27" aria-hidden="true"></canvas>
       <div>
-        <h3 id="editor-titulo">Tu avatar</h3>
+        <h3 id="editor-titulo">Your companion</h3>
         <label class="editor-fila editor-nombre">
-          <span class="antetitulo">Nombre</span>
-          <input type="text" id="editor-nombre" maxlength="20" placeholder="¿Cómo se llama?" autocomplete="off">
+          <span class="antetitulo">Name</span>
+          <input type="text" id="editor-nombre" maxlength="20" placeholder="What's their name?" autocomplete="off">
         </label>
         <div id="editor-opciones"></div>
-        <button class="pastilla pastilla-negra pastilla-pequena" id="cerrar-editor">Listo</button>
+        <button class="pastilla pastilla-negra pastilla-pequena" id="cerrar-editor">Done</button>
       </div>
     </div>
   </dialog>
@@ -123,7 +123,7 @@
 
   <footer class="pie">
     <div class="franja-mural" aria-hidden="true"></div>
-    <p>Hecho con frío y Claude Code · Berlín</p>
+    <p>Made in the cold with Claude Code · Berlin</p>
   </footer>
 
 

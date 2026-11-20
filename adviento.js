@@ -3,30 +3,30 @@
 // Al cumplirla se cuelga un adorno en el árbol. Con los 24, se enciende la estrella.
 
 const MISIONES = [
-  { dia: 1,  dibujo: "taza",    titulo: "Primer Glühwein", reto: "Pide un vino caliente en cualquier mercado navideño y quédate con la taza de recuerdo (se paga un depósito)." },
-  { dia: 2,  dibujo: "torre",   titulo: "Caza la torre", reto: "Encuentra la Torre de Televisión desde tres barrios distintos y hazle una foto desde cada uno." },
-  { dia: 3,  dibujo: "pretzel", titulo: "Desayuno berlinés", reto: "Desayuna una Brezel recién hecha en una panadería de barrio." },
-  { dia: 4,  dibujo: "puerta",  titulo: "La Puerta al anochecer", reto: "Cruza la Puerta de Brandeburgo cuando ya esté iluminada (en diciembre anochece hacia las 16:00)." },
-  { dia: 5,  dibujo: "tranvia", titulo: "Vuelta en tranvía", reto: "Recorre una línea de tranvía de principio a fin mirando por la ventana. La M10 cruza medio Berlín, de Moabit (Turmstraße) a Friedrichshain (Warschauer Straße)." },
-  { dia: 6,  dibujo: "oso",     titulo: "Safari de osos", reto: "Encuentra cinco esculturas de osos de Berlín (Buddy Bären) repartidas por la ciudad." },
-  { dia: 7,  dibujo: "arbol",   titulo: "El árbol más grande", reto: "Busca el árbol de Navidad más alto que puedas en una plaza y compáralo con el de tu casa." },
-  { dia: 8,  dibujo: "copo",    titulo: "Paseo por el Tiergarten", reto: "Atraviesa el Tiergarten a pie hasta la Columna de la Victoria." },
-  { dia: 9,  dibujo: "taza",    titulo: "Al estilo nórdico", reto: "Prueba el Glögg en el mercado escandinavo de la Kulturbrauerei (abre hasta el 22 de diciembre)." },
-  { dia: 10, dibujo: "puerta",  titulo: "Saluda a Nefertiti", reto: "Visita la Isla de los Museos y busca el busto de Nefertiti en el Neues Museum." },
-  { dia: 11, dibujo: "pretzel", titulo: "Tortitas de patata", reto: "Come Kartoffelpuffer con compota de manzana en un puesto de mercado." },
-  { dia: 12, dibujo: "muneco",  titulo: "Muñeco de nieve", reto: "Construye un muñeco de nieve en un parque. Si no ha nevado, dibújalo en una servilleta." },
-  { dia: 13, dibujo: "puerta",  titulo: "Bajo la cúpula", reto: "Sube a la cúpula de cristal del Reichstag. Es gratis, pero hay que reservar online." },
-  { dia: 14, dibujo: "copo",    titulo: "Cima helada", reto: "Sube al Teufelsberg y mira la ciudad desde la antigua estación de escucha." },
-  { dia: 15, dibujo: "tranvia", titulo: "El autobús turístico", reto: "Haz el recorrido del autobús 100 entre Zoologischer Garten y Alexanderplatz." },
-  { dia: 16, dibujo: "arbol",   titulo: "Adorno artesano", reto: "Compra un adorno hecho a mano en un mercado para colgarlo en tu árbol de verdad." },
-  { dia: 17, dibujo: "oso",     titulo: "Muro de colores", reto: "Recorre la East Side Gallery entera y elige tu mural favorito." },
-  { dia: 18, dibujo: "taza",    titulo: "Entrar en calor", reto: "Pasa una tarde en una sauna o en el baño termal Liquidrom." },
-  { dia: 19, dibujo: "muneco",  titulo: "Sobre hielo", reto: "Patina en una pista al aire libre, aunque sea agarrándote a la barandilla." },
-  { dia: 20, dibujo: "pretzel", titulo: "Cena en el mercado", reto: "Cena en la Markthalle Neun, un mercado cubierto de 1891 en Kreuzberg." },
-  { dia: 21, dibujo: "copo",    titulo: "El día más corto", reto: "Es el solsticio de invierno: mira la puesta de sol, la más temprana del año." },
-  { dia: 22, dibujo: "torre",   titulo: "Luces sobre el Spree", reto: "Cruza el puente Oberbaumbrücke de noche y mira la ciudad iluminada." },
-  { dia: 23, dibujo: "arbol",   titulo: "Postal desde Berlín", reto: "Escribe una postal a alguien que quieras y échala al buzón." },
-  { dia: 24, dibujo: "oso",     titulo: "Nochebuena", reto: "Brinda por todo lo que has descubierto este mes. ¡Feliz Navidad desde Berlín!" }
+  { dia: 1,  dibujo: "taza",    titulo: "First Glühwein", reto: "Order a mulled wine at any Christmas market and keep the souvenir mug (you pay a small deposit for it)." },
+  { dia: 2,  dibujo: "torre",   titulo: "Tower hunt", reto: "Spot the TV Tower from three different neighbourhoods and take a photo from each one." },
+  { dia: 3,  dibujo: "pretzel", titulo: "Berlin breakfast", reto: "Have a freshly baked Brezel for breakfast at a local bakery." },
+  { dia: 4,  dibujo: "puerta",  titulo: "The Gate at dusk", reto: "Walk through the Brandenburg Gate once it's lit up (in December it gets dark around 4 pm)." },
+  { dia: 5,  dibujo: "tranvia", titulo: "Tram ride", reto: "Ride a tram line from end to end, looking out of the window. The M10 crosses half of Berlin, from Moabit (Turmstraße) to Friedrichshain (Warschauer Straße)." },
+  { dia: 6,  dibujo: "oso",     titulo: "Bear safari", reto: "Find five Berlin bear sculptures (Buddy Bears) scattered around the city." },
+  { dia: 7,  dibujo: "arbol",   titulo: "The biggest tree", reto: "Find the tallest Christmas tree you can in a city square and compare it with the one at home." },
+  { dia: 8,  dibujo: "copo",    titulo: "Tiergarten walk", reto: "Cross the Tiergarten on foot all the way to the Victory Column." },
+  { dia: 9,  dibujo: "taza",    titulo: "Nordic style", reto: "Try Glögg at the Scandinavian market in the Kulturbrauerei (open until 22 December)." },
+  { dia: 10, dibujo: "puerta",  titulo: "Say hi to Nefertiti", reto: "Visit Museum Island and find the bust of Nefertiti in the Neues Museum." },
+  { dia: 11, dibujo: "pretzel", titulo: "Potato pancakes", reto: "Eat Kartoffelpuffer with apple sauce at a market stall." },
+  { dia: 12, dibujo: "muneco",  titulo: "Snowman", reto: "Build a snowman in a park. If it hasn't snowed, draw one on a napkin." },
+  { dia: 13, dibujo: "puerta",  titulo: "Under the dome", reto: "Go up to the Reichstag's glass dome. It's free, but you need to book online." },
+  { dia: 14, dibujo: "copo",    titulo: "Frozen summit", reto: "Climb Teufelsberg and look out over the city from the old listening station." },
+  { dia: 15, dibujo: "tranvia", titulo: "The sightseeing bus", reto: "Ride bus 100 between Zoologischer Garten and Alexanderplatz." },
+  { dia: 16, dibujo: "arbol",   titulo: "Handmade ornament", reto: "Buy a handmade ornament at a market to hang on your real tree." },
+  { dia: 17, dibujo: "oso",     titulo: "Wall of colour", reto: "Walk the whole East Side Gallery and pick your favourite mural." },
+  { dia: 18, dibujo: "taza",    titulo: "Warm up", reto: "Spend an afternoon in a sauna or at the Liquidrom thermal baths." },
+  { dia: 19, dibujo: "muneco",  titulo: "On ice", reto: "Skate on an open-air rink, even if you spend the whole time clinging to the railing." },
+  { dia: 20, dibujo: "pretzel", titulo: "Dinner at the market", reto: "Have dinner at Markthalle Neun, an 1891 covered market in Kreuzberg." },
+  { dia: 21, dibujo: "copo",    titulo: "The shortest day", reto: "It's the winter solstice: watch the sunset, the earliest of the year." },
+  { dia: 22, dibujo: "torre",   titulo: "Lights over the Spree", reto: "Cross the Oberbaumbrücke at night and take in the city lights." },
+  { dia: 23, dibujo: "arbol",   titulo: "Postcard from Berlin", reto: "Write a postcard to someone you love and drop it in a postbox." },
+  { dia: 24, dibujo: "oso",     titulo: "Christmas Eve", reto: "Raise a glass to everything you've discovered this month. Merry Christmas from Berlin!" }
 ];
 
 // Orden desordenado de las puertas, como en los calendarios de verdad.
@@ -83,16 +83,16 @@ function pintarPuertas() {
     if (!disponible(dia)) {
       boton.classList.add("cerrada");
       boton.innerHTML = `<span class="puerta-numero">${dia}</span>`;
-      boton.setAttribute("aria-label", `Día ${dia}: se abre el ${dia} de diciembre`);
-      boton.title = `Se abre el ${dia} de diciembre`;
+      boton.setAttribute("aria-label", `Day ${dia}: opens on ${dia} December`);
+      boton.title = `Opens on ${dia} December`;
     } else if (!abiertas.includes(dia)) {
       boton.classList.add("disponible");
       boton.innerHTML = `<span class="puerta-numero">${dia}</span>`;
-      boton.setAttribute("aria-label", `Abrir la puerta del día ${dia}`);
+      boton.setAttribute("aria-label", `Open the door for day ${dia}`);
     } else {
       if (cumplidas.includes(dia)) boton.classList.add("cumplida");
       boton.innerHTML = `<span class="puerta-dia">${dia}</span>${dibujo(m.dibujo)}`;
-      boton.setAttribute("aria-label", `Día ${dia}: ${m.titulo}${cumplidas.includes(dia) ? " (cumplida)" : ""}`);
+      boton.setAttribute("aria-label", `Day ${dia}: ${m.titulo}${cumplidas.includes(dia) ? " (done)" : ""}`);
       boton.title = m.titulo;
     }
 
@@ -120,14 +120,14 @@ function abrirDialogo(dia) {
     <div class="franja-mural" aria-hidden="true"></div>
     <div class="dialogo-cuerpo">
       ${dibujo(m.dibujo)}
-      <p class="antetitulo">${dia} de diciembre</p>
+      <p class="antetitulo">${dia} December</p>
       <h3 id="dialogo-titulo">${m.titulo}</h3>
       <p>${m.reto}</p>
       <div class="dialogo-acciones">
         <button class="pastilla pastilla-negra pastilla-pequena" id="dialogo-cumplir">
-          ${hecha ? "Quitar el adorno" : "¡Misión cumplida!"}
+          ${hecha ? "Take the ornament down" : "Mission accomplished!"}
         </button>
-        <button class="pastilla pastilla-borde pastilla-pequena" id="dialogo-cerrar">Cerrar</button>
+        <button class="pastilla pastilla-borde pastilla-pequena" id="dialogo-cerrar">Close</button>
       </div>
     </div>
   `;
@@ -162,7 +162,7 @@ function pintarArbol(nuevo = null) {
       : "";
     return `
       <g class="adorno" transform="translate(${x} ${y})">
-        <title>Día ${dia}: ${mision(dia).titulo}</title>
+        <title>Day ${dia}: ${mision(dia).titulo}</title>
         <g>${animar}
           <line x1="0" y1="-14" x2="0" y2="-10" stroke="#111" stroke-width="2"/>
           <circle r="11" fill="#111" stroke="#fff" stroke-width="2"/>
@@ -173,7 +173,7 @@ function pintarArbol(nuevo = null) {
 
   document.getElementById("arbol").innerHTML = `
     <svg class="arbol-svg" viewBox="0 0 300 340" role="img"
-         aria-label="Árbol de Navidad con ${cumplidas.length} de 24 adornos">
+         aria-label="Christmas tree with ${cumplidas.length} of 24 ornaments">
       <g stroke="#111" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
         <rect x="132" y="275" width="36" height="34" fill="#111"/>
         <path d="M110 309 H190 L182 330 H118 Z" fill="#fff"/>
@@ -192,9 +192,9 @@ function pintarArbol(nuevo = null) {
   document.getElementById("cuenta-adornos").textContent = `${cumplidas.length}/24`;
 
   const mensaje = document.getElementById("arbol-mensaje");
-  if (completo) mensaje.textContent = "¡Árbol completo! La estrella está encendida. Feliz Navidad desde Berlín.";
-  else if (cumplidas.length === 0) mensaje.textContent = "Abre una puerta y cumple su misión para colgar el primer adorno.";
-  else mensaje.textContent = `Te faltan ${24 - cumplidas.length} adornos para encender la estrella.`;
+  if (completo) mensaje.textContent = "Tree complete! The star is lit. Merry Christmas from Berlin.";
+  else if (cumplidas.length === 0) mensaje.textContent = "Open a door and complete its mission to hang your first ornament.";
+  else mensaje.textContent = `${24 - cumplidas.length} more ornaments to light up the star.`;
 }
 
 // Antes había un modo prueba que abría todas las puertas; ya no existe.

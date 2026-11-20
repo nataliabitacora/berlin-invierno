@@ -6,22 +6,22 @@ const MONEDAS_POR_MISION = 5;   // cada misión cumplida del calendario de advie
 // Tienda. "puntos" es lo que suma cada objeto al nivel de cozy del cuarto.
 // "colores" indica qué paleta se puede elegir una vez comprado (ver PALETAS).
 const TIENDA = [
-  { id: "radiador",   nombre: "Radiador",               precio: 20, puntos: 12, desc: "Lo primero: que deje de hacer frío." },
-  { id: "lampara",    nombre: "Lámpara de luz cálida",  precio: 20, puntos: 12, desc: "Adiós a la bombilla blanca del techo." },
-  { id: "cortinas",   nombre: "Cortinas",               precio: 10, puntos: 6,  desc: "Para mirar la nieve con otros ojos." },
-  { id: "alfombra",   nombre: "Alfombra",               precio: 15, puntos: 8,  desc: "Para no pisar el suelo helado.", colores: "alfombra" },
-  { id: "ropa",       nombre: "Ropa de estar por casa", precio: 15, puntos: 10, desc: "Fuera el abrigo: jersey gordo, pijama y calcetines." },
-  { id: "suelo",      nombre: "Suelo de madera",        precio: 20, puntos: 8,  desc: "Tarima cálida en lugar de baldosa fría.", colores: "suelo" },
-  { id: "pintura",    nombre: "Pintura para las paredes", precio: 25, puntos: 10, desc: "Elige el color de tu cuarto.", colores: "pared" },
-  { id: "cama",       nombre: "Cama con edredón",       precio: 35, puntos: 14, desc: "El mejor sitio para las tardes de enero.", colores: "edredon" },
-  { id: "velas",      nombre: "Velas",                  precio: 8,  puntos: 5,  desc: "En la ventana, como en las casas berlinesas." },
-  { id: "guirnalda",  nombre: "Guirnalda de luces",     precio: 15, puntos: 8,  desc: "Luz de colores de pared a pared." },
-  { id: "estanteria", nombre: "Estantería con libros",  precio: 25, puntos: 8,  desc: "Lecturas para cuando anochece a las cuatro." },
-  { id: "mesita",     nombre: "Mesita con té",          precio: 15, puntos: 7,  desc: "Siempre con una taza humeante." },
-  { id: "sillon",     nombre: "Sillón",                 precio: 30, puntos: 10, desc: "Para hundirse en él.", colores: "sillon" },
-  { id: "cuadro",     nombre: "Cuadro",                 precio: 12, puntos: 5,  desc: "Un paisaje de verano para el invierno." },
-  { id: "planta",     nombre: "Planta colgante",        precio: 10, puntos: 5,  desc: "Algo verde que sobreviva a febrero." },
-  { id: "gato",       nombre: "Gato",                   precio: 40, puntos: 12, desc: "Incluye ronroneo." }
+  { id: "radiador",   nombre: "Radiator",               precio: 20, puntos: 12, desc: "First things first: no more freezing." },
+  { id: "lampara",    nombre: "Warm floor lamp",        precio: 20, puntos: 12, desc: "Goodbye, bare white bulb." },
+  { id: "cortinas",   nombre: "Curtains",               precio: 10, puntos: 6,  desc: "To watch the snow through softer eyes." },
+  { id: "alfombra",   nombre: "Rug",                    precio: 15, puntos: 8,  desc: "So your toes never touch the icy floor.", colores: "alfombra" },
+  { id: "ropa",       nombre: "Comfy home clothes",     precio: 15, puntos: 10, desc: "Coat off: chunky jumper, pyjamas and thick socks." },
+  { id: "suelo",      nombre: "Wooden floor",           precio: 20, puntos: 8,  desc: "Warm floorboards instead of cold tiles.", colores: "suelo" },
+  { id: "pintura",    nombre: "Wall paint",             precio: 25, puntos: 10, desc: "Pick a colour for the room.", colores: "pared" },
+  { id: "cama",       nombre: "Bed with a duvet",       precio: 35, puntos: 14, desc: "The best place to spend a January afternoon.", colores: "edredon" },
+  { id: "velas",      nombre: "Candles",                precio: 8,  puntos: 5,  desc: "On the windowsill, like in every Berlin flat." },
+  { id: "guirnalda",  nombre: "Fairy lights",           precio: 15, puntos: 8,  desc: "Colourful light from wall to wall." },
+  { id: "estanteria", nombre: "Bookshelf",              precio: 25, puntos: 8,  desc: "Reading for when it gets dark at four." },
+  { id: "mesita",     nombre: "Side table with tea",    precio: 15, puntos: 7,  desc: "Always with a steaming mug." },
+  { id: "sillon",     nombre: "Armchair",               precio: 30, puntos: 10, desc: "Made for sinking into.", colores: "sillon" },
+  { id: "cuadro",     nombre: "Painting",               precio: 12, puntos: 5,  desc: "A summer landscape to get through winter." },
+  { id: "planta",     nombre: "Hanging plant",          precio: 10, puntos: 5,  desc: "Something green to survive February." },
+  { id: "gato",       nombre: "Cat",                    precio: 40, puntos: 12, desc: "Purring included." }
 ];
 
 // Logros: al cumplirse, regalan un objeto especial para el cuarto.
@@ -32,38 +32,38 @@ const completa = (cat) => (c) => {
 };
 
 const LOGROS = [
-  { id: "primer-plan", nombre: "Primer plan", pista: "Visita tu primer lugar.",
-    objeto: "postal", objNombre: "Postal de Berlín", puntos: 3, cumple: (c) => c.visitados.length >= 1 },
-  { id: "seis-planes", nombre: "Medio invierno", pista: "Visita 6 lugares.",
-    objeto: "peluche", objNombre: "Oso de peluche", puntos: 5, cumple: (c) => c.visitados.length >= 6 },
-  { id: "todos", nombre: "Berlín, completado", pista: "Visita todos los lugares de la guía.",
-    objeto: "banderin", objNombre: "Banderín de Berlín", puntos: 6, cumple: (c) => c.visitados.length === LUGARES.length },
-  { id: "history", nombre: "Historiadora", pista: "Completa la categoría History.",
-    objeto: "muro", objNombre: "Trozo del Muro", puntos: 6, cumple: completa("history") },
-  { id: "arts-culture", nombre: "Ratón de museo", pista: "Completa la categoría Arts & Culture.",
-    objeto: "poster", objNombre: "Póster de cine", puntos: 5, cumple: completa("arts-culture") },
-  { id: "wander", nombre: "Paseante", pista: "Completa la categoría Wander.",
-    objeto: "mapa", objNombre: "Mapa de Berlín", puntos: 5, cumple: completa("wander") },
-  { id: "parties", nombre: "Hasta el amanecer", pista: "Completa la categoría Parties.",
-    objeto: "bola", objNombre: "Bola de discoteca", puntos: 6, cumple: completa("parties") },
-  { id: "cozy-coffee", nombre: "Cafeína", pista: "Completa la categoría Cozy Coffee.",
-    objeto: "moka", objNombre: "Cafetera humeante", puntos: 5, cumple: completa("cozy-coffee") },
-  { id: "christmas-markets", nombre: "Espíritu navideño", pista: "Completa la categoría Christmas Markets.",
-    objeto: "estrella", objNombre: "Estrella de papel", puntos: 6, cumple: completa("christmas-markets") },
-  { id: "berliner-101", nombre: "Berlinesa de verdad", pista: "Completa la categoría Berliner 101.",
-    objeto: "ampelmann", objNombre: "Lámpara de semáforo", puntos: 5, cumple: completa("berliner-101") },
-  { id: "adviento", nombre: "Adviento completo", pista: "Cumple las 24 misiones del calendario de adviento.",
-    objeto: "arbol", objNombre: "Árbol de Navidad", puntos: 10, cumple: (c) => c.cumplidas.length >= 24 }
+  { id: "primer-plan", nombre: "First plan", pista: "Visit your first place.",
+    objeto: "postal", objNombre: "Berlin postcard", puntos: 3, cumple: (c) => c.visitados.length >= 1 },
+  { id: "seis-planes", nombre: "Halfway through winter", pista: "Visit 6 places.",
+    objeto: "peluche", objNombre: "Teddy bear", puntos: 5, cumple: (c) => c.visitados.length >= 6 },
+  { id: "todos", nombre: "Berlin, done", pista: "Visit every place in the guide.",
+    objeto: "banderin", objNombre: "Berlin bunting", puntos: 6, cumple: (c) => c.visitados.length === LUGARES.length },
+  { id: "history", nombre: "History buff", pista: "Do every plan in History.",
+    objeto: "muro", objNombre: "Piece of the Wall", puntos: 6, cumple: completa("history") },
+  { id: "arts-culture", nombre: "Museum mouse", pista: "Do every plan in Arts & Culture.",
+    objeto: "poster", objNombre: "Film poster", puntos: 5, cumple: completa("arts-culture") },
+  { id: "wander", nombre: "Flâneur", pista: "Do every plan in Wander.",
+    objeto: "mapa", objNombre: "Map of Berlin", puntos: 5, cumple: completa("wander") },
+  { id: "parties", nombre: "Until sunrise", pista: "Do every plan in Parties.",
+    objeto: "bola", objNombre: "Disco ball", puntos: 6, cumple: completa("parties") },
+  { id: "cozy-coffee", nombre: "Caffeinated", pista: "Do every plan in Cozy Coffee.",
+    objeto: "moka", objNombre: "Steaming moka pot", puntos: 5, cumple: completa("cozy-coffee") },
+  { id: "christmas-markets", nombre: "Christmas spirit", pista: "Do every plan in Christmas Markets.",
+    objeto: "estrella", objNombre: "Paper star", puntos: 6, cumple: completa("christmas-markets") },
+  { id: "berliner-101", nombre: "True Berliner", pista: "Do every plan in Berliner 101.",
+    objeto: "ampelmann", objNombre: "Traffic-light lamp", puntos: 5, cumple: completa("berliner-101") },
+  { id: "adviento", nombre: "Advent complete", pista: "Complete all 24 Advent calendar missions.",
+    objeto: "arbol", objNombre: "Christmas tree", puntos: 10, cumple: (c) => c.cumplidas.length >= 24 }
 ];
 
 // Colores que se pueden elegir.
 const PALETAS = {
-  pared:    [["Crema", "#f1dfbd"], ["Melocotón", "#e9b99c"], ["Salvia", "#b8c7a3"], ["Lavanda", "#c6b6d6"],
-             ["Terracota", "#d9785a"], ["Turquesa", "#6fb7b0"], ["Amarillo", "#f2cf6b"], ["Rosa", "#f0a8b8"], ["Azul noche", "#3f5578"]],
-  suelo:    [["Roble", "#b9875a"], ["Nogal", "#7a5236"], ["Pino", "#d9b98c"], ["Ceniza", "#a39a8f"]],
-  alfombra: [["Rojo", "#b8433a"], ["Mostaza", "#d4a237"], ["Verde", "#5d8a5a"], ["Azul", "#4a6a9a"]],
-  edredon:  [["Mostaza", "#d4a237"], ["Rosa", "#d98a9a"], ["Verde", "#5d8a5a"], ["Azul", "#4a6a9a"]],
-  sillon:   [["Teja", "#a8573e"], ["Verde", "#4f7a5a"], ["Azul", "#3f5f8a"], ["Mostaza", "#c7962e"]]
+  pared:    [["Cream", "#f1dfbd"], ["Peach", "#e9b99c"], ["Sage", "#b8c7a3"], ["Lavender", "#c6b6d6"],
+             ["Terracotta", "#d9785a"], ["Turquoise", "#6fb7b0"], ["Yellow", "#f2cf6b"], ["Pink", "#f0a8b8"], ["Midnight blue", "#3f5578"]],
+  suelo:    [["Oak", "#b9875a"], ["Walnut", "#7a5236"], ["Pine", "#d9b98c"], ["Ash", "#a39a8f"]],
+  alfombra: [["Red", "#b8433a"], ["Mustard", "#d4a237"], ["Green", "#5d8a5a"], ["Blue", "#4a6a9a"]],
+  edredon:  [["Mustard", "#d4a237"], ["Pink", "#d98a9a"], ["Green", "#5d8a5a"], ["Blue", "#4a6a9a"]],
+  sillon:   [["Rust", "#a8573e"], ["Green", "#4f7a5a"], ["Blue", "#3f5f8a"], ["Mustard", "#c7962e"]]
 };
 
 // Avatar: opciones del editor.
@@ -79,9 +79,16 @@ const AVATAR = {
   jersey:  ["#c0453a", "#3f6e9e", "#5c8a4e", "#d8a23a", "#7a5a9a"]
 };
 
+// Visible labels for the avatar options (the keys above are used internally to draw it).
+const ETIQUETAS_AVATAR = {
+  "Femenina": "Feminine", "Masculina": "Masculine",
+  "Media melena": "Bob", "Largo": "Long", "Moño": "Bun",
+  "Corto": "Short", "Rapado": "Buzz cut", "Con barba": "Beard"
+};
+
 // Lo que dice el avatar según lo acogedor que esté el cuarto.
 const FRASES = [
-  ["Brrr… aquí hace un frío que pela.", "Todavía llevo el abrigo puesto. ¿Dónde están mis calcetines gordos?", "Paredes blancas, luz blanca, nieve fuera. Necesito planes.", "¿Salimos a ganar monedas?"],
-  ["Esto empieza a parecer un hogar.", "Un poco más y no echo de menos el verano.", "¿Qué compramos ahora?"],
-  ["No pienso salir de aquí hasta marzo.", "Esto es Gemütlichkeit pura.", "Que nieve todo lo que quiera."]
+  ["Brrr… it's freezing in here.", "I'm still wearing my coat. Where are my thick socks?", "White walls, white light, snow outside. I need plans.", "Shall we go out and earn some coins?"],
+  ["This is starting to feel like home.", "A bit more and I won't miss summer at all.", "What shall we buy next?"],
+  ["I'm not leaving this room until March.", "This is pure Gemütlichkeit.", "Let it snow as much as it likes."]
 ];

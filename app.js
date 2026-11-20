@@ -7,7 +7,9 @@ let visitados = cargarVisitados();
 
 function cargarVisitados() {
   try {
-    return JSON.parse(localStorage.getItem("berlin-visitados")) || [];
+    // Old saves use the Spanish place names: translate them to the current ones.
+    const guardados = JSON.parse(localStorage.getItem("berlin-visitados")) || [];
+    return [...new Set(guardados.map(nombreActual))];
   } catch {
     return [];
   }
@@ -36,8 +38,10 @@ function alternarVisitado(lugar) {
 // ---------- Dibujo de cada categoría (ver dibujos.js) ----------
 const icono = (cat) => dibujo(DIBUJO_CATEGORIA[cat]);
 
+guardarVisitados(); // stores the list with the current (English) names
+
 // ---------- Fecha ----------
-document.getElementById("fecha").textContent = new Date().toLocaleDateString("es-ES", {
+document.getElementById("fecha").textContent = new Date().toLocaleDateString("en-GB", {
   weekday: "long", day: "numeric", month: "long"
 });
 
@@ -53,7 +57,7 @@ function pintarContadores() {
     boton.className = "contador";
     boton.dataset.cat = cat;
     boton.setAttribute("aria-pressed", filtroActivo === cat);
-    boton.title = `${nombre}: ${hechos} ${hechos === 1 ? "lugar visitado" : "lugares visitados"}`;
+    boton.title = `${nombre}: ${hechos} ${hechos === 1 ? "place visited" : "places visited"}`;
     boton.innerHTML = `
       <span class="contador-arriba">${icono(cat)}<span class="contador-numero">${hechos}</span></span>
       <span class="contador-etiqueta">${nombre}</span>
@@ -68,7 +72,7 @@ function pintarContadores() {
   // Categoría extra: no filtra, propone un plan al azar.
   const sorpresa = document.createElement("button");
   sorpresa.className = "contador contador-sorpresa";
-  sorpresa.title = "Un plan al azar de cualquier categoría";
+  sorpresa.title = "A random plan from any category";
   sorpresa.innerHTML = `
     <span class="contador-arriba">${dibujo("dado")}<span class="contador-numero">?</span></span>
     <span class="contador-etiqueta">Surprise me</span>
@@ -87,7 +91,7 @@ function pintarLista() {
   const filtrados = pestana === "hechos" ? hechos : sugeridos;
 
   document.getElementById("titulo-lista").textContent =
-    filtroActivo ? CATEGORIAS[filtroActivo] : "Todos los lugares";
+    filtroActivo ? CATEGORIAS[filtroActivo] : "All places";
   document.getElementById("ver-todo").hidden = !filtroActivo;
   pintarFiltros();
   document.getElementById("cuenta-sugeridos").textContent = sugeridos.length;
@@ -97,10 +101,10 @@ function pintarLista() {
 
   let vacio = "";
   if (!deLaCategoria.length) vacio = barrios.size
-    ? "Ningún plan coincide con este filtro de lugar."
-    : "Todavía no hay lugares en esta categoría.";
-  else if (pestana === "hechos") vacio = "Todavía no has hecho ningún plan aquí. Cuando hagas uno, márcalo en Planes sugeridos y aparecerá en esta pestaña.";
-  else vacio = "No quedan planes sugeridos aquí. Prueba otra categoría o pulsa Surprise me.";
+    ? "No plans match this area filter."
+    : "There are no places in this category yet.";
+  else if (pestana === "hechos") vacio = "You haven't done any plans here yet. When you do one, tick it in Suggested plans and it will show up in this tab.";
+  else vacio = "No suggested plans left here. Try another category or hit Surprise me.";
   // Si el plan seleccionado ya no está en la lista (cambio de pestaña, filtro o
   // porque se acaba de marcar), se selecciona el primero que se ve.
   if (!filtrados.includes(seleccionado)) seleccionado = filtrados[0] || null;
@@ -114,7 +118,7 @@ function pintarLista() {
     fila.innerHTML = `
       <div class="fila-principal">
         <input type="checkbox" class="casilla" id="visitado-${id}" ${estaVisitado(lugar) ? "checked" : ""}
-               aria-label="Marcar ${lugar.nombre} como hecho">
+               aria-label="Mark ${lugar.nombre} as done">
         <button class="fila-boton" aria-pressed="${elegido}" aria-controls="plan">
           ${icono(lugar.categoria)}
           <span class="fila-nombre">${lugar.nombre}</span>
@@ -140,7 +144,7 @@ function pintarLista() {
 // ---------- Filtro por lugar ----------
 const dialogoFiltros = document.getElementById("dialogo-filtros");
 const todosLosBarrios = [...new Set(LUGARES.map((l) => l.barrio))]
-  .sort((x, y) => (x === "Toda la ciudad") - (y === "Toda la ciudad") || x.localeCompare(y, "es"));
+  .sort((x, y) => (x === "All over the city") - (y === "All over the city") || x.localeCompare(y, "en"));
 
 function marcados() {
   return new Set([...dialogoFiltros.querySelectorAll("input:checked")].map((c) => c.value));
@@ -155,7 +159,7 @@ function contarConFiltro(seleccion) {
 
 function actualizarBotonAplicar() {
   const n = contarConFiltro(marcados());
-  document.getElementById("aplicar-filtros").textContent = `Ver ${n} ${n === 1 ? "plan" : "planes"}`;
+  document.getElementById("aplicar-filtros").textContent = `Show ${n} ${n === 1 ? "plan" : "plans"}`;
 }
 
 function abrirFiltros() {
@@ -181,7 +185,7 @@ function pintarFiltros() {
     const chip = document.createElement("button");
     chip.className = "chip chip-filtro";
     chip.innerHTML = `${barrio} <span aria-hidden="true">×</span>`;
-    chip.setAttribute("aria-label", `Quitar filtro: ${barrio}`);
+    chip.setAttribute("aria-label", `Remove filter: ${barrio}`);
     chip.onclick = () => { barrios.delete(barrio); pintarLista(); pintarPlan(); };
     chips.appendChild(chip);
   }
@@ -223,7 +227,7 @@ function pintarPlan(animar = false) {
   const caja = document.getElementById("plan-contenido");
   const l = seleccionado;
   if (!l) {
-    caja.innerHTML = `<p class="plan-vacio">Elige un plan de la lista para ver aquí todos los detalles.</p>`;
+    caja.innerHTML = `<p class="plan-vacio">Pick a plan from the list to see all the details here.</p>`;
     return;
   }
   const hecho = estaVisitado(l);
@@ -231,15 +235,15 @@ function pintarPlan(animar = false) {
     <article class="plan${animar ? " destello" : ""}">
       <div class="plan-etiquetas">
         <span class="chip">${CATEGORIAS[l.categoria]}</span>
-        ${hecho ? `<span class="chip chip-hecho">✓ Hecho</span>` : ""}
+        ${hecho ? `<span class="chip chip-hecho">✓ Done</span>` : ""}
       </div>
       <h4>${l.nombre}</h4>
       <p class="barrio">${l.barrio}</p>
       <p>${l.descripcion}</p>
-      <p class="consejo"><b>Consejo:</b> ${l.consejo}</p>
+      <p class="consejo"><b>Tip:</b> ${l.consejo}</p>
       <div class="plan-acciones">
         <button class="pastilla ${hecho ? "pastilla-borde" : "pastilla-negra"} pastilla-pequena" id="plan-hecho">
-          ${hecho ? "Desmarcar como hecho" : "Marcar como hecho"}
+          ${hecho ? "Mark as not done" : "Mark as done"}
         </button>
       </div>
     </article>
@@ -270,7 +274,7 @@ document.getElementById("sorpresa").onclick = sorprender;
 
 // ---------- Progreso y repintado ----------
 function pintarTodo() {
-  document.getElementById("ver-lugares").textContent = `Ver los ${LUGARES.length} lugares`;
+  document.getElementById("ver-lugares").textContent = `See all ${LUGARES.length} places`;
   pintarContadores();
   pintarLista();
   pintarPlan();

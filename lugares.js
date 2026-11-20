@@ -1,89 +1,89 @@
-// Datos de los lugares. Para añadir uno nuevo, copia un bloque { ... } y edítalo.
+// Places data (shown in English). To add one, copy a { ... } block and edit it.
 // categoria: "history" | "arts-culture" | "wander" | "parties" | "cozy-coffee" | "christmas-markets" | "berliner-101"
 const LUGARES = [
   {
-    nombre: "Mercado navideño del Palacio de Charlottenburg",
+    nombre: "Charlottenburg Palace Christmas Market",
     categoria: "christmas-markets",
     barrio: "Charlottenburg",
-    descripcion: "Puestos iluminados frente a un palacio barroco. Ideal al anochecer con un Glühwein (vino caliente).",
-    consejo: "Abre del 23 de noviembre al 27 de diciembre (cerrado el 24). Ve entre semana para evitar las multitudes."
+    descripcion: "Twinkling stalls in front of a baroque palace. Best at dusk with a Glühwein (mulled wine).",
+    consejo: "Open 23 November to 27 December (closed on the 24th). Go on a weekday to avoid the crowds."
   },
   {
-    nombre: "Lucia Weihnachtsmarkt (Kulturbrauerei)",
+    nombre: "Lucia Christmas Market (Kulturbrauerei)",
     categoria: "christmas-markets",
     barrio: "Prenzlauer Berg",
-    descripcion: "Mercado de inspiración escandinava dentro de una antigua fábrica de cerveza de ladrillo rojo.",
-    consejo: "Abre del 23 de noviembre al 22 de diciembre, entre semana desde las 15:00. Prueba el Glögg, la versión nórdica del vino caliente."
+    descripcion: "A Scandinavian-inspired market inside a former red-brick brewery.",
+    consejo: "Open 23 November to 22 December, from 3 pm on weekdays. Try Glögg, the Nordic take on mulled wine."
   },
   {
-    nombre: "Isla de los Museos",
+    nombre: "Museum Island",
     categoria: "arts-culture",
     barrio: "Mitte",
-    descripcion: "Cinco museos en una isla del río Spree. En el Neues Museum está el busto de Nefertiti.",
-    consejo: "El Pergamonmuseum sigue cerrado por obras hasta 2027; el Neues Museum, el Altes Museum y el Bode-Museum sí abren."
+    descripcion: "Five museums on an island in the River Spree. The bust of Nefertiti lives in the Neues Museum.",
+    consejo: "The Pergamonmuseum is closed for renovation until 2027; the Neues Museum, Altes Museum and Bode-Museum are open."
   },
   {
-    nombre: "Cúpula del Reichstag",
+    nombre: "Reichstag Dome",
     categoria: "history",
     barrio: "Mitte",
-    descripcion: "Cúpula de cristal con vistas a la ciudad. Gratis y con audioguía.",
-    consejo: "Es gratis, pero hay que reservar online con antelación en bundestag.de y llevar documento de identidad."
+    descripcion: "A glass dome with views over the city. Free, with an audio guide.",
+    consejo: "Entry is free, but you need to book online in advance at bundestag.de and bring photo ID."
   },
   {
     nombre: "Teufelsberg",
     categoria: "history",
     barrio: "Grunewald",
-    descripcion: "Colina con una antigua estación de escucha de la Guerra Fría, hoy llena de grafitis. Con nieve es espectacular.",
-    consejo: "Lleva calzado que agarre: el camino se hiela."
+    descripcion: "A hill topped by a former Cold War listening station, now covered in graffiti. Spectacular in the snow.",
+    consejo: "Wear shoes with good grip: the path gets icy."
   },
   {
     nombre: "East Side Gallery",
     categoria: "history",
     barrio: "Friedrichshain",
-    descripcion: "El tramo más largo que queda del Muro de Berlín, cubierto de murales.",
-    consejo: "Recórrela con luz de día; en invierno anochece hacia las 16:00."
+    descripcion: "The longest surviving stretch of the Berlin Wall, covered in murals.",
+    consejo: "Walk it in daylight; in winter it gets dark around 4 pm."
   },
   {
-    nombre: "Paseo invernal por el Tiergarten",
+    nombre: "Winter walk through the Tiergarten",
     categoria: "wander",
     barrio: "Tiergarten",
-    descripcion: "El gran parque de Berlín, silencioso y blanco en invierno. Termina en la Puerta de Brandeburgo.",
-    consejo: "Si los lagos se congelan, no pises el hielo salvo que esté permitido."
+    descripcion: "Berlin's great park, quiet and white in winter. It ends at the Brandenburg Gate.",
+    consejo: "If the lakes freeze over, stay off the ice unless it's officially allowed."
   },
   {
     nombre: "Liquidrom",
     categoria: "cozy-coffee",
     barrio: "Kreuzberg",
-    descripcion: "Baño termal con piscina de agua salada, música bajo el agua y saunas.",
-    consejo: "Perfecto para recuperarse tras un día de frío."
+    descripcion: "Thermal baths with a saltwater pool, underwater music and saunas.",
+    consejo: "Perfect for thawing out after a freezing day."
   },
   {
-    nombre: "Pista de patinaje en Alexanderplatz",
+    nombre: "Alexanderplatz ice rink",
     categoria: "christmas-markets",
     barrio: "Mitte",
-    descripcion: "Pista de hielo al aire libre durante la temporada navideña, rodeada de puestos.",
-    consejo: "Comprueba antes si este año hay pista: en 2026 el mercado de Alexanderplatz anuncia solo pista de curling bávaro (Eisstock)."
+    descripcion: "An open-air ice rink during the Christmas season, surrounded by stalls.",
+    consejo: "Check first whether there's a rink this year: in 2026 the Alexanderplatz market only lists a Bavarian curling lane (Eisstock)."
   },
   {
     nombre: "Markthalle Neun",
     categoria: "cozy-coffee",
     barrio: "Kreuzberg",
-    descripcion: "Mercado cubierto de 1891. Los jueves de 17:00 a 22:00 hay Street Food Thursday.",
-    consejo: "Un sitio caliente para comer algo cuando aprieta el frío."
+    descripcion: "A covered market hall from 1891. Street Food Thursday runs every Thursday from 5 to 10 pm.",
+    consejo: "A warm spot to grab a bite when the cold really bites."
   },
   {
-    nombre: "Currywurst en un Imbiss",
+    nombre: "Currywurst at an Imbiss",
     categoria: "berliner-101",
-    barrio: "Toda la ciudad",
-    descripcion: "Salchicha con salsa de curry y kétchup: el clásico callejero de Berlín.",
-    consejo: "Pídela 'mit Pommes' (con patatas fritas)."
+    barrio: "All over the city",
+    descripcion: "Sausage with curry sauce and ketchup: Berlin's classic street food.",
+    consejo: "Order it 'mit Pommes' (with fries)."
   },
   {
     nombre: "Berlinale",
     categoria: "arts-culture",
     barrio: "Potsdamer Platz",
-    descripcion: "Festival internacional de cine. En 2027 se celebra del 10 al 21 de febrero y hay entradas para el público.",
-    consejo: "Las entradas salen a la venta pocos días antes de cada pase y vuelan. El 20 y 21 de febrero son días del público, con entradas más baratas."
+    descripcion: "International film festival. In 2027 it runs from 10 to 21 February, with tickets for the general public.",
+    consejo: "Tickets go on sale a few days before each screening and sell out fast. 20 and 21 February are audience days, with cheaper tickets."
   }
 ];
 
@@ -96,3 +96,16 @@ const CATEGORIAS = {
   "christmas-markets": "Christmas Markets",
   "berliner-101": "Berliner 101"
 };
+
+// Old Spanish names → current names. Visited places and earned coins are saved in
+// the browser by name, so old saves are translated when the page loads.
+const NOMBRES_ANTIGUOS = {
+  "Mercado navideño del Palacio de Charlottenburg": "Charlottenburg Palace Christmas Market",
+  "Lucia Weihnachtsmarkt (Kulturbrauerei)": "Lucia Christmas Market (Kulturbrauerei)",
+  "Isla de los Museos": "Museum Island",
+  "Cúpula del Reichstag": "Reichstag Dome",
+  "Paseo invernal por el Tiergarten": "Winter walk through the Tiergarten",
+  "Pista de patinaje en Alexanderplatz": "Alexanderplatz ice rink",
+  "Currywurst en un Imbiss": "Currywurst at an Imbiss"
+};
+const nombreActual = (nombre) => NOMBRES_ANTIGUOS[nombre] || nombre;

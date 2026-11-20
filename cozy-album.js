@@ -56,7 +56,7 @@ for (const l of LUGARES) {
 }
 
 entradaArchivo.onchange = () => {
-  nombreArchivo.textContent = entradaArchivo.files[0]?.name || "Ninguna foto elegida";
+  nombreArchivo.textContent = entradaArchivo.files[0]?.name || "No photo chosen";
 };
 
 async function pintarAlbum() {
@@ -65,28 +65,28 @@ async function pintarAlbum() {
   try {
     fotos = await listarFotos();
   } catch {
-    caja.innerHTML = `<p class="album-vacio">Este navegador no deja guardar fotos (puede pasar en una ventana privada).</p>`;
+    caja.innerHTML = `<p class="album-vacio">This browser won't let us save photos (this can happen in a private window).</p>`;
     return;
   }
   document.getElementById("album-cuenta").textContent = fotos.length;
 
   if (!fotos.length) {
-    caja.innerHTML = `<p class="album-vacio">El álbum está vacío. Añade la primera foto de algo que hayas visto por Berlín.</p>`;
+    caja.innerHTML = `<p class="album-vacio">The album is empty. Add your first photo of something you've seen around Berlin.</p>`;
     return;
   }
   caja.innerHTML = fotos.reverse().map((f) => `
     <figure class="polaroid">
-      <img src="${f.imagen}" alt="${escapar(f.pie || "Foto del álbum")}">
+      <img src="${f.imagen}" alt="${escapar(f.pie || "Album photo")}">
       <figcaption>
         ${f.pie ? `<b>${escapar(f.pie)}</b>` : ""}
-        <span>${f.lugar ? escapar(f.lugar) + " · " : ""}${new Date(f.fecha).toLocaleDateString("es-ES", { day: "numeric", month: "short" })}</span>
+        <span>${f.lugar ? escapar(nombreActual(f.lugar)) + " · " : ""}${new Date(f.fecha).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
       </figcaption>
-      <button class="polaroid-borrar" data-id="${f.id}" aria-label="Borrar foto">×</button>
+      <button class="polaroid-borrar" data-id="${f.id}" aria-label="Delete photo">×</button>
     </figure>`).join("");
 
   for (const b of caja.querySelectorAll(".polaroid-borrar")) {
     b.onclick = async () => {
-      if (!confirm("¿Borrar esta foto del álbum?")) return;
+      if (!confirm("Delete this photo from the album?")) return;
       await borrarFoto(Number(b.dataset.id));
       pintarAlbum();
     };
@@ -98,10 +98,10 @@ formulario.onsubmit = async (e) => {
   const archivo = entradaArchivo.files[0];
   const aviso = document.getElementById("album-aviso");
   if (!archivo) {
-    aviso.textContent = "Elige primero una foto.";
+    aviso.textContent = "Choose a photo first.";
     return;
   }
-  aviso.textContent = "Guardando…";
+  aviso.textContent = "Saving…";
   try {
     await guardarFoto({
       imagen: await reducir(archivo),
@@ -110,11 +110,11 @@ formulario.onsubmit = async (e) => {
       fecha: Date.now()
     });
     formulario.reset();
-    nombreArchivo.textContent = "Ninguna foto elegida";
+    nombreArchivo.textContent = "No photo chosen";
     aviso.textContent = "";
     pintarAlbum();
   } catch {
-    aviso.textContent = "No se ha podido guardar la foto. Prueba con otra imagen (JPG o PNG).";
+    aviso.textContent = "The photo couldn't be saved. Try another image (JPG or PNG).";
   }
 };
 

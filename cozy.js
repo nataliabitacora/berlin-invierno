@@ -38,7 +38,7 @@ function guardar() {
 
 // ---------- Cobrar planes y comprobar logros ----------
 function progresoCiudad() {
-  const nombres = leer("berlin-visitados", []);
+  const nombres = leer("berlin-visitados", []).map(nombreActual); // old saves use Spanish names
   return {
     visitados: LUGARES.filter((l) => nombres.includes(l.nombre)),
     cumplidas: leer("berlin-adviento-cumplidas", [])
@@ -61,8 +61,8 @@ function cobrarYDesbloquear() {
   }
   if (nuevos.length) {
     avisos.push({
-      titulo: `+${nuevos.length * MONEDAS_POR_LUGAR} monedas`,
-      texto: nuevos.length === 1 ? `Por visitar ${nuevos[0]}.` : `Por ${nuevos.length} planes nuevos por la ciudad.`
+      titulo: `+${nuevos.length * MONEDAS_POR_LUGAR} coins`,
+      texto: nuevos.length === 1 ? `For visiting ${nuevos[0]}.` : `For ${nuevos.length} new plans around the city.`
     });
   }
 
@@ -77,8 +77,8 @@ function cobrarYDesbloquear() {
   }
   if (misiones) {
     avisos.push({
-      titulo: `+${misiones * MONEDAS_POR_MISION} monedas`,
-      texto: misiones === 1 ? "Por una misión de adviento." : `Por ${misiones} misiones de adviento.`
+      titulo: `+${misiones * MONEDAS_POR_MISION} coins`,
+      texto: misiones === 1 ? "For an Advent mission." : `For ${misiones} Advent missions.`
     });
   }
 
@@ -86,7 +86,7 @@ function cobrarYDesbloquear() {
   for (const logro of LOGROS) {
     if (!estado.logros.includes(logro.id) && logro.cumple(c)) {
       estado.logros.push(logro.id);
-      avisos.push({ titulo: `Logro: ${logro.nombre}`, texto: `Nuevo objeto en tu cuarto: ${logro.objNombre}.`, logro: true });
+      avisos.push({ titulo: `Achievement: ${logro.nombre}`, texto: `New item in the room: ${logro.objNombre}.`, logro: true });
     }
   }
 
@@ -113,11 +113,11 @@ function nivelCozy() {
 }
 
 function nombreNivel(pct) {
-  if (pct < 15) return "Helado";
-  if (pct < 35) return "Fresquito";
-  if (pct < 60) return "Templado";
-  if (pct < 85) return "Acogedor";
-  return "Hygge total";
+  if (pct < 15) return "Frozen";
+  if (pct < 35) return "Chilly";
+  if (pct < 60) return "Mild";
+  if (pct < 85) return "Cozy";
+  return "Total hygge";
 }
 
 // ---------- Colores ----------
@@ -1010,7 +1010,7 @@ function pintarControles() {
   $("zoom-menos").disabled = vista.z <= 1;
   $("zoom-todo").disabled = vista.z <= 1;
   $("zoom-seguir").setAttribute("aria-pressed", vista.seguir);
-  $("zoom-seguir").textContent = vista.seguir ? "Siguiendo…" : `Seguir a ${nombreDe() || "tu avatar"}`;
+  $("zoom-seguir").textContent = vista.seguir ? "Following…" : `Follow ${nombreDe() || "your companion"}`;
   lienzo.classList.toggle("con-zoom", vista.z > 1);
 }
 
@@ -1111,14 +1111,14 @@ function pintarTienda() {
     const accion = document.createElement("div");
     accion.className = "objeto-accion";
     if (comprado) {
-      accion.innerHTML = `<span class="en-cuarto">En tu cuarto</span>`;
+      accion.innerHTML = `<span class="en-cuarto">In the room</span>`;
     } else {
       const falta = o.precio - estado.monedas;
       const boton = document.createElement("button");
       boton.className = "pastilla pastilla-pequena " + (falta > 0 ? "pastilla-borde" : "pastilla-negra");
       boton.innerHTML = `<span class="moneda" aria-hidden="true"></span>${o.precio}`;
       boton.disabled = falta > 0;
-      boton.title = falta > 0 ? `Te faltan ${falta} monedas` : `Comprar por ${o.precio} monedas`;
+      boton.title = falta > 0 ? `You need ${falta} more coins` : `Buy for ${o.precio} coins`;
       boton.onclick = () => comprar(o);
       accion.appendChild(boton);
     }
@@ -1133,7 +1133,7 @@ function comprar(o) {
   estado.comprados.push(o.id);
   guardar();
   pintarTodo();
-  avisar({ titulo: `${o.nombre}, en tu cuarto`, texto: `Nivel de cozy: ${nombreNivel(nivelCozy())}.` });
+  avisar({ titulo: `${o.nombre} is in the room`, texto: `Cozy level: ${nombreNivel(nivelCozy())}.` });
 }
 
 function pintarLogros() {
@@ -1223,7 +1223,7 @@ function colocarBocadillo() {
 function pintarEditor() {
   const opciones = $("editor-opciones");
   opciones.innerHTML = "";
-  const grupos = [["estetica", "Estética"], ["piel", "Piel"], ["pelo", "Pelo"], ["peinado", "Peinado"], ["jersey", "Color de la ropa"]];
+  const grupos = [["estetica", "Style"], ["piel", "Skin"], ["pelo", "Hair colour"], ["peinado", "Hairstyle"], ["jersey", "Clothes colour"]];
   for (const [clave, titulo] of grupos) {
     const valores = clave === "peinado" ? AVATAR.peinados[esteticaDe()] : AVATAR[clave];
     const fila = document.createElement("div");
@@ -1236,7 +1236,7 @@ function pintarEditor() {
       b.setAttribute("aria-pressed", (estado.avatar[clave] ?? 0) === i);
       if (clave === "peinado" || clave === "estetica") {
         b.className = "filtro";
-        b.textContent = valor;
+        b.textContent = ETIQUETAS_AVATAR[valor] || valor;
       } else {
         b.className = "muestra";
         b.style.background = valor;
@@ -1273,8 +1273,8 @@ $("editor-nombre").oninput = (e) => {
 
 function pintarNombre() {
   const nombre = nombreDe();
-  $("hud-nombre").textContent = nombre ? `El cuarto de ${nombre}` : "Tu cuarto";
-  $("editor-titulo").textContent = nombre || "Tu avatar";
+  $("hud-nombre").textContent = nombre ? `${nombre}'s room` : "Your companion's room";
+  $("editor-titulo").textContent = nombre || "Your companion";
 }
 
 $("abrir-editor").onclick = () => {
@@ -1301,6 +1301,9 @@ if ((estado.version ?? 1) < 3) {
   estado.version = 3;
   guardar();
 }
+// Places were renamed in English: old saved keys are translated so no plan pays twice.
+estado.cobrados = [...new Set(estado.cobrados.map((c) => (c.startsWith("lugar:") ? "lugar:" + nombreActual(c.slice(6)) : c)))];
+guardar();
 const avisosIniciales = cobrarYDesbloquear();
 pintarTodo();
 elegirDestino();

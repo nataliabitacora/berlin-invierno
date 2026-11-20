@@ -15,10 +15,10 @@ const REPOSITORIO = [
 ];
 
 const TIPOS_REPOSITORIO = {
-  "colectivo": "Colectivos",
-  "centro-cultural": "Centros culturales",
-  "lugar": "Lugares",
-  "lista": "Listas de actividades"
+  "colectivo": "Collectives",
+  "centro-cultural": "Cultural centres",
+  "lugar": "Places",
+  "lista": "Activity lists"
 };
 
 // Qué dibujo representa cada tipo (ver dibujos.js).
