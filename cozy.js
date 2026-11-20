@@ -1289,11 +1289,16 @@ for (const d of document.querySelectorAll("dialog")) {
 }
 
 // ---------- Arranque ----------
-// Versión 2: las monedas solo se ganan con planes. Se ponen a cero una sola vez
-// para borrar las que se dieron con el antiguo modo prueba.
-if ((estado.version ?? 1) < 2) {
+// Versión 3: la partida empieza de cero una sola vez (sin monedas, sin objetos,
+// sin logros y con el avatar por defecto) para borrar lo conseguido con el antiguo
+// modo prueba. Los planes ya cobrados no vuelven a dar monedas.
+if ((estado.version ?? 1) < 3) {
   estado.monedas = 0;
-  estado.version = 2;
+  estado.comprados = [];
+  estado.logros = [];
+  estado.colores = {};
+  estado.avatar = { nombre: "", estetica: 0, piel: 0, pelo: 1, peinado: 1, jersey: 0 };
+  estado.version = 3;
   guardar();
 }
 const avisosIniciales = cobrarYDesbloquear();
