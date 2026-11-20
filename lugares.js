@@ -102,24 +102,24 @@ const CATEGORIAS = {
 };
 
 // Subtitle shown under the list title when a category is selected.
-// Color del chip de cada barrio: los mismos colores apagados de las pegatinas del fondo (fondo.svg).
+// Color del chip de cada barrio: los colores de las pegatinas del fondo (fondo.svg), con la mitad de saturación.
 const COLOR_BARRIO = {
-  "Mitte": "#84a0d2",            // azul
-  "Kreuzberg": "#eb9164",        // óxido
-  "Friedrichshain": "#ff8fb3",   // rosa
-  "Prenzlauer Berg": "#87c48d",  // verde
-  "Charlottenburg": "#e5acb1",   // rosa viejo
-  "Tiergarten": "#c0cb8e",       // oliva
-  "Grunewald": "#a8d3c7",        // aguamarina
-  "Potsdamer Platz": "#ffe85c",  // amarillo
-  "All over the city": "#dacbe4" // lila
+  "Mitte": "#aab6ca",            // azul
+  "Kreuzberg": "#d3ae9b",        // óxido
+  "Friedrichshain": "#ebc2cf",   // rosa
+  "Prenzlauer Berg": "#a8c1ab",  // verde
+  "Charlottenburg": "#e2cecf",   // rosa viejo
+  "Tiergarten": "#c4c8af",       // oliva
+  "Grunewald": "#c5d5d0",        // aguamarina
+  "Potsdamer Platz": "#ded59c",  // amarillo
+  "All over the city": "#e8e3eb" // lila
 };
 
 const SUBTITULOS = {
   "history": "So much happened right here. What better way to understand history than standing where it actually took place?",
   "arts-culture": "A new chapter where we let art and culture all the way in. Maybe this is what life is really about.",
   "wander": "Wandering with no destination, noticing everything around us. Not everything needs a plan: we let the city carry us.",
-  "parties": "New scenes, new people, new energy. A chance to get inspired, meet in unfamiliar places and express ourselves.",
+  "parties": "New scenes, new people, new energy. A chance to get inspired, meet in new places and express ourselves.",
   "cozy-coffee": "A pause in the middle of the city: a coffee or a hot chocolate, a good book or the laptop.",
   "christmas-markets": "Every market has a personality of its own. Somewhere among them is our favourite.",
   "berliner-101": "The things that make Berlin, Berlin. Let's try them all to get to know the city and what it stands for."

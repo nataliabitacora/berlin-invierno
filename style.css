@@ -498,7 +498,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .plan h4 { font-family: var(--display); font-size: 1.3rem; line-height: 1.2; letter-spacing: -.01em; margin: 6px 0 4px; }
 .plan .barrio { color: var(--gris); font-size: .9rem; margin: 0 0 12px; }
 .plan p { margin: 0 0 10px; }
-.plan-acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.plan-acciones { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 16px; }
 .plan-vacio { color: var(--gris); margin: 0; padding: 6px 4px; }
 
 .destello { animation: destello .5s; }
