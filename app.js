@@ -250,7 +250,7 @@ function pintarPlan(animar = false) {
       <p class="consejo"><b>Tip:</b> ${l.consejo}</p>
       <div class="plan-acciones">
         <button class="pastilla ${hecho ? "pastilla-borde" : "pastilla-sol"} pastilla-pequena" id="plan-hecho">
-          ${hecho ? "Mark as not done" : "Mark as done"}
+          ${hecho ? "Mark as not done" : dibujo("check") + "Mark as done"}
         </button>
       </div>
     </article>

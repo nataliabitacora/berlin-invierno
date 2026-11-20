@@ -287,6 +287,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .carrusel-flecha[hidden] { display: none; }
 .cabecera-con-accion { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
 .boton-sorpresa { --relleno: var(--sol); flex: none; }
+#plan-hecho .dibujo { width: 18px; height: 18px; margin: -2px 0 -2px -4px; }
 .boton-sorpresa .dibujo { width: 20px; height: 20px; margin: -2px 0 -2px -4px; }
 
 /* --- Cajas --- */
