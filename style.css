@@ -186,34 +186,39 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 /* --- Contadores por categoría (sirven también de filtro) --- */
 .contadores {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(112px, 1fr);
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 4px 2px 10px;
+  margin: -4px -2px 0;
 }
-.fila-vacia { padding: 18px 4px; color: var(--gris); }
 .contador {
+  scroll-snap-align: start;
   text-align: left;
   background: var(--blanco);
   border: var(--trazo);
-  border-radius: var(--radio-grande);
-  padding: 16px 18px;
+  border-radius: var(--radio);
+  padding: 10px 12px 12px;
   display: grid;
-  gap: 2px;
+  align-content: space-between;
+  gap: 6px;
+  min-height: 92px;
   transition: transform .12s, box-shadow .12s;
 }
-.contador:hover { transform: translateY(-3px); box-shadow: var(--sombra); }
+.contador:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
 .contador[aria-pressed="true"] { background: var(--tinta); color: var(--blanco); --relleno: var(--tinta); }
-.contador-arriba { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-.contador .dibujo { width: 46px; height: 46px; flex: none; margin: -4px 0 0 -6px; }
+.contador-arriba { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+.contador .dibujo { width: 34px; height: 34px; flex: none; margin: -2px 0 0 -4px; }
 .contador-etiqueta {
   font-family: var(--mono);
-  font-size: .72rem;
+  font-size: .66rem;
   text-transform: uppercase;
-  letter-spacing: .1em;
-  text-align: right;
+  letter-spacing: .08em;
+  line-height: 1.25;
 }
-.contador-numero { font-family: var(--serif); font-weight: 700; font-size: 2.6rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.contador-numero small { font-family: var(--mono); font-size: 1rem; font-weight: 500; opacity: .6; }
-.contador-pie { font-size: .88rem; opacity: .75; }
+.contador-numero { font-family: var(--serif); font-weight: 700; font-size: 1.7rem; line-height: 1; font-variant-numeric: tabular-nums; }
 .contador-sorpresa { background: var(--tinta); color: var(--blanco); --relleno: var(--tinta); }
 .contador-sorpresa .contador-numero { font-style: italic; }
 
@@ -686,16 +691,12 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 
 /* ================= Responsive ================= */
 @media (max-width: 980px) {
-  .contadores { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .contador-sorpresa { grid-column: span 2; }
   .columnas, .adviento, .cozy { grid-template-columns: minmax(0, 1fr); }
   .caja-tienda { position: static; }
   .caja-plan { position: static; order: -1; }
   .arbol-caja { position: static; }
 }
 @media (max-width: 600px) {
-  .contadores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .contador-sorpresa { grid-column: auto; }
   .puertas { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
   .menu { gap: 0; padding: 4px; }
   .menu a { padding: 7px 7px; font-size: .84rem; }

@@ -43,20 +43,16 @@ function pintarContadores() {
   contenedor.innerHTML = "";
 
   for (const [cat, nombre] of Object.entries(CATEGORIAS)) {
-    const delGrupo = LUGARES.filter((l) => l.categoria === cat);
-    const hechos = delGrupo.filter(estaVisitado).length;
-    const pendientes = delGrupo.length - hechos;
+    const hechos = LUGARES.filter((l) => l.categoria === cat && estaVisitado(l)).length;
 
     const boton = document.createElement("button");
     boton.className = "contador";
     boton.dataset.cat = cat;
     boton.setAttribute("aria-pressed", filtroActivo === cat);
-    const pie = delGrupo.length === 0 ? "Próximamente"
-      : pendientes === 0 ? "¡Completado!" : `${pendientes} por descubrir`;
+    boton.title = `${nombre}: ${hechos} ${hechos === 1 ? "lugar visitado" : "lugares visitados"}`;
     boton.innerHTML = `
-      <span class="contador-arriba">${icono(cat)}<span class="contador-etiqueta">${nombre}</span></span>
-      <span class="contador-numero">${hechos}<small>/${delGrupo.length}</small></span>
-      <span class="contador-pie">${pie}</span>
+      <span class="contador-arriba">${icono(cat)}<span class="contador-numero">${hechos}</span></span>
+      <span class="contador-etiqueta">${nombre}</span>
     `;
     boton.onclick = () => {
       filtroActivo = filtroActivo === cat ? null : cat;
@@ -68,10 +64,10 @@ function pintarContadores() {
   // Categoría extra: no filtra, propone un plan al azar.
   const sorpresa = document.createElement("button");
   sorpresa.className = "contador contador-sorpresa";
+  sorpresa.title = "Un plan al azar de cualquier categoría";
   sorpresa.innerHTML = `
-    <span class="contador-arriba">${dibujo("dado")}<span class="contador-etiqueta">Surprise me</span></span>
-    <span class="contador-numero">?</span>
-    <span class="contador-pie">Un plan al azar de cualquier categoría</span>
+    <span class="contador-arriba">${dibujo("dado")}<span class="contador-numero">?</span></span>
+    <span class="contador-etiqueta">Surprise me</span>
   `;
   sorpresa.onclick = sorprender;
   contenedor.appendChild(sorpresa);
@@ -173,7 +169,7 @@ document.getElementById("sorpresa").onclick = sorprender;
 // ---------- Progreso y repintado ----------
 function pintarTodo() {
   document.getElementById("ver-lugares").textContent = `Ver los ${LUGARES.length} lugares`;
-  document.getElementById("menu-progreso").textContent = `${visitados.length}/${LUGARES.length}`;
+  document.getElementById("menu-progreso").textContent = `${visitados.length} ${visitados.length === 1 ? "visitado" : "visitados"}`;
   pintarContadores();
   pintarLista();
   pintarPlan();
