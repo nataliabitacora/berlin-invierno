@@ -219,8 +219,9 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   line-height: 1.25;
 }
 .contador-numero { font-family: var(--serif); font-weight: 700; font-size: 1.7rem; line-height: 1; font-variant-numeric: tabular-nums; }
-.contador-sorpresa { background: var(--tinta); color: var(--blanco); --relleno: var(--tinta); }
-.contador-sorpresa .contador-numero { font-style: italic; }
+.cabecera-con-accion { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.boton-sorpresa { --relleno: var(--tinta); flex: none; }
+.boton-sorpresa .dibujo { width: 26px; height: 26px; margin: -4px 0 -4px -6px; }
 
 /* --- Cajas --- */
 .columnas {

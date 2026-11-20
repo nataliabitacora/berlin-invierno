@@ -68,17 +68,6 @@ function pintarContadores() {
     };
     contenedor.appendChild(boton);
   }
-
-  // Categoría extra: no filtra, propone un plan al azar.
-  const sorpresa = document.createElement("button");
-  sorpresa.className = "contador contador-sorpresa";
-  sorpresa.title = "A random plan from any category";
-  sorpresa.innerHTML = `
-    <span class="contador-arriba">${dibujo("dado")}<span class="contador-numero">?</span></span>
-    <span class="contador-etiqueta">Surprise me</span>
-  `;
-  sorpresa.onclick = sorprender;
-  contenedor.appendChild(sorpresa);
 }
 
 // ---------- Lista de lugares ----------
@@ -271,6 +260,10 @@ function sorprender() {
 }
 
 document.getElementById("sorpresa").onclick = sorprender;
+// Surprise me next to the "Your Berlin winter" heading.
+const botonSorpresa = document.getElementById("sorpresa-panel");
+botonSorpresa.insertAdjacentHTML("afterbegin", dibujo("dado"));
+botonSorpresa.onclick = sorprender;
 
 // ---------- Progreso y repintado ----------
 function pintarTodo() {
