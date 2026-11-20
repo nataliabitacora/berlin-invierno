@@ -85,9 +85,9 @@ Dirección: underground y brutalista, como Berlín. Letra muy ancha y pesada par
 
 ## Forma
 
-- **Trazo**: 2,5 px (`stroke`) en tarjetas, paneles, botones y menú; 2 px (`stroke-thin`) en filas y chips. El trazo es la firma: sin él, el amarillo desaparece.
+- **Trazo**: tres grosores. 2,5 px (`stroke-section`) solo para las líneas que dividen las secciones de la página; 1,5 px (`stroke`) en tarjetas, paneles, botones, menú, filas y pestañas; 1 px (`stroke-thin`) en etiquetas y contadores. El trazo es la firma: sin él, el amarillo y el lila desaparecen sobre los neutros.
 - **Esquinas**: cápsula para todo lo que se pulsa (`radius-pill`); 16 px para filas y tarjetas pequeñas; 26 px para paneles.
-- **Sombras**: `shadow-pop` (sombra dura desplazada) para lo seleccionado, junto al lila, una por vista; `shadow-soft` para lo que flota.
+- **Sombras**: `shadow-pop` (sombra dura desplazada 3 px) para lo seleccionado, junto al lila, una por vista; `shadow-soft` para lo que flota.
 - **Espaciado**: base de 4 px; los saltos que se usan son 8, 12, 16, 24, 32, 48 y 64.
 
 ## Emblema
