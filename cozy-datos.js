@@ -66,7 +66,12 @@ const PALETAS = {
 const AVATAR = {
   piel:    ["#f6d3b8", "#e8b48f", "#c68a5e", "#8d5a3b"],
   pelo:    ["#2b211c", "#6b4226", "#c58b3c", "#e3c27a", "#a8432f"],
-  peinado: ["Corto", "Largo", "Moño"],
+  estetica: ["Femenina", "Masculina"],
+  // Peinados de cada estética (el mismo número en las dos).
+  peinados: {
+    Femenina: ["Media melena", "Largo", "Moño"],
+    Masculina: ["Corto", "Rapado", "Con barba"]
+  },
   jersey:  ["#c0453a", "#3f6e9e", "#5c8a4e", "#d8a23a", "#7a5a9a"]
 };
 

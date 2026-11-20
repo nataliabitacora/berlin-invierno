@@ -16,7 +16,7 @@ function leer(clave, porDefecto) {
 }
 
 const estado = Object.assign(
-  { monedas: 0, cobrados: [], comprados: [], logros: [], colores: {}, avatar: { piel: 0, pelo: 1, peinado: 1, jersey: 0 } },
+  { monedas: 0, cobrados: [], comprados: [], logros: [], colores: {}, avatar: { nombre: "", estetica: 0, piel: 0, pelo: 1, peinado: 1, jersey: 0 } },
   leer("berlin-cozy", {})
 );
 
@@ -436,18 +436,21 @@ const ORDEN = ["guirnalda", "poster", "banderin", "estanteria", "cuadro", "mapa"
   "estrella", "bola", "planta", "velas", "moka", "ampelmann", "alfombra", "lampara", "cama", "peluche", "arbol", "muro", "sillon", "mesita", "gato"];
 
 // ---------- Avatar ----------
+const CARA = [
+  ".ssessess.",
+  ".srssssrs.",
+  "..ssmmss..",
+  "...ssss..."
+];
 const CABEZAS = {
-  Corto: [
+  "Media melena": [
     "...hhhh...",
     "..hhhhhh..",
     ".hhhhhhhh.",
     ".hssssssh.",
-    ".ssessess.",
-    ".srssssrs.",
-    "..ssmmss..",
-    "...ssss..."
+    ...CARA
   ],
-  Largo: [
+  "Largo": [
     "...hhhh...",
     "..hhhhhh..",
     ".hhhhhhhh.",
@@ -456,28 +459,70 @@ const CABEZAS = {
     "hsrssssrsh",
     "hhssmmsshh",
     "hh.ssss.hh"
+  ],
+  "Corto": [
+    "..........",
+    "..hhhhhh..",
+    ".hhhhhhhh.",
+    ".hssssssh.",
+    ...CARA
+  ],
+  "Rapado": [
+    "..........",
+    "..........",
+    "..hhhhhh..",
+    ".shhhhhhs.",
+    ...CARA
+  ],
+  "Con barba": [
+    "..........",
+    "..hhhhhh..",
+    ".hhhhhhhh.",
+    ".hssssssh.",
+    ".ssessess.",
+    ".hssssssh.",
+    "..hhmmhh..",
+    "...hhhh..."
   ]
 };
-CABEZAS["Moño"] = ["....hh....", "...hhhh...", ...CABEZAS.Corto];
+CABEZAS["Moño"] = ["....hh....", "...hhhh...", ...CABEZAS["Media melena"]];
 
-const CUERPO = [
-  "..jjjjjj..",
-  ".jjjjjjjj.",
-  ".jkkkkkkj.",
-  ".jjjjjjjj.",
-  ".sjjjjjjs.",
-  "..pppppp..",
-  "..pppppp.."
-];
+const CUERPOS = {
+  Femenina: [
+    "..jjjjjj..",
+    ".jjjjjjjj.",
+    ".jkkkkkkj.",
+    ".jjjjjjjj.",
+    ".sjjjjjjs.",
+    "..pppppp..",
+    "..pppppp.."
+  ],
+  Masculina: [
+    ".jjjjjjjj.",
+    "jjjjjjjjjj",
+    "jjkkkkkkjj",
+    "jjjjjjjjjj",
+    "sjjjjjjjjs",
+    "..pppppp..",
+    "..pppppp.."
+  ]
+};
 const PIERNAS = [
   ["..pp..pp..", "..pp..pp..", ".bbb..bbb."],
   ["...pppp...", "...pppp...", "..bbbbbb.."]
 ];
 
-function mapaAvatar(peinado, paso, parpadeo) {
+const esteticaDe = (a = estado.avatar) => AVATAR.estetica[a.estetica ?? 0];
+const peinadoDe = (a = estado.avatar) => AVATAR.peinados[esteticaDe(a)][a.peinado ?? 0];
+const nombreDe = (a = estado.avatar) => (a.nombre || "").trim();
+
+function mapaAvatar(a, paso, parpadeo) {
+  const estetica = esteticaDe(a);
+  const peinado = peinadoDe(a);
   let cabeza = CABEZAS[peinado];
   if (parpadeo) cabeza = cabeza.map((f) => f.replace(/e/g, "s"));
-  const cuerpo = [...CUERPO];
+  if (estetica === "Masculina") cabeza = cabeza.map((f) => f.replace(/r/g, "s")); // sin colorete
+  const cuerpo = [...CUERPOS[estetica]];
   if (peinado === "Largo") cuerpo[0] = "hjjjjjjjjh";
   return [...cabeza, ...cuerpo, ...PIERNAS[paso]];
 }
@@ -510,9 +555,7 @@ function moverAvatar() {
 }
 
 function dibujarAvatar() {
-  const a = estado.avatar;
-  const peinado = AVATAR.peinado[a.peinado];
-  const mapa = mapaAvatar(peinado, Math.floor(avatar.paso), avatar.parpadeo > 0);
+  const mapa = mapaAvatar(estado.avatar, Math.floor(avatar.paso), avatar.parpadeo > 0);
   const tiritando = !tiene("radiador") && nivelCozy() < 35;
   const dx = tiritando && Math.random() < 0.5 ? (Math.random() < 0.5 ? -1 : 1) : 0;
   const rebote = avatar.paso >= 1 ? -1 : 0;
@@ -710,6 +753,7 @@ function pintarLogros() {
 }
 
 function pintarTodo() {
+  pintarNombre();
   pintarHud();
   pintarTienda();
   pintarLogros();
@@ -747,7 +791,15 @@ function hablar() {
   const pct = nivelCozy();
   const frases = FRASES[pct < 35 ? 0 : pct < 75 ? 1 : 2];
   const b = $("bocadillo");
-  b.textContent = frases[Math.floor(Math.random() * frases.length)];
+  const frase = frases[Math.floor(Math.random() * frases.length)];
+  const nombre = nombreDe();
+  b.textContent = "";
+  if (nombre) {
+    const quien = document.createElement("b");
+    quien.textContent = nombre;
+    b.append(quien, document.createElement("br"));
+  }
+  b.append(frase);
   b.style.left = ((avatar.x + 5) / W) * 100 + "%";
   b.style.top = ((PIES - 22) / H) * 100 + "%";
   b.hidden = false;
@@ -761,18 +813,19 @@ function hablar() {
 function pintarEditor() {
   const opciones = $("editor-opciones");
   opciones.innerHTML = "";
-  const grupos = [["piel", "Piel"], ["pelo", "Pelo"], ["peinado", "Peinado"], ["jersey", "Jersey"]];
+  const grupos = [["estetica", "Estética"], ["piel", "Piel"], ["pelo", "Pelo"], ["peinado", "Peinado"], ["jersey", "Jersey"]];
   for (const [clave, titulo] of grupos) {
+    const valores = clave === "peinado" ? AVATAR.peinados[esteticaDe()] : AVATAR[clave];
     const fila = document.createElement("div");
     fila.className = "editor-fila";
     fila.innerHTML = `<span class="antetitulo">${titulo}</span>`;
     const botones = document.createElement("div");
     botones.className = "muestras";
-    AVATAR[clave].forEach((valor, i) => {
+    valores.forEach((valor, i) => {
       const b = document.createElement("button");
-      const elegido = estado.avatar[clave] === i;
+      const elegido = (estado.avatar[clave] ?? 0) === i;
       b.setAttribute("aria-pressed", elegido);
-      if (clave === "peinado") {
+      if (clave === "peinado" || clave === "estetica") {
         b.className = "filtro";
         b.textContent = valor;
       } else {
@@ -796,12 +849,25 @@ function pintarEditor() {
   const g = vista.getContext("2d");
   g.clearRect(0, 0, vista.width, vista.height);
   ctx = g;
-  const mapa = mapaAvatar(AVATAR.peinado[estado.avatar.peinado], 0, false);
+  const mapa = mapaAvatar(estado.avatar, 0, false);
   sprite(mapa, paletaAvatar(), 2, vista.height - mapa.length - 1);
   ctx = pantalla;
 }
 
+$("editor-nombre").oninput = (e) => {
+  estado.avatar.nombre = e.target.value;
+  guardar();
+  pintarNombre();
+};
+
+function pintarNombre() {
+  const nombre = nombreDe();
+  $("hud-nombre").textContent = nombre ? `El cuarto de ${nombre}` : "Tu cuarto";
+  $("editor-titulo").textContent = nombre || "Tu avatar";
+}
+
 $("abrir-editor").onclick = () => {
+  $("editor-nombre").value = estado.avatar.nombre || "";
   pintarEditor();
   $("editor").showModal();
 };
