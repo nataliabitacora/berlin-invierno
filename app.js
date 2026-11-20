@@ -81,7 +81,6 @@ function pintarLista() {
 
   document.getElementById("titulo-lista").textContent =
     filtroActivo ? CATEGORIAS[filtroActivo] : "All places";
-  document.getElementById("ver-todo").hidden = !filtroActivo;
   const subtitulo = document.getElementById("subtitulo-lista");
   subtitulo.textContent = filtroActivo ? SUBTITULOS[filtroActivo] || "" : "";
   subtitulo.hidden = !subtitulo.textContent;
@@ -208,11 +207,6 @@ for (const nombre of ["sugeridos", "hechos"]) {
     pintarPlan();
   };
 }
-
-document.getElementById("ver-todo").onclick = () => {
-  filtroActivo = null;
-  pintarTodo();
-};
 
 // ---------- Panel derecho: el plan seleccionado ----------
 function pintarPlan(animar = false) {
