@@ -277,11 +277,12 @@ function sorprender() {
   document.getElementById("plan").scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-document.getElementById("sorpresa").onclick = sorprender;
-// Surprise me next to the "Your Berlin winter" heading.
-const botonSorpresa = document.getElementById("sorpresa-panel");
-botonSorpresa.insertAdjacentHTML("afterbegin", dibujo("dado"));
-botonSorpresa.onclick = sorprender;
+// Los dos "Surprise me" (portada y panel de planes), con el icono del dado.
+for (const id of ["sorpresa", "sorpresa-panel"]) {
+  const boton = document.getElementById(id);
+  boton.insertAdjacentHTML("afterbegin", dibujo("dado"));
+  boton.onclick = sorprender;
+}
 
 // ---------- Progreso y repintado ----------
 function pintarTodo() {

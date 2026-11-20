@@ -152,7 +152,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .pastilla-borde { background: var(--blanco); color: var(--tinta); }
 .pastilla-pequena { padding: 9px 18px; }
 /* Botones de acción de la portada y del panel: esquina de tarjeta de plan, no cápsula. */
-#ver-lugares, #sorpresa, #sorpresa-panel { border-radius: var(--radio); }
+#ver-lugares, #sorpresa, #sorpresa-panel, #plan-hecho { border-radius: var(--radio); }
 .pastilla-flotante {
   position: absolute;
   bottom: 24px;
@@ -283,7 +283,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .carrusel-der { right: 0; }
 .carrusel-flecha[hidden] { display: none; }
 .cabecera-con-accion { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
-.boton-sorpresa { --relleno: var(--ocre); flex: none; }
+.boton-sorpresa { --relleno: var(--sol); flex: none; }
 .boton-sorpresa .dibujo { width: 20px; height: 20px; margin: -2px 0 -2px -4px; }
 
 /* --- Cajas --- */
