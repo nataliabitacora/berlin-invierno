@@ -533,6 +533,8 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .modo-prueba input { width: 18px; height: 18px; accent-color: var(--tinta); }
 
 .arbol-caja { position: sticky; top: 20px; }
+.proximamente { display: grid; justify-items: start; gap: 10px; padding: 28px; border: 2.5px dashed var(--gris-claro); border-radius: var(--radio-grande); }
+.proximamente p { margin: 0; color: var(--gris); }
 .arbol-svg { width: 100%; height: auto; display: block; }
 .arbol-svg .adorno { cursor: pointer; }
 .arbol-mensaje { margin: 8px 4px 0; color: var(--gris); text-align: center; }
@@ -694,7 +696,8 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .como-se-juega { color: var(--gris); font-size: .92rem; }
 .como-se-juega p { margin: 0 0 6px; }
 
-.caja-tienda { position: sticky; top: 20px; }
+.caja-tienda { position: sticky; top: 20px; display: flex; flex-direction: column; min-height: 0; }
+.caja-tienda .objetos { flex: 1; min-height: 0; overflow-y: auto; padding: 2px 6px 2px 2px; margin-right: -6px; scrollbar-width: thin; scrollbar-color: var(--tinta) transparent; }
 .caja-nota { margin: -6px 0 14px; color: var(--gris); }
 .objetos, .logros { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .logros { grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); }

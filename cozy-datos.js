@@ -1,7 +1,6 @@
 // ================= Getting Cozy: datos del minijuego =================
 // Monedas: se ganan haciendo planes por la ciudad.
 const MONEDAS_POR_LUGAR = 10;   // cada lugar marcado como visitado en Planes
-const MONEDAS_POR_MISION = 5;   // cada misión cumplida del calendario de adviento
 
 // Tienda. "puntos" es lo que suma cada objeto al nivel de cozy del cuarto.
 // "colores" indica qué paleta se puede elegir una vez comprado (ver PALETAS).
@@ -25,7 +24,7 @@ const TIENDA = [
 ];
 
 // Logros: al cumplirse, regalan un objeto especial para el cuarto.
-// "cumple" recibe { visitados: [lugares visitados], cumplidas: [días de adviento] }.
+// "cumple" recibe { visitados: [lugares visitados] }.
 const completa = (cat) => (c) => {
   const grupo = LUGARES.filter((l) => l.categoria === cat);
   return grupo.length > 0 && grupo.every((l) => c.visitados.includes(l));
@@ -51,9 +50,7 @@ const LOGROS = [
   { id: "christmas-markets", nombre: "Christmas spirit", pista: "Do every plan in Christmas Markets.",
     objeto: "estrella", objNombre: "Paper star", puntos: 6, cumple: completa("christmas-markets") },
   { id: "berliner-101", nombre: "True Berliner", pista: "Do every plan in Berliner 101.",
-    objeto: "ampelmann", objNombre: "Traffic-light lamp", puntos: 5, cumple: completa("berliner-101") },
-  { id: "adviento", nombre: "Advent complete", pista: "Complete all 24 Advent calendar missions.",
-    objeto: "arbol", objNombre: "Christmas tree", puntos: 10, cumple: (c) => c.cumplidas.length >= 24 }
+    objeto: "ampelmann", objNombre: "Traffic-light lamp", puntos: 5, cumple: completa("berliner-101") }
 ];
 
 // Colores que se pueden elegir.

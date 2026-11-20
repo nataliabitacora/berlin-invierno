@@ -40,8 +40,7 @@ function guardar() {
 function progresoCiudad() {
   const nombres = leer("berlin-visitados", []).map(nombreActual); // old saves use Spanish names
   return {
-    visitados: LUGARES.filter((l) => nombres.includes(l.nombre)),
-    cumplidas: leer("berlin-adviento-cumplidas", [])
+    visitados: LUGARES.filter((l) => nombres.includes(l.nombre))
   };
 }
 
@@ -63,22 +62,6 @@ function cobrarYDesbloquear() {
     avisos.push({
       titulo: `+${nuevos.length * MONEDAS_POR_LUGAR} coins`,
       texto: nuevos.length === 1 ? `For visiting ${nuevos[0]}.` : `For ${nuevos.length} new plans around the city.`
-    });
-  }
-
-  let misiones = 0;
-  for (const dia of c.cumplidas) {
-    const clave = "adviento:" + dia;
-    if (!estado.cobrados.includes(clave)) {
-      estado.cobrados.push(clave);
-      estado.monedas += MONEDAS_POR_MISION;
-      misiones++;
-    }
-  }
-  if (misiones) {
-    avisos.push({
-      titulo: `+${misiones * MONEDAS_POR_MISION} coins`,
-      texto: misiones === 1 ? "For an Advent mission." : `For ${misiones} Advent missions.`
     });
   }
 
@@ -1287,6 +1270,14 @@ $("cerrar-editor").onclick = () => $("editor").close();
 for (const d of document.querySelectorAll("dialog")) {
   d.addEventListener("click", (e) => { if (e.target === d) d.close(); });
 }
+
+// ---------- La tienda mide lo mismo que la pantalla del juego ----------
+const escena = document.querySelector(".escena");
+const tienda = document.querySelector(".caja-tienda");
+new ResizeObserver(() => {
+  const dosColumnas = matchMedia("(min-width: 981px)").matches;
+  tienda.style.height = dosColumnas ? escena.offsetHeight + "px" : "";
+}).observe(escena);
 
 // ---------- Arranque ----------
 // Versión 3: la partida empieza de cero una sola vez (sin monedas, sin objetos,
