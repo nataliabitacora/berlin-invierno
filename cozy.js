@@ -500,6 +500,33 @@ const OBJETOS = {
       if (Math.floor(t / 700) % 3 === 0) { punto(55, 75, 6, "#ffd36b"); punto(56, 75, 8, "#ffd36b"); punto(54, 75, 7, "#fff3c4"); }
     }
   },
+  // Maleta marrón abierta, desde el primer día: un portátil, unos libros y otro conjunto de ropa.
+  maleta: {
+    capa: "suelo", prof: 158, fijo: true,
+    dibujar() {
+      const piel = "#8a5a3a", forro = "#c9a27a", correa = "#5e3a22", laton = "#e2b53e";
+      // Tapa abierta, apoyada hacia atrás.
+      caja(70, 76.5, 4, 16, 1.5, 12, piel);
+      enY(78.01, 71, 85, 5, 15, forro);
+      enY(78.02, 72, 84, 9, 9.6, oscurecer(forro, 0.2)); // bolsillo
+      enY(78.02, 74, 75, 5, 15, correa); enY(78.02, 81, 82, 5, 15, correa);
+      // Base, con el forro por dentro.
+      caja(70, 78, 0, 16, 10, 4, piel);
+      plano(71, 85, 79, 87, 4.01, forro);
+      enY(88.01, 73, 75, 2, 3.5, laton); enY(88.01, 81, 83, 2, 3.5, laton);
+      enY(88.01, 76.5, 79.5, 3, 3.6, correa);
+      enX(86.01, 78, 80, 0, 4, correa); enX(86.01, 86, 88, 0, 4, correa);
+      // Dentro: portátil cerrado, una pila de libros y otro conjunto doblado.
+      caja(72, 79.5, 4, 6.5, 4.5, 0.8, "#b5bac2");
+      plano(74.5, 75.5, 81.5, 82.5, 4.81, "#e6e9ef");
+      caja(79.5, 79.5, 4, 4.5, 3.5, 1, "#3f6e9e");
+      caja(79.5, 79.5, 5, 4.5, 3.5, 1, "#c0453a");
+      caja(79.8, 79.8, 6, 3.8, 2.8, 0.9, "#d4a237");
+      caja(72, 84.5, 4, 12, 2.5, 0.8, "#4a6a9a");          // pantalón
+      caja(72.5, 84.7, 4.8, 6, 2.2, 0.9, "#e9d8c4");       // camisa
+      caja(79, 84.7, 4.8, 5, 2.2, 0.9, "#5d8a5a");         // jersey
+    }
+  },
   gato: {
     capa: "suelo",
     pos: () => (tiene("cama") ? [26, 48, 12] : [62, 46, 0.5]),
@@ -694,7 +721,7 @@ function elegirDestino() {
   const acts = actividades();
   const objetivo = Math.random() < 0.6
     ? acts[Math.floor(Math.random() * acts.length)]
-    : { X: 44 + Math.random() * 32, Y: 34 + Math.random() * 42, Z: 0, dur: 30 + Math.random() * 50 };
+    : { X: 44 + Math.random() * 30, Y: 34 + Math.random() * 36, Z: 0, dur: 30 + Math.random() * 50 };
   const dentro = (p) => p.X > 38 && p.X < 80 && p.Y > 30 && p.Y < 82;
   av.ruta = dentro(objetivo) && dentro(av) ? [objetivo] : [CENTRO, objetivo];
   av.objetivo = objetivo;
