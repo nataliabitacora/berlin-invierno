@@ -59,13 +59,10 @@ function escribir(clave, valor) {
 
 let cumplidas = leer("berlin-adviento-cumplidas", []);
 let abiertas = leer("berlin-adviento-abiertas", []);
-let modoPrueba = leer("berlin-adviento-prueba", false);
 
 // Una puerta se puede abrir si estamos en diciembre y ya ha llegado su día.
 // En enero y febrero siguen todas abiertas, para poder completar el árbol tarde.
-// (El modo prueba las abre todas en cualquier momento.)
 function disponible(dia, hoy = new Date()) {
-  if (modoPrueba) return true;
   const mes = hoy.getMonth();
   if (mes === 0 || mes === 1) return true;
   return mes === 11 && hoy.getDate() >= dia;
@@ -200,14 +197,8 @@ function pintarArbol(nuevo = null) {
   else mensaje.textContent = `Te faltan ${24 - cumplidas.length} adornos para encender la estrella.`;
 }
 
-// ---------- Modo prueba ----------
-const casillaPrueba = document.getElementById("modo-prueba");
-casillaPrueba.checked = modoPrueba;
-casillaPrueba.onchange = () => {
-  modoPrueba = casillaPrueba.checked;
-  escribir("berlin-adviento-prueba", modoPrueba);
-  pintarPuertas();
-};
+// Antes había un modo prueba que abría todas las puertas; ya no existe.
+try { localStorage.removeItem("berlin-adviento-prueba"); } catch {}
 
 function pintarAdviento(nuevo = null) {
   pintarPuertas();

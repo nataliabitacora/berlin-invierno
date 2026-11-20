@@ -25,6 +25,8 @@ const estado = Object.assign(
     avatar: { nombre: "", estetica: 0, piel: 0, pelo: 1, peinado: 1, jersey: 0 } },
   leer("berlin-cozy", {})
 );
+// Si el avatar guardado viene incompleto (partidas antiguas), se completa con los valores por defecto.
+estado.avatar = Object.assign({ nombre: "", estetica: 0, piel: 0, pelo: 1, peinado: 1, jersey: 0 }, estado.avatar);
 
 function guardar() {
   try {
@@ -1286,15 +1288,14 @@ for (const d of document.querySelectorAll("dialog")) {
   d.addEventListener("click", (e) => { if (e.target === d) d.close(); });
 }
 
-// ---------- Modo prueba ----------
-$("modo-prueba-cozy").onclick = () => {
-  estado.monedas += 50;
-  guardar();
-  pintarTodo();
-  avisar({ titulo: "+50 monedas de prueba", texto: "Para probar la tienda sin salir de casa." });
-};
-
 // ---------- Arranque ----------
+// Versión 2: las monedas solo se ganan con planes. Se ponen a cero una sola vez
+// para borrar las que se dieron con el antiguo modo prueba.
+if ((estado.version ?? 1) < 2) {
+  estado.monedas = 0;
+  estado.version = 2;
+  guardar();
+}
 const avisosIniciales = cobrarYDesbloquear();
 pintarTodo();
 elegirDestino();
