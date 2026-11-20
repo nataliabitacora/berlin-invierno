@@ -728,7 +728,8 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   border-top: var(--trazo);
 }
 .hud-nombre { width: 100%; font-family: var(--display); font-weight: 700; font-size: 1rem; margin-bottom: -4px; }
-.lema { font-family: var(--sans); font-weight: 500; font-size: clamp(1.15rem, 2.2vw, 1.4rem); line-height: 1.35; margin: 14px 0 0; max-width: 34ch; text-wrap: balance; }
+.lema { font-family: var(--sans); font-weight: 500; font-size: clamp(1.15rem, 2.2vw, 1.4rem); line-height: 1.35; margin: 14px 0 0; max-width: 60ch; text-wrap: balance; }
+.seccion-cozy .entradilla { max-width: 82ch; }
 .editor-nombre { display: grid; gap: 6px; }
 .editor-nombre input { font: inherit; padding: 8px 14px; border: 1.5px solid var(--tinta); border-radius: 999px; min-width: 0; }
 .monedas { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); }
