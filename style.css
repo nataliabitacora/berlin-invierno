@@ -223,18 +223,19 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .contador:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
 .contador[aria-pressed="true"] { background: var(--lila); color: var(--tinta); --relleno: var(--lila); box-shadow: var(--sombra-dura); }
 .contador-arriba { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
-.contador .dibujo { width: 34px; height: 34px; flex: none; margin: -2px 0 0 -4px; }
+.contador .dibujo { width: 22px; height: 22px; flex: none; margin-top: 2px; }
 .contador-etiqueta {
   font-family: var(--mono);
-  font-size: .66rem;
+  font-size: .86rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  line-height: 1.25;
+  letter-spacing: .02em;
+  line-height: 1.15;
 }
 .contador-numero { font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1; font-variant-numeric: tabular-nums; }
 .cabecera-con-accion { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
 .boton-sorpresa { --relleno: var(--lila); flex: none; }
-.boton-sorpresa .dibujo { width: 26px; height: 26px; margin: -4px 0 -4px -6px; }
+.boton-sorpresa .dibujo { width: 20px; height: 20px; margin: -2px 0 -2px -4px; }
 
 /* --- Cajas --- */
 .columnas {
@@ -263,7 +264,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   border: 2px solid var(--tinta);
   border-radius: var(--radio);
 }
-.plan-fecha svg { width: 20px; height: 20px; flex: none; margin-top: 2px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.plan-fecha svg { width: 20px; height: 20px; flex: none; margin-top: 2px; }
 .plan-etiquetas { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip.chip-hecho { background: var(--lila); color: var(--tinta); }
 .filtro-insignia[hidden] { display: none; }
@@ -338,7 +339,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   border: 2px solid var(--tinta);
   border-radius: 50%;
 }
-.boton-filtro svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linejoin: round; }
+.boton-filtro svg { width: 18px; height: 18px; }
 .filtro-insignia {
   position: absolute;
   top: -6px;
@@ -357,7 +358,6 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   border-radius: 999px;
 }
 .boton-filtro.activo { background: var(--lila); color: var(--tinta); }
-.boton-filtro.activo svg { fill: currentColor; }
 .chips-filtro { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip-filtro { cursor: pointer; background: var(--papel); }
 .chip-filtro span { margin-left: 4px; font-size: 1rem; line-height: 0; }
@@ -414,7 +414,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   text-align: left;
   padding: 0;
 }
-.fila-boton .dibujo { width: 34px; height: 34px; flex: none; }
+.fila-boton .dibujo { width: 22px; height: 22px; flex: none; }
 .fila-nombre { font-weight: 700; flex: 1; min-width: 0; }
 .etiqueta-barrio {
   flex: none;
@@ -480,7 +480,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 }
 .puerta:not(.cerrada):hover { transform: translateY(-3px) rotate(-1deg); box-shadow: var(--sombra); }
 .puerta-numero { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.4rem); line-height: 1; }
-.puerta .dibujo { width: 70%; height: auto; }
+.puerta .dibujo { width: 44%; height: auto; }
 .puerta-dia {
   position: absolute;
   top: 6px;
@@ -550,7 +550,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .dialogo::backdrop { background: rgba(255, 244, 214, .75); backdrop-filter: blur(2px); }
 .dialogo .franja-mural { height: 60px; background-size: 260px; }
 .dialogo-cuerpo { padding: 20px 24px 24px; text-align: center; }
-.dialogo-cuerpo .dibujo { width: 96px; height: 96px; margin-top: -60px; background: var(--blanco); border: var(--trazo); border-radius: 50%; padding: 8px; }
+.dialogo-cuerpo .dibujo { width: 88px; height: 88px; margin-top: -56px; background: var(--blanco); border: var(--trazo); border-radius: 50%; padding: 20px; }
 .dialogo-cuerpo h3 { font-family: var(--display); font-size: 1.35rem; line-height: 1.2; margin: 6px 0 8px; text-wrap: balance; }
 .dialogo-cuerpo p { margin: 0 0 10px; }
 .dialogo-acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
@@ -567,7 +567,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   border-radius: 999px;
   font-weight: 500;
 }
-.filtro .dibujo { width: 26px; height: 26px; }
+.filtro .dibujo { width: 18px; height: 18px; }
 .filtro-cuenta { font-family: var(--display); font-weight: 600; font-size: .75rem; opacity: .7; }
 .filtro[aria-pressed="true"] { background: var(--lila); color: var(--tinta); --relleno: var(--lila); }
 .tarjetas-repo {
@@ -588,7 +588,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   gap: 4px;
 }
 .tarjeta-repo-arriba { display: flex; justify-content: space-between; align-items: flex-start; }
-.tarjeta-repo .dibujo { width: 46px; height: 46px; margin: -4px 0 0 -6px; }
+.tarjeta-repo .dibujo { width: 28px; height: 28px; }
 .tarjeta-repo h3 { font-family: var(--display); font-size: 1.1rem; line-height: 1.25; margin: 6px 0 0; }
 .tarjeta-repo p { margin: 0; }
 .tarjeta-repo .barrio { color: var(--gris); font-size: .9rem; margin-bottom: 6px; }
@@ -601,7 +601,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   border-radius: var(--radio-grande);
   color: var(--gris);
 }
-.repo-vacio .dibujo { width: 72px; height: 72px; color: var(--tinta); }
+.repo-vacio .dibujo { width: 44px; height: 44px; color: var(--tinta); }
 .repo-vacio p { margin: 4px 0 0; }
 
 /* ================= Getting Cozy ================= */

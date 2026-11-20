@@ -24,7 +24,7 @@ const TIPOS_REPOSITORIO = {
 // Qué dibujo representa cada tipo (ver dibujos.js).
 const DIBUJO_TIPO = {
   "colectivo": "grupo",
-  "centro-cultural": "marco",
-  "lugar": "torre",
+  "centro-cultural": "edificios",
+  "lugar": "pin",
   "lista": "lista"
 };
