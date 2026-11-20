@@ -44,3 +44,41 @@ Proyecto pequeño para una introducción a Claude Code: una web para descubrir B
 - Compartir el progreso (por ejemplo, una imagen del árbol).
 - Un mapa con la ubicación de cada lugar.
 - Publicar la web (por ejemplo, con GitHub Pages) para abrirla desde el móvil.
+
+## Sesión 2 · 20 de noviembre de 2026
+
+Del prototipo a "The Berlin Winter Project": web en inglés y en varias páginas, minijuego, sistema de diseño propio y el código para guardar el progreso en la nube.
+
+### Lo que hicimos, en orden
+
+1. **Estructura y contenido**
+   - Nuevas categorías (History, Arts & Culture, Wander, Parties, Cozy Coffee, Christmas Markets, Berliner 101).
+   - Web en tres páginas: Plans, Game y Repository.
+   - Toda la web en inglés.
+   - Pestañas de planes sugeridos y hechos, filtro por barrio y panel del plan seleccionado.
+2. **Getting Cozy**: minijuego isométrico en pixel art.
+   - Monedas por plan hecho, tienda, logros y editor del acompañante.
+   - Álbum de fotos con una primera foto fija.
+3. **Sistema de diseño**: manual publicado en https://claude.ai/artifact/VQA6x7oodMBNng54b5dSYJ, con copia en `sistema-diseno/` y la versión guardada con la etiqueta `v-diseno-2026-11-20`.
+   - Neutros cálidos, amarillo escaso, Unbounded y Anonymous Pro.
+   - Fondo de pegatinas, emblema de la Puerta de Brandeburgo e iconos Phosphor Fill.
+4. **El adviento se retira** y en su lugar queda "Monthly challenges · Coming soon".
+5. **Ajustes de color:**
+   - Se probó el ocre y se volvió a un lila más apagado.
+   - Después, los botones y la selección de planes pasan a ocre.
+   - La sección de planes lleva fondo lila suave y los chips de barrio van en color.
+6. **Detalles:**
+   - "Explore the city".
+   - Botones de acción con esquina de 16 px.
+   - Dado en los "Surprise me" y check en "Mark as done".
+   - Taza en el pie.
+   - Tienda fija junto al cuarto.
+   - Cabecera del juego más ancha.
+7. **Sincronización con Supabase** (`cc20098`): inicio de sesión por email, planes y partida en la nube y álbum en un almacén privado. El código está listo, pero falta conectar la cuenta.
+
+### Pendiente para la próxima sesión
+
+- Base de datos y cuenta en Supabase: pasos en el README.
+- Sistema de monedas.
+- Añadir información a la base de datos.
+- Poner al día el manual con los últimos cambios de color.
