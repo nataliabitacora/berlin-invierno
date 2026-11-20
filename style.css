@@ -1,5 +1,5 @@
 /* Sistema de diseño "Berlin in Winter": neutros cálidos (crema y nieve) en casi todo,
-   lila para lo seleccionado y lo hecho, amarillo solo en dos botones de acción,
+   ocre para lo seleccionado y lo hecho, amarillo solo en dos botones de acción,
    tinta violeta para trazos y texto. Unbounded para títulos y números, Anonymous Pro para el texto.
    No se usa el blanco #ffffff en ningún sitio. */
 :root {
@@ -10,9 +10,9 @@
   --gris: #5b5468;         /* texto secundario */
   --gris-claro: #c9b98f;   /* bordes discontinuos y siluetas */
   --sol: #ffe223;          /* sun: solo "Surprise me" (portada) y "Mark as done" */
-  --lila: #c8b7eb;         /* lilac: selección, lo hecho, acciones secundarias */
-  --lila-suave: #ebe3f8;   /* lilac-soft: filas de planes hechos */
-  --lila-texto: #644ca6;   /* lilac como texto y anillo de foco */
+  --lila: #e3c582;         /* ocre (antes lila): selección, lo hecho, acciones secundarias */
+  --lila-suave: #f3e2b0;   /* ocre suave: filas de planes hechos */
+  --lila-texto: #6e5212;   /* ocre oscuro: texto y anillo de foco */
 
   --display: "Unbounded", "Arial Black", system-ui, sans-serif;
   --sans: "Anonymous Pro", ui-monospace, monospace;
@@ -735,7 +735,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .medidor { flex: 1; min-width: 180px; display: grid; gap: 6px; }
 .medidor-texto { display: flex; justify-content: space-between; gap: 10px; font-family: var(--mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
 .medidor-barra { height: 14px; border: 1.5px solid var(--tinta); border-radius: 999px; overflow: hidden; background: var(--papel); }
-.medidor-relleno { height: 100%; width: 0; background: repeating-linear-gradient(90deg, var(--lila) 0 6px, #b6a2e2 6px 8px); transition: width .6s; }
+.medidor-relleno { height: 100%; width: 0; background: repeating-linear-gradient(90deg, var(--lila) 0 6px, #cfae62 6px 8px); transition: width .6s; }
 .escena-acciones { display: flex; flex-wrap: wrap; gap: 10px; }
 .como-se-juega { color: var(--gris); font-size: .92rem; }
 .como-se-juega p { margin: 0 0 6px; }
