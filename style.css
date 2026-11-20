@@ -86,6 +86,37 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .menu a:hover { background: var(--papel); }
 .menu-logo { font-family: var(--display); font-weight: 700 !important; }
+/* Botón de la nube (sesión y sincronización), al final del menú */
+.menu-nube {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-left: 2px;
+  padding: 0;
+  border: 1.5px solid var(--tinta);
+  border-radius: 50%;
+  background: var(--blanco);
+  color: var(--tinta);
+  cursor: pointer;
+}
+.menu-nube svg { width: 20px; height: 20px; }
+.menu-nube:hover { background: var(--papel); }
+.menu-nube[data-estado="ok"], .menu-nube[data-estado="subiendo"] { background: var(--papel); }
+.menu-nube[data-estado="subiendo"] svg { opacity: .45; }
+.menu-nube[data-estado="error"] { color: var(--gris); border-style: dashed; }
+.dialogo-nube p { margin: 0 0 14px; }
+.nube-email {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 16px;
+  font: inherit;
+  color: var(--tinta);
+  background: var(--papel);
+  border: var(--trazo);
+  border-radius: var(--radio);
+}
+.nube-aviso { min-height: 1.4em; margin: 12px 0 0 !important; color: var(--gris); font-size: .9rem; text-align: center; }
 .menu a[aria-current="page"] { background: var(--lila); color: var(--tinta); box-shadow: inset 0 0 0 1.5px var(--tinta); }
 
 /* Cabecera de las páginas interiores: franja del mural con el menú encima */

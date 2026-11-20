@@ -1,6 +1,8 @@
 // ================= Álbum de fotos =================
-// El libro del suelo del cuarto. Las fotos se reducen y se guardan en este
-// navegador (IndexedDB), que admite mucho más espacio que localStorage.
+// El libro del suelo del cuarto. Las fotos se reducen a JPEG y se guardan:
+// - con la sesión iniciada (nube.js), en Supabase: la imagen en el almacén "album"
+//   y sus datos en la tabla "fotos", así se ven en todos los dispositivos;
+// - sin sesión, en este navegador (IndexedDB), que admite mucho más que localStorage.
 
 let baseDeDatos = null;
 function abrirBD() {
@@ -23,9 +25,67 @@ async function operacion(modo, fn) {
   });
 }
 
-const listarFotos = () => operacion("readonly", (s) => s.getAll());
-const guardarFoto = (foto) => operacion("readwrite", (s) => s.add(foto));
-const borrarFoto = (id) => operacion("readwrite", (s) => s.delete(id));
+const listarLocales = () => operacion("readonly", (s) => s.getAll());
+const guardarLocal = (foto) => operacion("readwrite", (s) => s.add(foto));
+const borrarLocal = (id) => operacion("readwrite", (s) => s.delete(id));
+
+// ---------- Fotos en la nube ----------
+async function usuarioNube() {
+  if (!NUBE.activa) return null;
+  await NUBE.listo;
+  return NUBE.usuario();
+}
+
+const rutasNube = new Map(); // id de la foto → ruta de la imagen en el almacén
+
+async function subirANube(usuario, foto) {
+  const imagen = await (await fetch(foto.imagen)).blob();
+  const ruta = `${usuario.id}/${foto.fecha}-${Math.random().toString(36).slice(2, 8)}.jpg`;
+  const subida = await NUBE.cliente.storage.from("album").upload(ruta, imagen, { contentType: "image/jpeg" });
+  if (subida.error) throw subida.error;
+  const fila = await NUBE.cliente.from("fotos").insert({ ruta, pie: foto.pie, lugar: foto.lugar, fecha: foto.fecha });
+  if (fila.error) throw fila.error;
+}
+
+async function listarFotos() {
+  const usuario = await usuarioNube();
+  if (!usuario) return listarLocales();
+
+  // Las fotos que se guardaron en este navegador antes de iniciar sesión pasan a la nube.
+  try {
+    for (const foto of await listarLocales()) {
+      await subirANube(usuario, foto);
+      await borrarLocal(foto.id);
+    }
+  } catch {
+    // Sin IndexedDB o sin conexión: se intentará la próxima vez.
+  }
+
+  const { data, error } = await NUBE.cliente.from("fotos").select("*").order("fecha");
+  if (error) throw error;
+  if (!data.length) return [];
+  const firmadas = await NUBE.cliente.storage.from("album").createSignedUrls(data.map((f) => f.ruta), 60 * 60);
+  if (firmadas.error) throw firmadas.error;
+  rutasNube.clear();
+  return data.map((f, i) => {
+    rutasNube.set(f.id, f.ruta);
+    return { id: f.id, imagen: firmadas.data[i]?.signedUrl, pie: f.pie, lugar: f.lugar, fecha: f.fecha };
+  });
+}
+
+async function guardarFoto(foto) {
+  const usuario = await usuarioNube();
+  return usuario ? subirANube(usuario, foto) : guardarLocal(foto);
+}
+
+async function borrarFoto(id) {
+  const usuario = await usuarioNube();
+  if (!usuario) return borrarLocal(id);
+  const ruta = rutasNube.get(id);
+  if (ruta) await NUBE.cliente.storage.from("album").remove([ruta]);
+  const { error } = await NUBE.cliente.from("fotos").delete().eq("id", id);
+  if (error) throw error;
+}
 
 // Reduce la foto a 1200 px de lado como mucho, en JPEG.
 async function reducir(archivo) {
@@ -72,7 +132,9 @@ async function pintarAlbum() {
   try {
     fotos = await listarFotos();
   } catch {
-    caja.innerHTML = FOTO_FIJA + `<p class="album-vacio">This browser won't let us save photos (this can happen in a private window).</p>`;
+    caja.innerHTML = FOTO_FIJA + (await usuarioNube()
+      ? `<p class="album-vacio">The photos couldn't be loaded right now. Try again in a moment.</p>`
+      : `<p class="album-vacio">This browser won't let us save photos (this can happen in a private window).</p>`);
     return;
   }
   document.getElementById("album-cuenta").textContent = fotos.length + 1;
@@ -91,7 +153,11 @@ async function pintarAlbum() {
   for (const b of caja.querySelectorAll(".polaroid-borrar")) {
     b.onclick = async () => {
       if (!confirm("Delete this photo from the album?")) return;
-      await borrarFoto(Number(b.dataset.id));
+      try {
+        await borrarFoto(Number(b.dataset.id));
+      } catch {
+        alert("The photo couldn't be deleted. Try again in a moment.");
+      }
       pintarAlbum();
     };
   }
