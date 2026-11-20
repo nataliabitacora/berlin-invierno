@@ -13,6 +13,7 @@
   --lila: #c4bad6;         /* lila apagado: selección, lo hecho, acciones secundarias */
   --lila-suave: #e8e2f0;   /* lila apagado suave: filas de planes hechos */
   --lila-texto: #5c5276;   /* lila apagado oscuro: texto y anillo de foco */
+  --ocre: #ecd08f;         /* ocre suave: botones secundarios (antes lila) */
 
   --display: "Unbounded", "Arial Black", system-ui, sans-serif;
   --sans: "Anonymous Pro", ui-monospace, monospace;
@@ -146,7 +147,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 }
 .pastilla:hover { transform: translateY(-2px); }
 .pastilla:active { transform: translateY(1px); }
-.pastilla-negra { background: var(--lila); color: var(--tinta); }
+.pastilla-negra { background: var(--ocre); color: var(--tinta); }
 .pastilla-sol { background: var(--sol); color: var(--tinta); }
 .pastilla-borde { background: var(--blanco); color: var(--tinta); }
 .pastilla-pequena { padding: 9px 18px; }
@@ -273,7 +274,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   padding: 0;
   border: var(--trazo);
   border-radius: 50%;
-  background: var(--lila);
+  background: var(--ocre);
   color: var(--tinta);
   box-shadow: var(--sombra-dura);
 }
@@ -282,7 +283,7 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .carrusel-der { right: 0; }
 .carrusel-flecha[hidden] { display: none; }
 .cabecera-con-accion { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
-.boton-sorpresa { --relleno: var(--lila); flex: none; }
+.boton-sorpresa { --relleno: var(--ocre); flex: none; }
 .boton-sorpresa .dibujo { width: 20px; height: 20px; margin: -2px 0 -2px -4px; }
 
 /* --- Cajas --- */
