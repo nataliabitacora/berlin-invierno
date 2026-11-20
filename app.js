@@ -82,6 +82,9 @@ function pintarLista() {
   document.getElementById("titulo-lista").textContent =
     filtroActivo ? CATEGORIAS[filtroActivo] : "All places";
   document.getElementById("ver-todo").hidden = !filtroActivo;
+  const subtitulo = document.getElementById("subtitulo-lista");
+  subtitulo.textContent = filtroActivo ? SUBTITULOS[filtroActivo] || "" : "";
+  subtitulo.hidden = !subtitulo.textContent;
   pintarFiltros();
   document.getElementById("cuenta-sugeridos").textContent = sugeridos.length;
   document.getElementById("cuenta-hechos").textContent = hechos.length;

@@ -263,6 +263,8 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 }
 
 /* --- Filas de lugares --- */
+.subtitulo-lista { margin: -6px 4px 16px; color: var(--gris); max-width: 58ch; text-wrap: pretty; }
+.subtitulo-lista[hidden] { display: none; }
 .pestanas {
   display: flex;
   gap: 4px;

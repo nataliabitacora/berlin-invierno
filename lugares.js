@@ -97,6 +97,17 @@ const CATEGORIAS = {
   "berliner-101": "Berliner 101"
 };
 
+// Subtitle shown under the list title when a category is selected.
+const SUBTITULOS = {
+  "history": "So much happened right here. What better way to understand history than standing exactly where it took place?",
+  "arts-culture": "A new chapter where we let art and culture all the way in. Maybe this is what life is really about.",
+  "wander": "Wander with no destination and notice what surrounds you. Not everything needs a plan: let the city carry you.",
+  "parties": "New scenes, new people, new energy. Get inspired, meet each other in unfamiliar places and express yourself.",
+  "cozy-coffee": "A pause in the middle of the city: a coffee or a hot chocolate, a good book or your laptop.",
+  "christmas-markets": "Every market has a personality of its own. Go and find your favourite.",
+  "berliner-101": "The things that make Berlin, Berlin. Try them all to get to know the city and what it stands for."
+};
+
 // Old Spanish names → current names. Visited places and earned coins are saved in
 // the browser by name, so old saves are translated when the page loads.
 const NOMBRES_ANTIGUOS = {
