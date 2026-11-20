@@ -1,6 +1,6 @@
 /* Sistema de diseño "Berlin in Winter": neutros cálidos (crema y nieve) en casi todo,
    lila para lo seleccionado y lo hecho, amarillo solo en dos botones de acción,
-   tinta violeta para trazos y texto. Unbounded para títulos y números.
+   tinta violeta para trazos y texto. Horizon para títulos y números, Anonymous Pro para el texto.
    No se usa el blanco #ffffff en ningún sitio. */
 :root {
   --papel: #fff4d6;        /* cream: fondo de página y superficies tintadas */
@@ -14,9 +14,10 @@
   --lila-suave: #ebe3f8;   /* lilac-soft: filas de planes hechos */
   --lila-texto: #644ca6;   /* lilac como texto y anillo de foco */
 
-  --display: "Unbounded", "Arial Black", system-ui, sans-serif;
-  --sans: "DM Sans", system-ui, sans-serif;
-  --mono: "DM Mono", ui-monospace, monospace;
+  /* Horizon no tiene acentos ni ß: esos caracteres salen en Unbounded */
+  --display: "Horizon", "Unbounded", "Arial Black", sans-serif;
+  --sans: "Anonymous Pro", ui-monospace, monospace;
+  --mono: "Anonymous Pro", ui-monospace, monospace;
 
   --trazo: 2.5px solid var(--tinta);
   --radio-grande: 26px;
@@ -25,12 +26,21 @@
   --sombra-dura: 4px 4px 0 var(--tinta);
 }
 
+/* Horizon, de George Arnold (FontStruct), licencia SIL Open Font License 1.1: ver fonts/horizon/ */
+@font-face {
+  font-family: "Horizon";
+  src: url("fonts/horizon/horizon.otf") format("opentype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   font-family: var(--sans);
+  font-size: 17px;
   background: var(--papel);
   color: var(--tinta);
   line-height: 1.5;
@@ -117,15 +127,16 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 .emblema { width: 150px; height: auto; margin-bottom: 14px; overflow: visible; }
 .tarjeta-portada h1 {
   font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.55rem, 4.2vw, 2.5rem);
-  line-height: 1.04;
-  letter-spacing: -.02em;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 4.4vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: .02em;
   text-transform: uppercase;
   margin: 0 0 14px;
   text-wrap: balance;
 }
 .tarjeta-portada > p { color: var(--gris); margin: 0 auto 24px; max-width: 46ch; }
+.tarjeta-portada > .subtitulo-portada { color: var(--tinta); font-weight: 700; font-size: 1.15rem; margin-bottom: 10px; }
 .acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 18px; }
 .letra-pequena { font-size: .88rem; margin: 0 !important; }
 
@@ -184,10 +195,10 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
 }
 .cabecera-seccion h2 {
   font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
-  line-height: 1.05;
-  letter-spacing: -.01em;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: .02em;
   text-transform: uppercase;
   margin: 0;
   text-wrap: balance;
@@ -832,3 +843,14 @@ body:has(.cabecera-pagina) { min-height: 100vh; display: flex; flex-direction: c
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
 }
+
+/* Horizon solo en mayúsculas: sus minúsculas son poco legibles */
+.caja-cabecera h3, .plan h4, .dialogo-cuerpo h3, .filtros-cabecera h3, .tarjeta-repo h3,
+.album-cabecera h3, .editor h3, .hud-nombre { text-transform: uppercase; letter-spacing: .02em; font-weight: 400; line-height: 1.25; }
+.caja-cabecera h3 { font-size: 1.05rem; }
+.plan h4 { font-size: 1.1rem; }
+.dialogo-cuerpo h3, .album-cabecera h3, .editor h3, .filtros-cabecera h3 { font-size: 1.15rem; }
+.tarjeta-repo h3 { font-size: .98rem; }
+.hud-nombre { font-size: .9rem; }
+/* Números en Horizon */
+.contador-numero, .puerta-numero, .monedas b, .insignia, .pestana-cuenta, .filtro-insignia, .filtro-cuenta, .opcion-cuenta { font-weight: 400; }
